@@ -12,12 +12,16 @@ export class AppComponent {
   showShop = false;
   showBuilder = false;
   showCart = false;
+  showBox = false;
+  showWishlist = false;
 
   displayHome(){
     this.showHome = true;
     this.showShop = false;
     this.showCart = false;
     this.showBuilder = false;
+    this.showBox = false;
+    this.showWishlist = false;
   }
 
   displayShop(){
@@ -25,6 +29,8 @@ export class AppComponent {
     this.showShop = true;
     this.showCart = false;
     this.showBuilder = false;
+    this.showBox = false;
+    this.showWishlist = false;
   }
 
   displayBuilder(){
@@ -32,6 +38,8 @@ export class AppComponent {
     this.showShop = false;
     this.showCart = false;
     this.showBuilder = true;
+    this.showBox = false;
+    this.showWishlist = false;
   }
 
   displayCart(){
@@ -39,5 +47,25 @@ export class AppComponent {
     this.showShop = false;
     this.showCart = true;
     this.showBuilder = false;
+    this.showBox = false;
+    this.showWishlist = false;
+  }
+
+  displayBox(){
+    this.showHome = false;
+    this.showShop = false;
+    this.showCart = false;
+    this.showBuilder = false;
+    this.showBox = true;
+    this.showWishlist = false;
+  }
+
+  displayWishlist(){
+    this.showHome = false;
+    this.showShop = false;
+    this.showCart = false;
+    this.showBuilder = false;
+    this.showBox = false;
+    this.showWishlist = true;
   }
 }
