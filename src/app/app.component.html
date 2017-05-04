@@ -1,3 +1,20 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarNavAltMarkup" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand title" (click)="displayHome()" href="#"> NICOCKTAIL</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <p class="nav-item nav-link" (click)="displayHome()"><i class="fa fa-home"></i> Home </p>
+      <p class="nav-item nav-link" (click)="displayShop()"><i class="fa fa-shopping-basket"></i> Shop</p>
+      <p class="nav-item nav-link" (click)="displayBuilder()"><i class="fa fa-magic"></i> Builder</p>
+      <p class="nav-item nav-link" (click)="displayCart()"><i class="fa fa-shopping-cart"></i> Cart</p>
+    </div>
+  </div>
+</nav>
+
+<app-home *ngIf="showHome"></app-home>
+<app-shop *ngIf="showShop"></app-shop>
+<app-builder *ngIf="showBuilder"></app-builder>
+<app-cart *ngIf="showCart"></app-cart>
+
