@@ -1,6 +1,12 @@
+@font-face {
+  font-family: 'RondaMedium'; /*a name to be used later*/
+  src: url('../../assets/font/Ronda-Medium.ttf'); /*URL to font*/
+}
+
 .title{
   margin-top: 50px;
   color: #750909;
+  font-family: RondaMedium;
 }
 
 .description{
@@ -15,3 +21,4 @@
 .banner{
   width: 100%;
 }
+

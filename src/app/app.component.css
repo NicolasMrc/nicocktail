@@ -13,9 +13,15 @@ img{
   cursor: pointer;
 }
 
+@font-face {
+  font-family: 'RondaMedium'; /*a name to be used later*/
+  src: url('../assets/font/Ronda-Medium.ttf'); /*URL to font*/
+}
+
 .title{
   font-weight: 100;
   letter-spacing: 0.1em;
+  font-family: RondaMedium;
 }
 
 .sign-in{
@@ -25,3 +31,4 @@ img{
 .navbar-brand{
   cursor: pointer;
 }
+
