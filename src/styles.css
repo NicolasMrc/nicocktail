@@ -8,3 +8,12 @@ body{
 .spinner{
   height:100%;
 }
+
+@font-face {
+  font-family: 'RondaMedium'; /*a name to be used later*/
+  src: url('./assets/font/Ronda-Medium.ttf'); /*URL to font*/
+}
+
+h1{
+  font-family: RondaMedium;
+}

@@ -48,7 +48,6 @@ export class AppComponent {
     //append new link
     document.getElementsByTagName('head')[0].appendChild(link);
 
-    console.log(favicons[randomFav]);
   }
 
   displayHome(){

@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'RondaMedium'; /*a name to be used later*/
+  src: url('../assets/font/Ronda-Medium.ttf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'RondaLight'; /*a name to be used later*/
+  src: url('../assets/font/Ronda-Light.ttf'); /*URL to font*/
+}
+
 h1{
   color: #eeeeee;
   font-weight: 100;
@@ -11,16 +20,16 @@ img{
 .nav-item{
   margin-bottom: 0;
   cursor: pointer;
+  font-family: RondaLight;
 }
 
-@font-face {
-  font-family: 'RondaMedium'; /*a name to be used later*/
-  src: url('../assets/font/Ronda-Medium.ttf'); /*URL to font*/
+.btn{
+  font-family: RondaLight;
 }
 
 .title{
   font-weight: 100;
-  letter-spacing: 0.1em;
+  letter-spacing: -1px;
   font-family: RondaMedium;
 }
 
