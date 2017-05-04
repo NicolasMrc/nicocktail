@@ -5,17 +5,25 @@
   <a class="navbar-brand title" (click)="displayHome()"> NICOCKTAIL</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <p class="nav-item nav-link" (click)="displayHome()"><i class="fa fa-home"></i> Home </p>
-      <p class="nav-item nav-link" (click)="displayShop()"><i class="fa fa-shopping-basket"></i> Shop</p>
-      <p class="nav-item nav-link" (click)="displayBuilder()"><i class="fa fa-magic"></i> Builder</p>
-      <p class="nav-item nav-link" (click)="displayBox()"><i class="fa fa-gift"></i> DrinkBox</p>
-      <p class="nav-item nav-link" (click)="displayWishlist()"><i class="fa fa-heart"></i> Wishlist</p>
-      <p class="nav-item nav-link" (click)="displayCart()"><i class="fa fa-shopping-cart"></i> Cart</p>
+      <p class="nav-item nav-link hidden-xs-down" (click)="displayHome()"><i class="fa fa-home"></i> Home </p>
+      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" (click)="displayHome()"><i class="fa fa-home"></i> Home </p>
+      <p class="nav-item nav-link hidden-xs-down" (click)="displayShop()"><i class="fa fa-shopping-basket"></i> Shop</p>
+      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" (click)="displayShop()"><i class="fa fa-shopping-basket"></i> Shop</p>
+      <p class="nav-item nav-link hidden-xs-down" (click)="displayBuilder()"><i class="fa fa-magic"></i> Builder</p>
+      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse"(click)="displayBuilder()"><i class="fa fa-magic"></i> Builder</p>
+      <p class="nav-item nav-link hidden-xs-down" (click)="displayBox()"><i class="fa fa-gift"></i> DrinkBox</p>
+      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse"(click)="displayBox()"><i class="fa fa-gift"></i> DrinkBox</p>
+      <p class="nav-item nav-link hidden-xs-down" (click)="displayWishlist()"><i class="fa fa-heart"></i> Wishlist</p>
+      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse"(click)="displayWishlist()"><i class="fa fa-heart"></i> Wishlist</p>
+      <p class="nav-item nav-link hidden-xs-down" (click)="displayCart()"><i class="fa fa-shopping-cart"></i> Cart</p>
+      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse"(click)="displayCart()"><i class="fa fa-shopping-cart"></i> Cart</p>
   </div>
 
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-warning my-2 my-sm-0" (click)="displayRegistrationForm()"><i class="fa fa-pencil-square-o"></i> Sign up</button>
-      <button class="btn btn-outline-info my-2 my-sm-0 sign-in" (click)="displaySignInForm()"><i class="fa fa-user-circle-o"></i> Sign in</button>
+      <button class="btn btn-outline-warning my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" (click)="displayRegistrationForm()"><i class="fa fa-pencil-square-o"></i> Sign up</button>
+      <button class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" (click)="displayRegistrationForm()"><i class="fa fa-pencil-square-o"></i> Sign up</button>
+      <button class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" (click)="displaySignInForm()"><i class="fa fa-user-circle-o"></i> Sign in</button>
+      <button class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-xs-down" (click)="displaySignInForm()"><i class="fa fa-user-circle-o"></i> Sign in</button>
     </form>
   </div>
 
