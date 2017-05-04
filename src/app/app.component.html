@@ -14,8 +14,8 @@
   </div>
 
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-warning my-2 my-sm-0 sign-in"><i class="fa fa-pencil-square-o"></i> Sign in</button>
-      <button class="btn btn-outline-info my-2 my-sm-0"><i class="fa fa-user-circle-o"></i> Sign up</button>
+      <button class="btn btn-outline-warning my-2 my-sm-0" (click)="displayRegistrationForm()"><i class="fa fa-pencil-square-o"></i> Sign up</button>
+      <button class="btn btn-outline-info my-2 my-sm-0 sign-in" (click)="displaySignInForm()"><i class="fa fa-user-circle-o"></i> Sign in</button>
     </form>
   </div>
 
@@ -27,4 +27,6 @@
 <app-cart *ngIf="showCart"></app-cart>
 <app-box *ngIf="showBox"></app-box>
 <app-wishlist *ngIf="showWishlist"></app-wishlist>
+<app-signin *ngIf="showSignInForm"></app-signin>
+<app-registration *ngIf="showRegistrationForm"></app-registration>
 

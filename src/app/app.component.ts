@@ -14,58 +14,102 @@ export class AppComponent {
   showCart = false;
   showBox = false;
   showWishlist = false;
+  showSignInForm = false;
+  showRegistrationForm = false;
 
   displayHome(){
     this.showHome = true;
+
+    this.showBox = false;
     this.showShop = false;
     this.showCart = false;
     this.showBuilder = false;
-    this.showBox = false;
     this.showWishlist = false;
+    this.showSignInForm = false;
+    this.showRegistrationForm = false;
   }
 
   displayShop(){
-    this.showHome = false;
     this.showShop = true;
+
+    this.showBox = false;
+    this.showHome = false;
     this.showCart = false;
     this.showBuilder = false;
-    this.showBox = false;
     this.showWishlist = false;
+    this.showSignInForm = false;
+    this.showRegistrationForm = false;
   }
 
   displayBuilder(){
+    this.showBuilder = true;
+
+    this.showBox = false;
     this.showHome = false;
     this.showShop = false;
     this.showCart = false;
-    this.showBuilder = true;
-    this.showBox = false;
     this.showWishlist = false;
+    this.showSignInForm = false;
+    this.showRegistrationForm = false;
   }
 
   displayCart(){
+    this.showCart = true;
+
+    this.showBox = false;
     this.showHome = false;
     this.showShop = false;
-    this.showCart = true;
     this.showBuilder = false;
-    this.showBox = false;
     this.showWishlist = false;
+    this.showSignInForm = false;
+    this.showRegistrationForm = false;
   }
 
   displayBox(){
+    this.showBox = true;
+
     this.showHome = false;
     this.showShop = false;
     this.showCart = false;
     this.showBuilder = false;
-    this.showBox = true;
     this.showWishlist = false;
+    this.showSignInForm = false;
+    this.showRegistrationForm = false;
   }
 
   displayWishlist(){
+    this.showWishlist = true;
+
+    this.showBox = false;
     this.showHome = false;
     this.showShop = false;
     this.showCart = false;
     this.showBuilder = false;
+    this.showSignInForm = false;
+    this.showRegistrationForm = false;
+  }
+
+  displaySignInForm(){
+    this.showSignInForm = true;
+
     this.showBox = false;
-    this.showWishlist = true;
+    this.showHome = false;
+    this.showShop = false;
+    this.showCart = false;
+    this.showBuilder = false;
+    this.showWishlist = false;
+    this.showRegistrationForm = false;
+  }
+
+  displayRegistrationForm(){
+    this.showRegistrationForm = true;
+
+    this.showBox = false;
+    this.showHome = false;
+    this.showShop = false;
+    this.showCart = false;
+    this.showBuilder = false;
+    this.showWishlist = false;
+    this.showSignInForm = false;
   }
 }
