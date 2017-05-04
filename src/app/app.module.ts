@@ -13,6 +13,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SigninComponent } from './signin/signin.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { SigninComponent } from './signin/signin.component';
     BoxComponent,
     WishlistComponent,
     RegistrationComponent,
-    SigninComponent
+    SigninComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -33,4 +35,4 @@ import { SigninComponent } from './signin/signin.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
