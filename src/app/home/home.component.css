@@ -25,11 +25,23 @@
 
 }
 
+.home-section-sm p{
+  margin-top: 40px;
+}
+
+.home-section-sm .btn{
+  width: 200px;
+}
+
+.home-section-sm img{
+  max-height: 200px;
+}
+
 .col-img{
   padding: 0;
 }
 
-.col-img img{
+.home-section .col-img img{
   max-height: 500px;
 }
 
@@ -56,4 +68,10 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 80px;
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
 }
