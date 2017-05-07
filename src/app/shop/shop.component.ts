@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Drink} from "../../entities/Drink";
+import {DrinkService} from "../../services/DrinkService";
+import {AlcoholService} from "../../services/AlcoholService";
+import {Alcohol} from "../../entities/Alcohol";
 
 @Component({
   selector: 'app-shop',
@@ -8,16 +11,31 @@ import {Drink} from "../../entities/Drink";
 })
 export class ShopComponent implements OnInit {
 
-  drinks = [
-    new Drink(0, "Mojito", "Some descirption"),
-    new Drink(0, "Blue Lagoon", "Some descirption"),
-    new Drink(0, "Caipirihna", "Some descirption"),
-    new Drink(0, "Cosmopolitan", "Some descirption"),
-  ];
+  alcohols : Alcohol[];
+  newAlcohol : Alcohol = new Alcohol();
 
-  constructor() { }
+  constructor(private alcoholService : AlcoholService) { }
 
   ngOnInit() {
+    this.newAlcohol.name = "";
+    this.newAlcohol.degree = null;
+
+    //this.getDrinks();
   }
 
+  /*getDrinks(): void {
+    this.alcoholService
+      .getAlcohols()
+      .subscribe(alcohols => this.alcohols = alcohols);
+  }
+
+  saveNewDrink(){
+    if(this.newAlcohol.name != "" && this.newAlcohol.degree != null){
+      this.alcoholService.addAlcohol(this.newAlcohol)
+        .then(alcohol => {
+          this.alcohols.push(alcohol);
+          this.newAlcohol = new Alcohol();
+        });
+    }
+  }*/
 }

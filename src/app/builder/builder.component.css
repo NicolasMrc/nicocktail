@@ -7,6 +7,13 @@
   font-family: RondaMedium;
 }
 
+
+.builder{
+  min-height: 100%;
+}
+
+
 img{
   margin-top: 30px;
+  max-height: 500px;
 }

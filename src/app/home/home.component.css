@@ -18,3 +18,42 @@
 .banner{
   width: 100%;
 }
+
+.home-section p{
+  margin-top: 300px;
+  font-size: 18px;
+
+}
+
+.col-img{
+  padding: 0;
+}
+
+.col-img img{
+  max-height: 500px;
+}
+
+
+.footer{
+  background-color: rgb(101, 0, 51);;
+  margin-bottom: 0;
+  padding-top: 15px;
+  height: 50px;
+  color: #fff;
+  font-weight: 100;
+  margin-top: 40px;
+}
+
+.footer p{
+
+  margin-bottom:0;
+}
+
+.separator{
+  background-color: #e4e4e4;
+  height: 1px;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 80px;
+}

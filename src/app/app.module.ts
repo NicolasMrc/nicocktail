@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ShopComponent } from './shop/shop.component';
@@ -12,6 +12,14 @@ import { BoxComponent } from './box/box.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SigninComponent } from './signin/signin.component';
+import {DrinkService} from "../services/DrinkService";
+import {UserService} from "../services/UserService";
+import {AlcoholService} from "../services/AlcoholService";
+import {SoftService} from "../services/SoftService";
+import {ExtraService} from "../services/ExtraService";
+import {Bundle} from "../entities/Bundle";
+import {BundleService} from "../services/BundleService";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -30,9 +38,19 @@ import { SigninComponent } from './signin/signin.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    JsonpModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    DrinkService,
+    UserService,
+    AlcoholService,
+    SoftService,
+    ExtraService,
+    BundleService,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

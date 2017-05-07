@@ -11,6 +11,10 @@
   margin-bottom: 30px;
 }
 
-.add-cart{
+.add-cart, .add-wish{
+  margin-bottom: 10px;
+}
+
+.new-bundle input{
   margin-bottom: 10px;
 }
