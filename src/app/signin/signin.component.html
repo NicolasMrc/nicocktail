@@ -10,14 +10,14 @@
   <div class="row">
     <div class=" offset-md-3 col-md-6 col-xs-12">
       <md-input-container style=" margin-bottom: 20px">
-        <input mdInput type="text" placeholder="Email" [(ngModel)]="user.email" style="width: 300px;"/>
+        <input mdInput type="text" placeholder="Email" [(ngModel)]="email" style="width: 300px;"/>
       </md-input-container>
     </div>
   </div>
   <div class="row">
     <div class="offset-md-3 col-md-6 col-xs-12">
       <md-input-container style=" margin-bottom: 20px">
-        <input mdInput type="password" placeholder="Password" [(ngModel)]="user.password" style="width: 300px;"/>
+        <input mdInput type="password" placeholder="Password" [(ngModel)]="password" style="width: 300px;"/>
       </md-input-container>
     </div>
   </div>
@@ -25,7 +25,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3 col-xs-12">
       <label class="custom-control custom-checkbox ">
-        <md-checkbox>Remember me!</md-checkbox>
+        <md-checkbox [(ngModel)]="rememberMe" >Remember me!</md-checkbox>
       </label>
     </div>
   </div>

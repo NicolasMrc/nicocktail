@@ -56,15 +56,15 @@
       <div class="card d-box mx-auto" style="width: 20rem;">
         <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
         <div class="card-block">
-          <h4 class="card-title">{{alcohol.id}} - {{alcohol.name}}</h4>
-          <p class="card-text">{{alcohol.degree}}</p>
+          <h4 class="card-title">{{alcohol.name}}</h4>
+          <p class="card-text">{{alcohol.degree}} %</p>
 
           <div class="row">
             <div class="col">
-              <button type="button" style="width: 100%;" md-raised-button color="primary" (click)="onEdit(alcohol)"><md-icon>edit</md-icon> Edit</button>
+              <button type="button" mdTooltip="Edit" [mdTooltipPosition]="'below'" class="btn btn-outline-warning float-right" md-raised-button  (click)="onEdit(alcohol)"><md-icon>edit</md-icon></button>
             </div>
             <div class="col">
-              <button type="button" style="width: 100%;" md-raised-button color="warn" (click)="onDelete(alcohol)"><md-icon>delete</md-icon> Delete</button>
+              <button type="button" md-raised-button class="btn btn-outline-danger" mdTooltip="Delete" [mdTooltipPosition]="'below'" (click)="onDelete(alcohol)"><md-icon>delete</md-icon></button>
             </div>
           </div>
         </div>

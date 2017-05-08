@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../entities/User";
+import {MdSnackBar} from "@angular/material";
+import {AuthService} from "../../services/auth/auth.service";
+import {Hasher} from "../../services/auth/hasher.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signin',
@@ -8,16 +11,36 @@ import {User} from "../../entities/User";
 })
 export class SigninComponent implements OnInit {
 
-  user : User = User;
+  email : string = "nyckoo@live.fr";
+  password : string = "nicolas";
+  rememberMe : boolean = false;
 
-  constructor() { }
+  constructor(private snack : MdSnackBar, private authService : AuthService, private hasher : Hasher, private router : Router) { }
 
   ngOnInit() {
   }
 
   signIn(){
-    if(this.user.email != "" && this.user.password != ""){
-
+    if(this.email == "" || this.password == ""){
+      this.snack.open('You must fill up password and email in order to log in !', 'Login Failed');
+    } else {
+      //this.loginIn = true;
+      this.authService.login(this.email, this.password, this.rememberMe).subscribe(() => {
+        if (this.authService.isLoggedIn) {
+          let redirect = '';
+          if(this.authService.currentUser.role == 'admin'){
+            redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+          } else {
+            redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
+          }
+          this.snack.open('Welcome ' + this.authService.currentUser.firstname, null , {duration: 2000});
+          this.router.navigate([redirect]);
+        } else {
+          //this.loginIn = false;
+          this.snack.open('Failed to connect', null, {duration: 2000});
+          this.password = "";
+        }
+      });
     }
   }
 

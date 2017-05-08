@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" *ngIf="authService.currentUser.role != 'admin'">
   <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarNavAltMarkup" data-toggle="collapse" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,15 +17,58 @@
       <a class="nav-item nav-link hidden-xs-down" routerLink="/wishlist" ><i class="fa fa-heart"></i> Wishlist</a>
       <a class="nav-item nav-link hidden-sm-up"   routerLink="/wishlist" data-target="#navbarNavAltMarkup" data-toggle="collapse"><i class="fa fa-heart"></i> Wishlist</a>
       <a class="nav-item nav-link hidden-xs-down" routerLink="/cart" ><i class="fa fa-shopping-cart"></i> Cart</a>
-      <a class="nav-item nav-link hidden-sm-up"   routerLink="/cart" data-target="#navbarNavAltMarkup" data-toggle="collapse"><i class="fa fa-shopping-cart"></i> Cart</a>
+      <a class="nav-item nav-link hidden-sm-up"   routerLink="/cart" data-target="#navbarNavAltMarkup" data-toggle="collapse"> Cart</a>
     </div>
 
-    <form class="form-inline my-2 my-lg-0">
+    <div class="form-inline my-2 my-lg-0" *ngIf="!authService.isLoggedIn">
       <button md-raised-button routerLink="/register" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>assignment</md-icon> Sign up</button>
       <button md-raised-button routerLink="/register" class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" ><md-icon>assignment</md-icon> Sign up</button>
       <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>account_circle</md-icon> Sign in</button>
       <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-xs-down" ><md-icon>account_circle</md-icon> Sign in</button>
-    </form>
+    </div>
+
+    <div class="form-inline my-2 my-lg-0" *ngIf="authService.isLoggedIn">
+      <button md-raised-button routerLink="/profil" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>account_circle</md-icon> {{authService.currentUser.firstname}}</button>
+      <button md-raised-button mdTooltip="Manage" [mdTooltipPosition]="'below'" routerLink="/profil" class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" ><md-icon>account_circle</md-icon> {{authService.currentUser.firstname}}</button>
+
+      <button md-mini-fab  (click)="authService.logout()" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>exit_to_app</md-icon></button>
+      <button md-mini-fab mdTooltip="Logout" [mdTooltipPosition]="'below'" id="logout" (click)="authService.logout()" class="btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>exit_to_app</md-icon></button>
+    </div>
+  </div>
+
+</nav>
+
+
+
+<nav class="navbar navbar-admin navbar-toggleable-md navbar-light bg-faded" *ngIf="authService.currentUser.role == 'admin'">
+  <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarNavAltMarkup" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand title" routerLink="/admin"> nicocktail</a>
+  <div class="collapse navbar-collapse" id="navBarAdmin">
+    <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <a class="nav-item nav-link text-center" routerLink="/admin/alcohol">Alcohol</a>
+      <a class="nav-item nav-link text-center" routerLink="/admin/soft">Soft</a>
+      <a class="nav-item nav-link text-center" routerLink="/admin/extra">Extra</a>
+      <a class="nav-item nav-link text-center" routerLink="/admin/bundle">Bundle</a>
+      <a class="nav-item nav-link text-center" routerLink="/admin/user">Users</a>
+    </div>
+
+    <div class="form-inline my-2 my-lg-0" *ngIf="!authService.isLoggedIn">
+      <button md-raised-button routerLink="/register" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>assignment</md-icon> Sign up</button>
+      <button md-raised-button routerLink="/register" class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" ><md-icon>assignment</md-icon> Sign up</button>
+      <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>account_circle</md-icon> Sign in</button>
+      <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-xs-down" ><md-icon>account_circle</md-icon> Sign in</button>
+    </div>
+
+    <div class="form-inline my-2 my-lg-0" *ngIf="authService.isLoggedIn">
+      <button md-raised-button routerLink="/profil" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>account_circle</md-icon> {{authService.currentUser.firstname}}</button>
+      <button md-raised-button mdTooltip="Manage" [mdTooltipPosition]="'below'" routerLink="/profil" class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" ><md-icon>account_circle</md-icon> {{authService.currentUser.firstname}}</button>
+
+      <button md-mini-fab  (click)="authService.logout()" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>exit_to_app</md-icon></button>
+      <button md-mini-fab mdTooltip="Logout" [mdTooltipPosition]="'below'" id="logoutAdmin" (click)="authService.logout()" class="btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>exit_to_app</md-icon></button>
+    </div>
   </div>
 
 </nav>

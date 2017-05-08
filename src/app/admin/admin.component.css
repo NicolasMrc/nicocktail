@@ -1,0 +1,58 @@
+.buttons{
+  margin-top: 200px;
+}
+
+
+.navbar{
+  background-color: #5d3646;
+  color: #fff;
+  width: 100%;
+  padding: 0;
+}
+
+.navbar a{
+  color: white;
+  border-right: 1px solid rgba(0,0,0,0.3);
+  transition: background-color .15s;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  padding-top: 10px;
+}
+
+.navbar a:hover{
+  color: white;
+  background-color: rgba(0,0,0,0.3);
+  transition: background-color .15s;
+}
+
+.container-fluid{
+  min-height: 100%;
+}
+
+
+.example-sidenav-fab-container {
+  width: 100%;
+  min-height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-fab-container md-sidenav {
+  min-width: 200px;
+}
+
+.example-sidenav-fab-container .md-sidenav-content,
+.example-sidenav-fab-container md-sidenav {
+  display: flex;
+  overflow: visible;
+}
+
+.example-scrolling-content {
+  overflow: auto;
+}
+
+.example-fab {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}

@@ -8,40 +8,95 @@
   </div>
 
   <div class="row">
+    <div class="col-lg-3 col-md-6 offset-md-3 col-xs-12">
+      <md-input-container>
+        <input type="text" mdInput placeholder="Firstname" [(ngModel)]="newUser.firstname">
+      </md-input-container>
+    </div>
+    <div class="col-lg-3 col-md-6 offset-lg-0 offset-md-3 col-xs-12">
+      <md-input-container>
+        <input type="text" mdInput placeholder="Lastname" [(ngModel)]="newUser.lastname">
+      </md-input-container>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-6 offset-md-3 col-xs-12">
+      <md-input-container>
+        <input mdInput [ngModel]="newUser.birthdate | date:'dd-MM-yyyy'"/>
+      </md-input-container>
+    </div>
+    <div class="col-lg-3 col-md-6 offset-lg-0 offset-md-3 col-xs-12 radio-container">
+      <md-radio-group [(ngModel)]="newUser.civility">
+        <md-radio-button class="example-margin" value="W">
+          Women
+        </md-radio-button>
+        <md-radio-button class="example-margin" value="M">
+          Men
+        </md-radio-button>
+      </md-radio-group>
+    </div>
+  </div>
+
+
+
+<!--
+  <div class="row">
+    <div class="col-md-6 offset-md-3  col-xs-12">
+      <md-input-container>
+        <input type="text" mdInput placeholder="Address" [(ngModel)]="newUser.address">
+      </md-input-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3  col-xs-12">
+      <md-input-container>
+        <input type="text" mdInput placeholder="City" [(ngModel)]="newUser.city">
+      </md-input-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-md-6 offset-md-3 col-xs-12">
+      <md-input-container>
+        <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="newUser.zipCode">
+      </md-input-container>
+    </div>
+    <div class="col-lg-3 col-md-6 offset-lg-0 offset-md-3 col-xs-12" >
+      <md-input-container>
+        <input type="text" mdInput placeholder="Country" [(ngModel)]="newUser.country">
+      </md-input-container>
+    </div>
+  </div>
+
+
+  -->
+  <div class="row">
     <div class="col-md-6 offset-md-3 col-xs-12">
-      <input type="text" class="form-control" placeholder="Firstname">
+      <md-input-container>
+        <input type="text" mdInput placeholder="Email" [(ngModel)]="newUser.email">
+      </md-input-container>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3 col-xs-12">
-      <input type="text" class="form-control" placeholder="Lastname">
+      <md-input-container>
+        <input type="password" mdInput placeholder="Password" [(ngModel)]="newUser.password">
+      </md-input-container>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3 col-xs-12">
-      <input type="text" class="form-control" placeholder="Zip Code">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 offset-md-3 col-xs-12">
-      <input type="text" class="form-control" placeholder="Email">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 offset-md-3 col-xs-12">
-      <input type="text" class="form-control" placeholder="Password">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 offset-md-3 col-xs-12">
-      <input type="text" class="form-control" placeholder="Password Confirmation">
+      <md-input-container>
+        <input type="password" [(ngModel)]="confirmationPassword" mdInput placeholder="Password Confirmation">
+      </md-input-container>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-2 col-xs-12 offset-md-7">
-      <button type="submit" class="btn btn-block btn-outline-warning form-control"><i class="fa fa-save"></i> Register</button>
+      <button md-raised-button (click)="onSubmit()" class="btn btn-block btn-outline-info form-control"><md-icon>save</md-icon> Register</button>
     </div>
   </div>
+
 
 </div>

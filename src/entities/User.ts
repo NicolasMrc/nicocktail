@@ -6,18 +6,22 @@ import {Bundle} from "./Bundle";
 
 
 export class User{
+
+
   constructor(
     public firstname? : string,
     public lastname? : string,
+    public birthdate? : Date,
+    public civility? : string,
     public zipCode? : string,
-    public adress? : string,
+    public address? : string,
     public city? : string,
     public country? : string,
     public email? : string,
     public password? : string,
     public cart? : Bundle[],
     public wishlist? : Bundle[],
-    public role? : string,
-    public isSubscriber? : boolean
+    public role : string = "user",
+    public isSubscriber : boolean = false
   ){}
 }

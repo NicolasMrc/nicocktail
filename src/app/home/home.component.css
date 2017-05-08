@@ -75,3 +75,7 @@
 .carousel-item-prev {
   display: block;
 }
+
+.carousel{
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import {AuthService} from "../services/auth/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,12 @@ export class AppComponent {
 
   @ViewChild('dynamic-favicon') el:ElementRef;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private authService : AuthService) { }
 
   ngOnInit(){
+
+    this.authService.checkLogin();
+
     let favicons = [
       "favicon-1.gif",
       "favicon-2.gif",

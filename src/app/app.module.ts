@@ -20,8 +20,9 @@ import {ExtraService} from "../services/ExtraService";
 import {BundleService} from "../services/BundleService";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
-  MdButtonModule, MdCheckboxModule, MdDialogModule, MdIconModule, MdInputModule,
-  MdSnackBarModule
+  MdButtonModule, MdCheckboxModule, MdDialogModule, MdIconModule, MdInputModule, MdRadioButton, MdRadioModule,
+  MdSidenavModule,
+  MdSnackBarModule, MdTooltipModule
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DialogEditBundleComponent} from "./dialog/dialog-edit-bundle/dialog-edit-bundle.component";
@@ -29,6 +30,15 @@ import {DialogService} from "../services/DialogService";
 import { DialogConfirmationComponent } from './dialog/dialog-confirmation/dialog-confirmation.component';
 import { HeaderComponent } from './header/header.component';
 import {RouterModule, Routes} from "@angular/router";
+import {AuthService} from "../services/auth/auth.service";
+import {AuthGuardService} from "../services/auth/auth-guard.service";
+import {Hasher} from "../services/auth/hasher.service";
+import { AdminComponent } from './admin/admin.component';
+import { AdminAlcoholComponent } from './admin-alcohol/admin-alcohol.component';
+import { AdminSoftComponent } from './admin-soft/admin-soft.component';
+import { AdminExtraComponent } from './admin-extra/admin-extra.component';
+import { AdminBundleComponent } from './admin-bundle/admin-bundle.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 
 
 const appRoutes: Routes = [
@@ -36,10 +46,30 @@ const appRoutes: Routes = [
   { path: 'drink-box', component: BoxComponent },
   { path: 'builder', component: BuilderComponent },
   { path: 'home', component: HomeComponent },
+  { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'sign-in', component: SigninComponent },
   { path: 'register', component: RegistrationComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: '',
+        canActivateChild: [AuthGuardService],
+        children: [
+          { path: 'alcohol', component: AdminAlcoholComponent },
+          { path: 'soft', component: AdminSoftComponent },
+          { path: 'extra', component: AdminExtraComponent },
+          { path: 'bundle', component: AdminBundleComponent },
+          { path: 'user', component: AdminUserComponent },
+        ]
+      }
+    ]
+  },
+
 ];
 
 
@@ -57,6 +87,12 @@ const appRoutes: Routes = [
     DialogEditBundleComponent,
     DialogConfirmationComponent,
     HeaderComponent,
+    AdminComponent,
+    AdminAlcoholComponent,
+    AdminSoftComponent,
+    AdminExtraComponent,
+    AdminBundleComponent,
+    AdminUserComponent,
 
   ],
   imports: [
@@ -72,6 +108,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MdIconModule,
     MdSnackBarModule,
+    MdRadioModule,
+    MdTooltipModule,
+    MdSidenavModule,
     RouterModule.forRoot(appRoutes),
 
   ],
@@ -83,6 +122,9 @@ const appRoutes: Routes = [
     ExtraService,
     BundleService,
     DialogService,
+    AuthService,
+    AuthGuardService,
+    Hasher
   ],
   entryComponents:[
     DialogEditBundleComponent,

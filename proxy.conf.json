@@ -2,5 +2,15 @@
   "/alcohol": {
     "target": "http://localhost:8888/framework/public",
     "secure": false
+  },
+
+  "/user": {
+    "target": "http://localhost:8888/framework/public",
+    "secure": false
+  },
+
+  "/login": {
+    "target": "http://localhost:8888/framework/public",
+    "secure": false
   }
 }

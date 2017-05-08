@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {DisplayService} from "../../services/DisplayService";
 
 @Component({
   selector: 'app-home',

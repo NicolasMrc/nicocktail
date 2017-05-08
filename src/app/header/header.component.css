@@ -15,10 +15,28 @@
   font-family: RondaMedium;
 }
 
+.navbar-admin .title{
+  color: white;
+  font-family: RondaLight;
+}
+
+.navbar-admin{
+  background-color: #5d3646;
+}
+
 .sign-in{
   margin-left: 10px;
 }
 
 .navbar-brand{
   cursor: pointer;
+}
+
+#logout, #logoutAdmin{
+  background-color: white;
+  margin-left: 20px;
+}
+
+#logout:hover, #logoutAdmin:hover{
+  background-color: #d9534f;
 }

@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <h1 class="title text-center">Alcohol</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="thead-default" >
+        <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th>Degree</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let alcohol of alcohols">
+          <th scope="row">{{alcohol.id}}</th>
+          <td><input type="text" class="form-control" [(ngModel)]="alcohol.name"></td>
+          <td><input type="text" class="form-control" [(ngModel)]="alcohol.degree"></td>
+          <td>
+            <button md-mini-fab (click)="update(alcohol)" mdTooltip="Save" [mdTooltipPosition]="'below'" class="save btn btn-outline-success my-2 my-sm-0 hidden-xs-down" ><md-icon>save</md-icon></button>
+            <button md-mini-fab (click)="delete(alcohol)" mdTooltip="Delete" [mdTooltipPosition]="'below'" class="delete btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>delete</md-icon></button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">##</th>
+          <td><input type="text" class="form-control" [(ngModel)]="newAlcohol.name"></td>
+          <td><input type="text" class="form-control" [(ngModel)]="newAlcohol.degree"></td>
+          <td>
+            <button md-mini-fab (click)="add()" mdTooltip="Save" [mdTooltipPosition]="'below'" id="add" class="btn btn-outline-info my-2 my-sm-0 hidden-xs-down" ><md-icon>add</md-icon></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
