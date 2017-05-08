@@ -11,8 +11,8 @@ import {Router} from "@angular/router";
 })
 export class SigninComponent implements OnInit {
 
-  email : string = "nyckoo@live.fr";
-  password : string = "nicolas";
+  email : string = "";
+  password : string = "";
   rememberMe : boolean = false;
 
   constructor(private snack : MdSnackBar, private authService : AuthService, private hasher : Hasher, private router : Router) { }

@@ -12,17 +12,11 @@ export class RegistrationComponent implements OnInit {
 
   newUser : User = new User();
 
-  confirmationPassword : string = "nicolas";
+  confirmationPassword : string;
 
   constructor(private userService : UserService, private hasher : Hasher) { }
 
   ngOnInit() {
-    this.newUser.firstname = "Nicolas";
-    this.newUser.lastname = "Mercier";
-    this.newUser.email = "nyckoo@live.fr";
-    this.newUser.password = "nicolas";
-    this.newUser.birthdate = new Date("05-10-1995");
-    this.newUser.civility = "M";
   }
 
   onSubmit(){
