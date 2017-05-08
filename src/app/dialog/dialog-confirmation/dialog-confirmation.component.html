@@ -1,0 +1,10 @@
+<p>{{ title }}</p>
+<p>{{ message }}</p>
+<div class="row">
+  <div class="col-6">
+    <button type="button" md-button (click)="dialogRef.close()" style="width: 100%"><md-icon>arrow_back</md-icon> Back</button>
+  </div>
+  <div class="col-6">
+    <button type="button" color="accent" md-raised-button (click)="dialogRef.close(true)" style="width: 100%"><md-icon>check</md-icon> OK</button>
+  </div>
+</div>

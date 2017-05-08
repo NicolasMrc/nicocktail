@@ -18,3 +18,7 @@
 .new-bundle input{
   margin-bottom: 10px;
 }
+
+md-input-container{
+  width: 100%;
+}

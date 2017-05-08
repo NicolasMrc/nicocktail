@@ -1,0 +1,6 @@
+{
+  "/alcohol": {
+    "target": "http://localhost:8888/framework/public",
+    "secure": false
+  }
+}

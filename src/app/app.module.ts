@@ -17,9 +17,17 @@ import {UserService} from "../services/UserService";
 import {AlcoholService} from "../services/AlcoholService";
 import {SoftService} from "../services/SoftService";
 import {ExtraService} from "../services/ExtraService";
-import {Bundle} from "../entities/Bundle";
 import {BundleService} from "../services/BundleService";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {
+  MdButtonModule, MdCheckboxModule, MdDialogModule, MdIconModule, MdInputModule,
+  MdSnackBarModule
+} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DialogEditBundleComponent} from "./dialog/dialog-edit-bundle/dialog-edit-bundle.component";
+import {Alcohol} from "../entities/Alcohol";
+import {DialogService} from "../services/DialogService";
+import { DialogConfirmationComponent } from './dialog/dialog-confirmation/dialog-confirmation.component';
 
 
 @NgModule({
@@ -33,6 +41,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     WishlistComponent,
     RegistrationComponent,
     SigninComponent,
+    DialogEditBundleComponent,
+    DialogConfirmationComponent,
 
   ],
   imports: [
@@ -40,7 +50,14 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     HttpModule,
     JsonpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    MdButtonModule,
+    MdCheckboxModule,
+    MdInputModule,
+    MdDialogModule,
+    BrowserAnimationsModule,
+    MdIconModule,
+    MdSnackBarModule
   ],
   providers: [
     DrinkService,
@@ -49,7 +66,11 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     SoftService,
     ExtraService,
     BundleService,
-
+    DialogService
+  ],
+  entryComponents:[
+    DialogEditBundleComponent,
+    DialogConfirmationComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -16,3 +16,8 @@ input{
 .btn{
   margin-bottom: 200px;
 }
+
+
+md-input-container{
+  width: 100%;
+}

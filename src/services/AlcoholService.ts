@@ -4,7 +4,7 @@
 
 
 import {Injectable} from "@angular/core";
-import {Http, Headers, Response} from "@angular/http";
+import {Http, Headers, Response, RequestOptions, Jsonp} from "@angular/http";
 import {Alcohol} from "../entities/Alcohol";
 import {Observable} from "rxjs/Observable";
 
@@ -14,21 +14,19 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AlcoholService{
 
-  url = 'http://localhost:8888/framework/public/alcohol';
+  url = '/alcohol';
 
   private headers = new Headers(
     {
-    'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
-    //'Content-Type': 'application/json', "Access-Control-Allow-Origin":" *",
-    //"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization, If-Modified-Since, Cache-Control, Pragma"
+    'Content-Type' : 'multipart/form-data',
+    'cache-control' : 'no-cache',
     });
 
-  constructor (private http: Http) {}
+  constructor (private http: Http, jsonp :Jsonp) {}
 
   getAlcohols(): Observable<Alcohol[]> {
-
       return this.http
-        .get(`http://localhost:8888/framework/public/alcohols`)
+        .get(`/alcohols`)
         .map(response => {
           return response.json() as Alcohol[]
         })
@@ -49,16 +47,23 @@ export class AlcoholService{
       .catch(this.handleError);
   }
 
-  addAlcohol (alcohol: Alcohol): Promise<Alcohol> {
+  addAlcohol (alcohol: Alcohol): Observable<Alcohol> {
+
+    var data = new FormData();
+    data.append("name", alcohol.name);
+    data.append("degree", alcohol.degree.toString());
+
     return this.http
-      .post(this.url, JSON.stringify(alcohol), {headers: this.headers})
-      .toPromise()
-      .then(() => alcohol)
+      .post(this.url, data)
+      .map(res => res.json() as Alcohol)
       .catch(this.handleError);
+
   }
 
+
+
   delete(id: number): Promise<void> {
-    const url = `${this.url}${id}`;
+    const url = `${this.url}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)

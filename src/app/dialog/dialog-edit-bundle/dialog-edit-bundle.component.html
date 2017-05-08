@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col">
+    <md-input-container>
+      <input mdInput type="text" placeholder="Title" [(ngModel)]="alcohol.name" style="width: 300px;;">
+    </md-input-container>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <md-input-container style=" margin-bottom: 20px">
+      <input mdInput type="text" placeholder="degree" [(ngModel)]="alcohol.degree" style="width: 300px;"/>
+    </md-input-container>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <button type="button" style="width: 100%;" md-button (click)="dialogRef.close(null)"><md-icon>arrow_back</md-icon> Cancel</button>
+  </div>
+  <div class="col">
+    <button type="button" style="width: 100%; color:rgba(0,0,0,.3)" md-raised-button color="accent" (click)="dialogRef.close(alcohol)"><md-icon>save</md-icon> OK</button>
+  </div>
+</div>

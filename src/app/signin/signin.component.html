@@ -7,31 +7,32 @@
     </div>
   </div>
 
-
   <div class="row">
-    <div class="col-md-6 offset-md-3 col-xs-12">
-      <input type="text" class="form-control" [(ngModel)]="user.email" placeholder="Email">
+    <div class=" offset-md-3 col-md-6 col-xs-12">
+      <md-input-container style=" margin-bottom: 20px">
+        <input mdInput type="text" placeholder="Email" [(ngModel)]="user.email" style="width: 300px;"/>
+      </md-input-container>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 offset-md-3 col-xs-12">
-      <input type="password" class="form-control" [(ngModel)]="user.password"  placeholder="Password">
+    <div class="offset-md-3 col-md-6 col-xs-12">
+      <md-input-container style=" margin-bottom: 20px">
+        <input mdInput type="password" placeholder="Password" [(ngModel)]="user.password" style="width: 300px;"/>
+      </md-input-container>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6 offset-md-3 col-xs-12">
       <label class="custom-control custom-checkbox ">
-        <input type="checkbox" class="custom-control-input">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Remember me</span>
+        <md-checkbox>Remember me!</md-checkbox>
       </label>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-2 col-xs-12 offset-md-7">
-      <button type="submit" class="btn btn-block btn-outline-info form-control" (click)="signIn()"><i class="fa fa-user-circle-o"></i> Sign in</button>
+      <button md-raised-button type="submit" class="btn btn-block btn-outline-info form-control" (click)="signIn()"><md-icon>done</md-icon> Sign in</button>
     </div>
   </div>
 
