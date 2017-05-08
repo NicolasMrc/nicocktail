@@ -1,43 +1,7 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarNavAltMarkup" data-toggle="collapse" type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<app-header></app-header>
 
-  <a class="navbar-brand title" (click)="displayHome()"> nicocktail</a>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <p class="nav-item nav-link hidden-xs-down" (click)="displayHome()"><i class="fa fa-home"></i> Home </p>
-      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" (click)="displayHome()"><i class="fa fa-home"></i> Home </p>
-      <p class="nav-item nav-link hidden-xs-down" (click)="displayShop()"><i class="fa fa-shopping-basket"></i> Shop</p>
-      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" (click)="displayShop()"><i class="fa fa-shopping-basket"></i> Shop</p>
-      <p class="nav-item nav-link hidden-xs-down" (click)="displayBuilder()"><i class="fa fa-magic"></i> Builder</p>
-      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse"(click)="displayBuilder()"><i class="fa fa-magic"></i> Builder</p>
-      <p class="nav-item nav-link hidden-xs-down" (click)="displayBox()"><i class="fa fa-gift"></i> DrinkBox</p>
-      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse"(click)="displayBox()"><i class="fa fa-gift"></i> DrinkBox</p>
-      <p class="nav-item nav-link hidden-xs-down" (click)="displayWishlist()"><i class="fa fa-heart"></i> Wishlist</p>
-      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse"(click)="displayWishlist()"><i class="fa fa-heart"></i> Wishlist</p>
-      <p class="nav-item nav-link hidden-xs-down" (click)="displayCart()"><i class="fa fa-shopping-cart"></i> Cart</p>
-      <p class="nav-item nav-link hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse"(click)="displayCart()"><i class="fa fa-shopping-cart"></i> Cart</p>
-  </div>
+<router-outlet></router-outlet>
 
-    <form class="form-inline my-2 my-lg-0">
-      <button md-raised-button class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" (click)="displayRegistrationForm()"><md-icon>assignment</md-icon> Sign up</button>
-      <button md-raised-button class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" (click)="displayRegistrationForm()"><md-icon>assignment</md-icon> Sign up</button>
-      <button md-raised-button class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" (click)="displaySignInForm()"><md-icon>account_circle</md-icon> Sign in</button>
-      <button md-raised-button class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-xs-down" (click)="displaySignInForm()"><md-icon>account_circle</md-icon> Sign in</button>
-    </form>
-  </div>
-
-</nav>
-
-<app-home *ngIf="showHome"></app-home>
-<app-shop *ngIf="showShop"></app-shop>
-<app-builder *ngIf="showBuilder"></app-builder>
-<app-cart *ngIf="showCart"></app-cart>
-<app-box *ngIf="showBox"></app-box>
-<app-wishlist *ngIf="showWishlist"></app-wishlist>
-<app-signin *ngIf="showSignInForm"></app-signin>
-<app-registration *ngIf="showRegistrationForm"></app-registration>
 
 
 

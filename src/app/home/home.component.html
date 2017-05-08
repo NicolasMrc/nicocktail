@@ -1,16 +1,16 @@
 
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" role="listbox">
-    <div class="carousel-item active">
+    <div class="carousel-item active" routerLink="/shop">
       <img class="d-block img-fluid" src="assets/images/banner-01.png" alt="First slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" routerLink="/shop">
       <img class="d-block img-fluid" src="assets/images/banner-02.png" alt="Second slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" routerLink="/shop">
       <img class="d-block img-fluid" src="assets/images/banner-03.png" alt="Second slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" routerLink="/shop">
       <img class="d-block img-fluid" src="assets/images/banner-04.png" alt="Second slide">
     </div>
   </div>
@@ -22,7 +22,7 @@
     <div class="col-lg-4 col-md-5 offset-lg-2 offset-md-1 ">
       <p class="text-right">Our Specials Mix Bundles allow you to buy all the ingredients needed for a particular cocktail.
         Including Alcohol, softs & extras like lime or some fancy little cocktail umbrella !</p>
-      <div class="btn btn-outline-primary float-right"><i class="fa fa-shopping-cart"></i> Go shopping</div>
+      <button md-raised-button class="btn btn-outline-info float-right" routerLink="/shop"><md-icon>shopping_cart</md-icon> Go shopping</button>
     </div>
     <div class="col-6 col-img">
       <img  class="mixes-img img-fluid float-right" src="assets/images/categories-04.png" alt="">
@@ -36,7 +36,7 @@
     <div class="col-12">
       <p class="text-center">Our Specials Mix Bundles allow you to buy all the ingredients needed for a particular cocktail.
         Including Alcohol, softs & extras like lime or some fancy little cocktail umbrella !</p>
-      <div class="btn btn-outline-primary mx-auto d-block"><i class="fa fa-shopping-cart"></i> Go shopping</div>
+      <button md-raised-button class="btn btn-outline-info mx-auto d-block" routerLink="/shop" ><md-icon>shopping_cart</md-icon> Go shopping</button>
     </div>
   </div>
 
@@ -48,7 +48,7 @@
     </div>
     <div class="col-lg-4 col-md-5">
       <p>Subscribe to our Mystery Drinkbox and receive each month a new bundle to make awesome cocktail !</p>
-      <div class="btn btn-outline-primary mx-auto"><i class="fa fa-pencil-square-o"></i> Subscribe</div>
+      <button md-raised-button class="btn btn-outline-info mx-auto" routerLink="/drink-box" ><md-icon>assignment_turned_in</md-icon> Subscribe</button>
     </div>
   </div>
 
@@ -58,7 +58,7 @@
     </div>
     <div class="col-12">
       <p class="text-center">Subscribe to our Mystery Drinkbox and receive each month a new bundle to make awesome cocktail !</p>
-      <div class="btn btn-outline-primary mx-auto d-block"><i class="fa fa-pencil-square-o"></i> Subscribe</div>
+      <button md-raised-button class="btn btn-outline-info mx-auto d-block" routerLink="/drink-box" ><md-icon>assignment_turned_in</md-icon> Subscribe</button>
     </div>
   </div>
 
@@ -67,7 +67,7 @@
   <div class="row home-section hidden-sm-down">
     <div class="col-lg-4 col-md-5 offset-lg-2 offset-md-1">
       <p class="text-right">Our builder allow you to order your own cocktail as a Bundle ready to mix ! Just choose the size, </p>
-      <div class="btn btn-outline-primary float-right"><i class="fa fa-cogs"></i> Create Cocktails</div>
+      <button md-raised-button class="btn btn-outline-info float-right" routerLink="/builder" ><md-icon>build</md-icon> Create Cocktails</button>
     </div>
     <div class="col-6 col-img">
       <img  class="mixes-img img-fluid float-right" src="assets/images/categories-01.png" alt="">
@@ -80,7 +80,7 @@
     </div>
     <div class="col-12">
       <p class="text-center">Our builder allow you to order your own cocktail as a Bundle ready to mix ! Just choose the size, </p>
-      <div class="btn btn-outline-primary mx-auto d-block"><i class="fa fa-cogs"></i> Create Cocktails</div>
+      <button md-raised-button class="btn btn-outline-info mx-auto d-block" routerLink="/builder" ><md-icon>build</md-icon> Create Cocktails</button>
     </div>
   </div>
 

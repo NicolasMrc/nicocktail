@@ -25,9 +25,22 @@ import {
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DialogEditBundleComponent} from "./dialog/dialog-edit-bundle/dialog-edit-bundle.component";
-import {Alcohol} from "../entities/Alcohol";
 import {DialogService} from "../services/DialogService";
 import { DialogConfirmationComponent } from './dialog/dialog-confirmation/dialog-confirmation.component';
+import { HeaderComponent } from './header/header.component';
+import {RouterModule, Routes} from "@angular/router";
+
+
+const appRoutes: Routes = [
+  { path: 'shop', component: ShopComponent },
+  { path: 'drink-box', component: BoxComponent },
+  { path: 'builder', component: BuilderComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'wishlist', component: WishlistComponent },
+  { path: 'sign-in', component: SigninComponent },
+  { path: 'register', component: RegistrationComponent },
+];
 
 
 @NgModule({
@@ -43,6 +56,7 @@ import { DialogConfirmationComponent } from './dialog/dialog-confirmation/dialog
     SigninComponent,
     DialogEditBundleComponent,
     DialogConfirmationComponent,
+    HeaderComponent,
 
   ],
   imports: [
@@ -57,7 +71,9 @@ import { DialogConfirmationComponent } from './dialog/dialog-confirmation/dialog
     MdDialogModule,
     BrowserAnimationsModule,
     MdIconModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    RouterModule.forRoot(appRoutes),
+
   ],
   providers: [
     DrinkService,
@@ -66,11 +82,12 @@ import { DialogConfirmationComponent } from './dialog/dialog-confirmation/dialog
     SoftService,
     ExtraService,
     BundleService,
-    DialogService
+    DialogService,
   ],
   entryComponents:[
     DialogEditBundleComponent,
-    DialogConfirmationComponent
+    DialogConfirmationComponent,
+
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,24 @@
+
+.nav-item{
+  margin-bottom: 0;
+  cursor: pointer;
+  font-family: RondaLight;
+}
+
+.btn{
+  font-family: RondaLight;
+}
+
+.title{
+  font-weight: 100;
+  letter-spacing: -1px;
+  font-family: RondaMedium;
+}
+
+.sign-in{
+  margin-left: 10px;
+}
+
+.navbar-brand{
+  cursor: pointer;
+}
