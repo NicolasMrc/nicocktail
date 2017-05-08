@@ -7,7 +7,6 @@
 
   <div class="row">
 
-    <!--
     <div class="card d-box mx-auto" style="width: 20rem;">
       <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
       <div class="card-block">
@@ -35,58 +34,6 @@
         <p class="card-text">Bundle description</p>
         <a href="#" class="btn btn-outline-primary add-cart"><i class="fa fa-shopping-basket"></i> Cart</a>
         <a href="#" class="btn btn-outline-danger add-wish"><i class="fa fa-heart-o"></i> Whishlist</a>
-      </div>
-    </div>
-
-
-    <div *ngFor="let alcohol of alcohols" class="col-sm-12 col-md-6 col-lg-4">
-      <div class="card d-box mx-auto" style="width: 20rem;">
-        <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
-        <div class="card-block">
-          <h4 class="card-title">{{alcohol.name}}</h4>
-          <p class="card-text">{{alcohol.degree}}</p>
-          <a href="#" class="btn btn-outline-primary add-cart"><i class="fa fa-shopping-basket"></i> Cart</a>
-          <a href="#" class="btn btn-outline-danger add-wish"><i class="fa fa-heart-o"></i> Whishlist</a>
-        </div>
-      </div>
-    </div>
-    -->
-
-    <div *ngFor="let alcohol of alcohols" class="col-sm-12 col-md-6 col-lg-4">
-      <div class="card d-box mx-auto" style="width: 20rem;">
-        <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
-        <div class="card-block">
-          <h4 class="card-title">{{alcohol.name}}</h4>
-          <p class="card-text">{{alcohol.degree}} %</p>
-
-          <div class="row">
-            <div class="col">
-              <button type="button" mdTooltip="Edit" [mdTooltipPosition]="'below'" class="btn btn-outline-warning float-right" md-raised-button  (click)="onEdit(alcohol)"><md-icon>edit</md-icon></button>
-            </div>
-            <div class="col">
-              <button type="button" md-raised-button class="btn btn-outline-danger" mdTooltip="Delete" [mdTooltipPosition]="'below'" (click)="onDelete(alcohol)"><md-icon>delete</md-icon></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="card d-box mx-auto new-bundle" style="width: 20rem;">
-        <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
-        <div class="card-block">
-            <div class="row">
-              <div class="col">
-                <md-input-container >
-                  <input mdInput type="text" placeholder="Name" [(ngModel)]="newAlcohol.name" />
-                </md-input-container>
-              </div>
-            </div>
-            <md-input-container>
-              <input mdInput type="text" placeholder="Degree" [(ngModel)]="newAlcohol.degree" />
-            </md-input-container>
-            <button type="button" style="width: 100%;" md-raised-button color="primary" (click)="saveNewDrink()"><md-icon>add</md-icon> Add to catalog</button>
-        </div>
       </div>
     </div>
 
