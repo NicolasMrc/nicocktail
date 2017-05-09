@@ -12,7 +12,6 @@ import { BoxComponent } from './box/box.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SigninComponent } from './signin/signin.component';
-import {DrinkService} from "../services/DrinkService";
 import {UserService} from "../services/UserService";
 import {AlcoholService} from "../services/AlcoholService";
 import {SoftService} from "../services/SoftService";
@@ -115,7 +114,6 @@ const appRoutes: Routes = [
 
   ],
   providers: [
-    DrinkService,
     UserService,
     AlcoholService,
     SoftService,

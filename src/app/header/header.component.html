@@ -48,18 +48,11 @@
   <a class="navbar-brand title" routerLink="/admin"> nicocktail</a>
   <div class="collapse navbar-collapse" id="navBarAdmin">
     <div class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <a class="nav-item nav-link text-center" routerLink="/admin/alcohol">Alcohol</a>
-      <a class="nav-item nav-link text-center" routerLink="/admin/soft">Soft</a>
-      <a class="nav-item nav-link text-center" routerLink="/admin/extra">Extra</a>
-      <a class="nav-item nav-link text-center" routerLink="/admin/bundle">Bundle</a>
-      <a class="nav-item nav-link text-center" routerLink="/admin/user">Users</a>
-    </div>
-
-    <div class="form-inline my-2 my-lg-0" *ngIf="!authService.isLoggedIn">
-      <button md-raised-button routerLink="/register" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>assignment</md-icon> Sign up</button>
-      <button md-raised-button routerLink="/register" class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" ><md-icon>assignment</md-icon> Sign up</button>
-      <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>account_circle</md-icon> Sign in</button>
-      <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-xs-down" ><md-icon>account_circle</md-icon> Sign in</button>
+      <button md-raised-button class="btn btn-outline-info text-center" routerLink="/admin/alcohol"><md-icon>local_bar</md-icon> Alcohol</button>
+      <button md-raised-button class="btn btn-outline-info text-center" routerLink="/admin/soft"><md-icon>local_drink</md-icon> Soft</button>
+      <button md-raised-button class="btn btn-outline-info text-center" routerLink="/admin/extra"><md-icon>local_florist</md-icon> Extra</button>
+      <button md-raised-button class="btn btn-outline-info text-center" routerLink="/admin/bundle"><md-icon>view_carousel</md-icon> Bundle</button>
+      <button md-raised-button class="btn btn-outline-info text-center" routerLink="/admin/user"><md-icon>people</md-icon> Users</button>
     </div>
 
     <div class="form-inline my-2 my-lg-0" *ngIf="authService.isLoggedIn">

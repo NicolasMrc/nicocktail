@@ -4,56 +4,68 @@
 
 
 import {Injectable} from "@angular/core";
-import {Http, Headers} from "@angular/http";
-import 'rxjs/add/operator/toPromise';
+import {Http, Headers, Jsonp} from "@angular/http";
 import {Soft} from "../entities/Soft";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class SoftService{
 
 
-  url : string = 'http://193.70.115.127:8888/api.php/soft/';
+  url = '/soft';
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers(
+    {
+      'Content-Type' : 'multipart/form-data',
+      'cache-control' : 'no-cache',
+    });
 
   constructor (private http: Http) {}
 
-  getSofts (): Promise<Soft[]> {
-    return this.http.get('http://193.70.115.127:8888/api.php/soft?transform=1')
-      .toPromise()
-      .then(response => response.json().soft as Soft[])
-      .catch(this.handleError);
-  }
-
-  getSoft (id : string): Promise<Soft> {
-    return this.http.get(this.url + id)
-      .toPromise()
-      .then(res => res.json().data as Soft)
-      .catch(this.handleError);
-  }
-
-  updateSoft (soft: Soft): Promise<Soft> {
+  getSofts(): Observable<Soft[]> {
     return this.http
-      .put(this.url, JSON.stringify(soft), {headers: this.headers})
-      .toPromise()
-      .then(() => soft)
+      .get('/softs')
+      .map(response => {
+        return response.json() as Soft[]
+      })
       .catch(this.handleError);
   }
 
-  addSoft (soft: Soft): Promise<Soft> {
-    console.log(JSON.stringify(soft));
+  getSoft (id : string): Observable<Soft> {
+    return this.http.get(this.url + '/' + id)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
+  update (soft: Soft): Observable<Soft> {
+
+    let data = new FormData();
+    data.append("name", soft.name);
+    data.append("type", soft.type);
+
     return this.http
-      .post(this.url, JSON.stringify(soft), {headers: this.headers})
-      .toPromise()
-      .then(() => soft)
+      .post(this.url + '/' + soft.id, data)
+      .map(res => res.json() as Soft)
       .catch(this.handleError);
   }
 
-  delete(id: number): Promise<void> {
-    const url = `${this.url}${id}`;
+  addSoft (soft: Soft): Observable<Soft> {
+
+    let data = new FormData();
+    data.append("name", soft.name);
+    data.append("type", soft.type);
+
+    return this.http
+      .post(this.url, data)
+      .map(res => res.json() as Soft)
+      .catch(this.handleError);
+
+  }
+
+  deleteSoft(id: number): Observable<void> {
+    const url = `${this.url}/${id}`;
     return this.http.delete(url, {headers: this.headers})
-      .toPromise()
-      .then(() => null)
+      .map(() => null)
       .catch(this.handleError);
   }
 

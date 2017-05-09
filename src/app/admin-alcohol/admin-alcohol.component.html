@@ -24,7 +24,7 @@
           <td><input type="text" class="form-control" [(ngModel)]="alcohol.degree"></td>
           <td>
             <button md-mini-fab (click)="update(alcohol)" mdTooltip="Save" [mdTooltipPosition]="'below'" class="save btn btn-outline-success my-2 my-sm-0 hidden-xs-down" ><md-icon>save</md-icon></button>
-            <button md-mini-fab (click)="delete(alcohol)" mdTooltip="Delete" [mdTooltipPosition]="'below'" class="delete btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>delete</md-icon></button>
+            <button md-mini-fab (click)="deleteAlcohol(alcohol)" mdTooltip="Delete" [mdTooltipPosition]="'below'" class="delete btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>delete</md-icon></button>
           </td>
         </tr>
         <tr>

@@ -1,0 +1,27 @@
+.table{
+  margin-top: 70px;
+  margin-bottom: 300px;
+}
+
+.title{
+  margin-top: 70px;
+}
+
+.delete, .save, #add{
+  background-color: white;
+  margin-left: 20px;
+}
+
+.delete:hover{
+  background-color: #d9534f;
+}
+
+.save:hover{
+  background-color: #5cb85c;
+}
+
+#add:hover{
+  background-color: #5bc0de;
+}
+
+

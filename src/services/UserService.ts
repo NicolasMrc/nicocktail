@@ -57,12 +57,10 @@ export class UserService{
 
     user_form.append("firstname", user.firstname);
     user_form.append("lastname", user.lastname);
-    user_form.append("birtdate", user.birthdate);
-    user_form.append("civility", user.civility);
     user_form.append("password", user.password);
     user_form.append("email", user.email);
     user_form.append("role", user.role);
-    user_form.append("is_subscriber", user.isSubscriber);
+    user_form.append("is_subscriber", 0);
 
     return this.http
       .post(this.url, user_form)

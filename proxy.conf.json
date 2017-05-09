@@ -4,6 +4,16 @@
     "secure": false
   },
 
+  "/soft": {
+    "target": "http://localhost:8888/framework/public",
+    "secure": false
+  },
+
+  "/extra": {
+    "target": "http://localhost:8888/framework/public",
+    "secure": false
+  },
+
   "/user": {
     "target": "http://localhost:8888/framework/public",
     "secure": false
@@ -14,3 +24,4 @@
     "secure": false
   }
 }
+

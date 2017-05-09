@@ -1,11 +1,3 @@
-@font-face {
-  font-family: 'RondaMedium'; /*a name to be used later*/
-  src: url('../assets/font/Ronda-Medium.ttf'); /*URL to font*/
-}
-@font-face {
-  font-family: 'RondaLight'; /*a name to be used later*/
-  src: url('../assets/font/Ronda-Light.ttf'); /*URL to font*/
-}
 
 h1{
   color: #eeeeee;

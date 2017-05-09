@@ -40,3 +40,7 @@
 #logout:hover, #logoutAdmin:hover{
   background-color: #d9534f;
 }
+
+.navbar-admin .navbar-nav button{
+  margin-left: 10px;
+}

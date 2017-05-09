@@ -36,7 +36,7 @@ export class AuthService {
         userExist = true;
       }
     });
-    return Observable.of(userExist).delay(100).do(val => this.isLoggedIn = userExist);
+    return Observable.of(userExist).delay(500).do(val => this.isLoggedIn = userExist);
   }
 
   logout(){

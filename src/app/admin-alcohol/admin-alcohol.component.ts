@@ -29,7 +29,10 @@ export class AdminAlcoholComponent implements OnInit {
   }
 
   update(alcohol : Alcohol){
-
+    this.alcoholService.updateAlcohol(alcohol).subscribe(updatedAlcohol => {
+      alcohol = updatedAlcohol;
+      this.snack.open(alcohol.name + " updated !", null, {duration: 2000});
+    });
   }
 
   add(){
@@ -43,11 +46,11 @@ export class AdminAlcoholComponent implements OnInit {
     }
   }
 
-  delete(alcohol : Alcohol){
+  deleteAlcohol(alcohol : Alcohol){
     this.dialogService.confirm("Delete ?", "Are you sure to delete this alcohol ?", this.viewContainerRef).subscribe(
       res => {
         if(res){
-          this.alcoholService.delete(alcohol.id).then(res => {
+          this.alcoholService.deleteAlcohol(alcohol.id).subscribe(res => {
             var index = this.alcohols.indexOf(alcohol);
             this.snack.open(alcohol.name + " deleted !", null, {duration: 2000});
             this.alcohols.splice(index, 1);

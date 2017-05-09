@@ -11,8 +11,6 @@ export class User{
   constructor(
     public firstname? : string,
     public lastname? : string,
-    public birthdate? : Date,
-    public civility? : string,
     public zipCode? : string,
     public address? : string,
     public city? : string,

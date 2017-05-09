@@ -22,11 +22,11 @@ export class AlcoholService{
     'cache-control' : 'no-cache',
     });
 
-  constructor (private http: Http, jsonp :Jsonp) {}
+  constructor (private http: Http) {}
 
   getAlcohols(): Observable<Alcohol[]> {
       return this.http
-        .get(`/alcohols`)
+        .get('/alcohols')
         .map(response => {
           return response.json() as Alcohol[]
         })
@@ -39,17 +39,21 @@ export class AlcoholService{
       .catch(this.handleError);
   }
 
-  updateAlcohol (alcohol: Alcohol): Promise<Alcohol> {
+  updateAlcohol (alcohol: Alcohol): Observable<Alcohol> {
+
+    let data = new FormData();
+    data.append("name", alcohol.name);
+    data.append("degree", alcohol.degree.toString());
+
     return this.http
-      .put(this.url, JSON.stringify(alcohol), {headers: this.headers})
-      .toPromise()
-      .then(() => alcohol)
+      .post(this.url + '/' + alcohol.id, data)
+      .map(res => res.json() as Alcohol)
       .catch(this.handleError);
   }
 
   addAlcohol (alcohol: Alcohol): Observable<Alcohol> {
 
-    var data = new FormData();
+    let data = new FormData();
     data.append("name", alcohol.name);
     data.append("degree", alcohol.degree.toString());
 
@@ -60,13 +64,10 @@ export class AlcoholService{
 
   }
 
-
-
-  delete(id: number): Promise<void> {
+  deleteAlcohol(id: number): Observable<void> {
     const url = `${this.url}/${id}`;
     return this.http.delete(url, {headers: this.headers})
-      .toPromise()
-      .then(() => null)
+      .map(() => null)
       .catch(this.handleError);
   }
 
