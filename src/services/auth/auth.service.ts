@@ -60,4 +60,8 @@ export class AuthService {
     }
   }
 
+  isAdmin(){
+    return this.currentUser.role == 'admin';
+  }
+
 }

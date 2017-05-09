@@ -13,7 +13,7 @@ import {Observable} from "rxjs/Observable";
 export class ExtraService{
 
 
-  url = '/extra';
+  url = '/api/extra';
 
   private headers = new Headers(
     {
@@ -25,7 +25,7 @@ export class ExtraService{
 
   getExtras(): Observable<Extra[]> {
     return this.http
-      .get('/extras')
+      .get('/api/extras')
       .map(response => {
         return response.json() as Extra[]
       })

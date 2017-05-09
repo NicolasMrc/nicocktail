@@ -12,7 +12,7 @@ import {Observable} from "rxjs/Observable";
 export class SoftService{
 
 
-  url = '/soft';
+  url = '/api/soft';
 
   private headers = new Headers(
     {
@@ -24,7 +24,7 @@ export class SoftService{
 
   getSofts(): Observable<Soft[]> {
     return this.http
-      .get('/softs')
+      .get('/api/softs')
       .map(response => {
         return response.json() as Soft[]
       })

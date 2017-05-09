@@ -25,7 +25,7 @@ export class SigninComponent implements OnInit {
       this.snack.open('You must fill up password and email in order to log in !', 'Login Failed');
     } else {
       //this.loginIn = true;
-      this.authService.login(this.email, this.password, this.rememberMe).subscribe(() => {
+      this.authService.login(this.email, this.password, this.rememberMe).subscribe(res => {
         if (this.authService.isLoggedIn) {
           let redirect = '';
           if(this.authService.currentUser.role == 'admin'){
@@ -35,12 +35,10 @@ export class SigninComponent implements OnInit {
           }
           this.snack.open('Welcome ' + this.authService.currentUser.firstname, null , {duration: 2000});
           this.router.navigate([redirect]);
-        } else {
-          //this.loginIn = false;
-          this.snack.open('Failed to connect', null, {duration: 2000});
-          this.password = "";
+
         }
-      });
+      }
+      );
     }
   }
 

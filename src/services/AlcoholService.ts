@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AlcoholService{
 
-  url = '/alcohol';
+  url = '/api/alcohol';
 
   private headers = new Headers(
     {
@@ -26,7 +26,7 @@ export class AlcoholService{
 
   getAlcohols(): Observable<Alcohol[]> {
       return this.http
-        .get('/alcohols')
+        .get('/api/alcohols')
         .map(response => {
           return response.json() as Alcohol[]
         })

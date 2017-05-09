@@ -1,25 +1,25 @@
 {
-  "/alcohol": {
+  "/api/alcohol": {
     "target": "http://localhost:8888/framework/public",
     "secure": false
   },
 
-  "/soft": {
+  "/api/soft": {
     "target": "http://localhost:8888/framework/public",
     "secure": false
   },
 
-  "/extra": {
+  "/api/extra": {
     "target": "http://localhost:8888/framework/public",
     "secure": false
   },
 
-  "/user": {
+  "/api/user": {
     "target": "http://localhost:8888/framework/public",
     "secure": false
   },
 
-  "/login": {
+  "/api/login": {
     "target": "http://localhost:8888/framework/public",
     "secure": false
   }

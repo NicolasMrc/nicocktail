@@ -38,6 +38,7 @@ import { AdminSoftComponent } from './admin-soft/admin-soft.component';
 import { AdminExtraComponent } from './admin-extra/admin-extra.component';
 import { AdminBundleComponent } from './admin-bundle/admin-bundle.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 
 const appRoutes: Routes = [
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
           { path: 'extra', component: AdminExtraComponent },
           { path: 'bundle', component: AdminBundleComponent },
           { path: 'user', component: AdminUserComponent },
+          { path: '', component: AdminPanelComponent },
         ]
       }
     ]
@@ -92,6 +94,7 @@ const appRoutes: Routes = [
     AdminExtraComponent,
     AdminBundleComponent,
     AdminUserComponent,
+    AdminPanelComponent,
 
   ],
   imports: [

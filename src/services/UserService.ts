@@ -8,16 +8,18 @@ import {User} from "../entities/User";
 import {Http, Headers} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs/Observable";
+import {Hasher} from "./auth/hasher.service";
+import {MdSnackBar} from "@angular/material";
 
 @Injectable()
 export class UserService{
 
-  url : string = '/user';
+  url : string = '/api/user';
 
-  constructor (private http: Http) {}
+  constructor (private http: Http, private hasher : Hasher, private snack : MdSnackBar) {}
 
   getUsers (): Observable<User[]> {
-    return this.http.get("/users")
+    return this.http.get("/api/users")
       .map(response => response.json().user as User[])
       .catch(this.handleError);
   }
@@ -34,9 +36,15 @@ export class UserService{
     data.append("password", password);
     data.append("email", email);
 
-    return this.http.post('/login', data)
-      .map(res => res.json() as User)
-      .catch(this.handleError);
+    return this.http.post('/api/login', data)
+      .map(
+        res => {
+          if(res.status == 204 || res.status < 200 || res.status >= 300) {
+            this.snack.open("Login failed !", null,{duration : 2000});
+          } else {
+            return res.json() as User
+          }
+      })
   }
 
   updateUser (user: User): Observable<User> {
@@ -53,6 +61,8 @@ export class UserService{
   }
 
   addUser (user: User): Observable<User> {
+    user.password = this.hasher.hash(user.password);
+
     let user_form = new FormData();
 
     user_form.append("firstname", user.firstname);
@@ -64,7 +74,13 @@ export class UserService{
 
     return this.http
       .post(this.url, user_form)
-      .map(res => res.json() as User)
+      .map(res => {
+        if(res.status == 204) {
+          this.snack.open('Email already registered', null, {duration : 2000})
+        } else{
+          return res.json() as User
+        }
+      })
       .catch(this.handleError);
   }
 
@@ -75,8 +91,7 @@ export class UserService{
       .catch(this.handleError);
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  private handleError (error: Response) {
+    return Observable.throw(error.json());
   }
 }

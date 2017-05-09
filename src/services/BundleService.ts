@@ -12,14 +12,14 @@ import {Bundle} from "../entities/Bundle";
 export class BundleService{
 
 
-  url : string = 'http://193.70.115.127:8888/api.php/bundle/';
+  url : string = 'bundle/';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor (private http: Http) {}
 
   getBundles (): Promise<Bundle[]> {
-    return this.http.get('http://193.70.115.127:8888/api.php/bundle?transform=1')
+    return this.http.get('bundles')
       .toPromise()
       .then(response => response.json().bundle as Bundle[])
       .catch(this.handleError);
@@ -41,7 +41,6 @@ export class BundleService{
   }
 
   addBundle (bundle: Bundle): Promise<Bundle> {
-    console.log(JSON.stringify(bundle));
     return this.http
       .post(this.url, JSON.stringify(bundle), {headers: this.headers})
       .toPromise()
