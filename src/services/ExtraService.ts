@@ -11,61 +11,42 @@ import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ExtraService{
-
-
   url = '/api/extra';
-
-  private headers = new Headers(
-    {
-      'Content-Type' : 'multipart/form-data',
-      'cache-control' : 'no-cache',
-    });
 
   constructor (private http: Http) {}
 
-  getExtras(): Observable<Extra[]> {
+  findAll(): Observable<Extra[]> {
     return this.http
-      .get('/api/extras')
+      .get(this.url)
       .map(response => {
         return response.json() as Extra[]
       })
       .catch(this.handleError);
   }
 
-  getExtra (id : string): Observable<Extra> {
+  findOne (id : string): Observable<Extra> {
     return this.http.get(this.url + '/' + id)
-      .map(res => res.json())
+      .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
   update (extra: Extra): Observable<Extra> {
-
-    let data = new FormData();
-    data.append("name", extra.name);
-    data.append("price", extra.price);
-
     return this.http
-      .post(this.url + '/' + extra.id, data)
+      .put(this.url, extra)
       .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
   addExtra (extra: Extra): Observable<Extra> {
-
-    let data = new FormData();
-    data.append("name", extra.name);
-    data.append("price", extra.price);
-
     return this.http
-      .post(this.url, data)
+      .post(this.url, extra)
       .map(res => res.json() as Extra)
       .catch(this.handleError);
-
   }
 
   deleteExtra(id: number): Observable<void> {
-    const url = `${this.url}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
+    return this.http
+      .delete(this.url + '/' + id)
       .map(() => null)
       .catch(this.handleError);
   }

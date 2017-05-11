@@ -24,12 +24,12 @@ export class AdminAlcoholComponent implements OnInit {
 
   getDrinks(): void {
     this.alcoholService
-      .getAlcohols()
+      .findAll()
       .subscribe(alcohols => this.alcohols = alcohols);
   }
 
   update(alcohol : Alcohol){
-    this.alcoholService.updateAlcohol(alcohol).subscribe(updatedAlcohol => {
+    this.alcoholService.update(alcohol).subscribe(updatedAlcohol => {
       alcohol = updatedAlcohol;
       this.snack.open(alcohol.name + " updated !", null, {duration: 2000});
     });

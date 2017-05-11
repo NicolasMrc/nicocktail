@@ -19,6 +19,7 @@ export class User{
     public password? : string,
     public cart? : Bundle[],
     public wishlist? : Bundle[],
+    public api_token? : string,
     public role : string = "user",
     public isSubscriber : boolean = false
   ){}

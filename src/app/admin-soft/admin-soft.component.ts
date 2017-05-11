@@ -24,7 +24,7 @@ export class AdminSoftComponent implements OnInit {
 
   getSofts(): void {
     this.softService
-      .getSofts()
+      .findAll()
       .subscribe(softs => this.softs = softs);
   }
 

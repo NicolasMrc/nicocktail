@@ -23,7 +23,7 @@ export class AdminExtraComponent implements OnInit {
 
   getExtras(): void {
     this.extraService
-      .getExtras()
+      .findAll()
       .subscribe(extras => this.extras = extras);
   }
 

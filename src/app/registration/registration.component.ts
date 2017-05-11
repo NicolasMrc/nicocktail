@@ -38,7 +38,6 @@ export class RegistrationComponent implements OnInit {
             this.router.navigate(['/home'])
           }
           this.snack.open("Welcome " + user.firstname + '!', null, {duration : 2000});
-          this.router.navigate(['/sign-in'])
         }
       })
     }

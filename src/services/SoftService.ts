@@ -4,9 +4,10 @@
 
 
 import {Injectable} from "@angular/core";
-import {Http, Headers, Jsonp} from "@angular/http";
+import {Http, Headers, Jsonp, RequestOptions} from "@angular/http";
 import {Soft} from "../entities/Soft";
 import {Observable} from "rxjs/Observable";
+import {AuthService} from "./auth/auth.service";
 
 @Injectable()
 export class SoftService{
@@ -14,57 +15,52 @@ export class SoftService{
 
   url = '/api/soft';
 
-  private headers = new Headers(
-    {
-      'Content-Type' : 'multipart/form-data',
-      'cache-control' : 'no-cache',
-    });
+  constructor (private http: Http, private authService : AuthService) {}
 
-  constructor (private http: Http) {}
-
-  getSofts(): Observable<Soft[]> {
+  findAll(): Observable<Soft[]> {
     return this.http
-      .get('/api/softs')
+      .get(this.url)
       .map(response => {
         return response.json() as Soft[]
       })
       .catch(this.handleError);
   }
 
-  getSoft (id : string): Observable<Soft> {
+  findOne (id : string): Observable<Soft> {
     return this.http.get(this.url + '/' + id)
-      .map(res => res.json())
+      .map(res => res.json() as Soft)
       .catch(this.handleError);
   }
 
   update (soft: Soft): Observable<Soft> {
-
-    let data = new FormData();
-    data.append("name", soft.name);
-    data.append("type", soft.type);
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
 
     return this.http
-      .post(this.url + '/' + soft.id, data)
+      .put(this.url, soft, options)
       .map(res => res.json() as Soft)
       .catch(this.handleError);
   }
 
   addSoft (soft: Soft): Observable<Soft> {
-
-    let data = new FormData();
-    data.append("name", soft.name);
-    data.append("type", soft.type);
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
 
     return this.http
-      .post(this.url, data)
+      .post(this.url, soft, options)
       .map(res => res.json() as Soft)
       .catch(this.handleError);
-
   }
 
   deleteSoft(id: number): Observable<void> {
-    const url = `${this.url}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
+    return this.http
+      .delete(this.url + '/' + id, options)
       .map(() => null)
       .catch(this.handleError);
   }

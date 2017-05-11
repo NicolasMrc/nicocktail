@@ -16,57 +16,40 @@ export class AlcoholService{
 
   url = '/api/alcohol';
 
-  private headers = new Headers(
-    {
-    'Content-Type' : 'multipart/form-data',
-    'cache-control' : 'no-cache',
-    });
-
   constructor (private http: Http) {}
 
-  getAlcohols(): Observable<Alcohol[]> {
-      return this.http
-        .get('/api/alcohols')
-        .map(response => {
-          return response.json() as Alcohol[]
-        })
-        .catch(this.handleError);
-  }
-
-  getAlcohol (id : string): Observable<Alcohol> {
-    return this.http.get(this.url + '/' + id)
-      .map(res => res.json())
+  findAll(): Observable<Alcohol[]> {
+    return this.http
+      .get(this.url)
+      .map(response => {
+        return response.json() as Alcohol[]
+      })
       .catch(this.handleError);
   }
 
-  updateAlcohol (alcohol: Alcohol): Observable<Alcohol> {
+  findOne (id : string): Observable<Alcohol> {
+    return this.http.get(this.url + '/' + id)
+      .map(res => res.json() as Alcohol)
+      .catch(this.handleError);
+  }
 
-    let data = new FormData();
-    data.append("name", alcohol.name);
-    data.append("degree", alcohol.degree.toString());
-
+  update (alcohol: Alcohol): Observable<Alcohol> {
     return this.http
-      .post(this.url + '/' + alcohol.id, data)
+      .put(this.url, alcohol)
       .map(res => res.json() as Alcohol)
       .catch(this.handleError);
   }
 
   addAlcohol (alcohol: Alcohol): Observable<Alcohol> {
-
-    let data = new FormData();
-    data.append("name", alcohol.name);
-    data.append("degree", alcohol.degree.toString());
-
     return this.http
-      .post(this.url, data)
+      .post(this.url, alcohol)
       .map(res => res.json() as Alcohol)
       .catch(this.handleError);
-
   }
 
   deleteAlcohol(id: number): Observable<void> {
-    const url = `${this.url}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
+    return this.http
+      .delete(this.url + '/' + id)
       .map(() => null)
       .catch(this.handleError);
   }

@@ -18,25 +18,24 @@ export class UserService{
 
   constructor (private http: Http, private hasher : Hasher, private snack : MdSnackBar) {}
 
-  getUsers (): Observable<User[]> {
-    return this.http.get("/api/users")
+  findAll (): Observable<User[]> {
+    return this.http.get(this.url)
       .map(response => response.json().user as User[])
       .catch(this.handleError);
   }
 
-  getUser (id : string): Observable<User> {
-    return this.http.get(this.url + id)
+  findOne (id : string): Observable<User> {
+    return this.http.get(this.url + '/' + id)
       .map(res => res.json().data as User)
       .catch(this.handleError);
   }
 
   login(email : string, password : string): Observable<User>{
-    let data = new FormData();
+    let user = new User();
+    user.email = email;
+    user.password = password;
 
-    data.append("password", password);
-    data.append("email", email);
-
-    return this.http.post('/api/login', data)
+    return this.http.post('/api/login', user)
       .map(
         res => {
           if(res.status == 204 || res.status < 200 || res.status >= 300) {
@@ -48,14 +47,8 @@ export class UserService{
   }
 
   updateUser (user: User): Observable<User> {
-    let user_form = new FormData();
-
-    for ( let key in user) {
-      user_form.append(key, user[key]);
-    }
-
     return this.http
-      .put(this.url, user_form)
+      .put(this.url, user)
       .map(() => user)
       .catch(this.handleError);
   }
@@ -63,17 +56,8 @@ export class UserService{
   addUser (user: User): Observable<User> {
     user.password = this.hasher.hash(user.password);
 
-    let user_form = new FormData();
-
-    user_form.append("firstname", user.firstname);
-    user_form.append("lastname", user.lastname);
-    user_form.append("password", user.password);
-    user_form.append("email", user.email);
-    user_form.append("role", user.role);
-    user_form.append("is_subscriber", 0);
-
     return this.http
-      .post(this.url, user_form)
+      .post(this.url, user)
       .map(res => {
         if(res.status == 204) {
           this.snack.open('Email already registered', null, {duration : 2000})
@@ -85,8 +69,7 @@ export class UserService{
   }
 
   delete(id: number): Observable<void> {
-    const url = `${this.url}/${id}`;
-    return this.http.delete(url)
+    return this.http.delete(this.url + '/' + id)
       .map(() => null)
       .catch(this.handleError);
   }

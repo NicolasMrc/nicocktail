@@ -1,26 +1,26 @@
 {
   "/api/alcohol": {
-    "target": "http://localhost:8888/framework/public",
+    "target": "http://localhost:8888/nicocktail/public",
     "secure": false
   },
 
   "/api/soft": {
-    "target": "http://localhost:8888/framework/public",
+    "target": "http://localhost:8888/nicocktail/public",
     "secure": false
   },
 
   "/api/extra": {
-    "target": "http://localhost:8888/framework/public",
+    "target": "http://localhost:8888/nicocktail/public",
     "secure": false
   },
 
   "/api/user": {
-    "target": "http://localhost:8888/framework/public",
+    "target": "http://localhost:8888/nicocktail/public/",
     "secure": false
   },
 
   "/api/login": {
-    "target": "http://localhost:8888/framework/public",
+    "target": "http://localhost:8888/nicocktail/public/",
     "secure": false
   }
 }
