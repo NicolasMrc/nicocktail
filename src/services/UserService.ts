@@ -3,29 +3,38 @@
  */
 
 
-import {Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {User} from "../entities/User";
-import {Http, Headers} from "@angular/http";
+import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs/Observable";
 import {Hasher} from "./auth/hasher.service";
 import {MdSnackBar} from "@angular/material";
+import {AppSettings} from "../app/app-settings";
+import {AuthService} from "./auth/auth.service";
 
 @Injectable()
 export class UserService{
 
-  url : string = '/api/user';
+  private url = AppSettings.api_endpoint + 'user';
 
-  constructor (private http: Http, private hasher : Hasher, private snack : MdSnackBar) {}
+  private authService : AuthService;
+
+  constructor (private http: Http, private hasher : Hasher, private snack : MdSnackBar, injector:Injector) {
+    //workaround for circular depedency;
+    setTimeout(() => this.authService = injector.get(AuthService));
+
+    console.log(this.url);
+  }
 
   findAll (): Observable<User[]> {
-    return this.http.get(this.url)
+    return this.http.get(this.url, this.authService.currentUser.api_token)
       .map(response => response.json().user as User[])
       .catch(this.handleError);
   }
 
   findOne (id : string): Observable<User> {
-    return this.http.get(this.url + '/' + id)
+    return this.http.get(this.url + '/' + id, this.authService.currentUser.api_token)
       .map(res => res.json().data as User)
       .catch(this.handleError);
   }
@@ -35,7 +44,7 @@ export class UserService{
     user.email = email;
     user.password = password;
 
-    return this.http.post('/api/login', user)
+    return this.http.post(AppSettings.api_endpoint + 'login', user)
       .map(
         res => {
           if(res.status == 204 || res.status < 200 || res.status >= 300) {
@@ -69,7 +78,7 @@ export class UserService{
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete(this.url + '/' + id)
+    return this.http.delete(this.url + '/' + id, this.authService.currentUser.api_token)
       .map(() => null)
       .catch(this.handleError);
   }

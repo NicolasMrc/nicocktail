@@ -10,13 +10,15 @@ import {Observable} from "rxjs/Observable";
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import {AppSettings} from "../app/app-settings";
+import {AuthService} from "./auth/auth.service";
 
 @Injectable()
 export class AlcoholService{
 
-  url = '/api/alcohol';
+  private url = AppSettings.api_endpoint + 'alcohol';
 
-  constructor (private http: Http) {}
+  constructor (private http: Http, private authService : AuthService) {}
 
   findAll(): Observable<Alcohol[]> {
     return this.http
@@ -35,21 +37,21 @@ export class AlcoholService{
 
   update (alcohol: Alcohol): Observable<Alcohol> {
     return this.http
-      .put(this.url, alcohol)
+      .put(this.url, alcohol, this.authService.currentUser.api_token)
       .map(res => res.json() as Alcohol)
       .catch(this.handleError);
   }
 
   addAlcohol (alcohol: Alcohol): Observable<Alcohol> {
     return this.http
-      .post(this.url, alcohol)
+      .post(this.url, alcohol, this.authService.currentUser.api_token)
       .map(res => res.json() as Alcohol)
       .catch(this.handleError);
   }
 
   deleteAlcohol(id: number): Observable<void> {
     return this.http
-      .delete(this.url + '/' + id)
+      .delete(this.url + '/' + id, this.authService.currentUser.api_token)
       .map(() => null)
       .catch(this.handleError);
   }

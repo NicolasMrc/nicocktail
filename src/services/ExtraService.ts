@@ -8,12 +8,15 @@ import {Http, Headers} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Extra} from "../entities/Extra";
 import {Observable} from "rxjs/Observable";
+import {AppSettings} from "../app/app-settings";
+import {AuthService} from "./auth/auth.service";
 
 @Injectable()
 export class ExtraService{
-  url = '/api/extra';
 
-  constructor (private http: Http) {}
+  private url = AppSettings.api_endpoint + 'extra';
+
+  constructor (private http: Http, private authService : AuthService) {}
 
   findAll(): Observable<Extra[]> {
     return this.http
@@ -32,21 +35,21 @@ export class ExtraService{
 
   update (extra: Extra): Observable<Extra> {
     return this.http
-      .put(this.url, extra)
+      .put(this.url, extra, this.authService.currentUser.api_token)
       .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
   addExtra (extra: Extra): Observable<Extra> {
     return this.http
-      .post(this.url, extra)
+      .post(this.url, extra, this.authService.currentUser.api_token)
       .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
   deleteExtra(id: number): Observable<void> {
     return this.http
-      .delete(this.url + '/' + id)
+      .delete(this.url + '/' + id, this.authService.currentUser.api_token)
       .map(() => null)
       .catch(this.handleError);
   }

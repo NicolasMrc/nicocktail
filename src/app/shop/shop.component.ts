@@ -12,22 +12,9 @@ import {DialogService} from "../../services/DialogService";
 })
 export class ShopComponent implements OnInit {
 
-  alcohols : Alcohol[];
-  newAlcohol : Alcohol = new Alcohol();
-
   constructor(private alcoholService : AlcoholService, public dialog: MdDialog, public dialogService : DialogService,
               private viewContainerRef: ViewContainerRef, public snackBar: MdSnackBar) { }
 
   ngOnInit() {
-    this.newAlcohol.name = "";
-    this.newAlcohol.degree = null;
-
-    this.getDrinks();
-  }
-
-  getDrinks(): void {
-    this.alcoholService
-      .getAlcohols()
-      .subscribe(alcohols => this.alcohols = alcohols);
   }
 }

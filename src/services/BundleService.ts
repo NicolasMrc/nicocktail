@@ -7,16 +7,16 @@ import {Injectable} from "@angular/core";
 import {Http, Headers} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Bundle} from "../entities/Bundle";
+import {AppSettings} from "../app/app-settings";
+import {AuthService} from "./auth/auth.service";
 
 @Injectable()
 export class BundleService{
 
 
-  url : string = 'bundle/';
+  private url = AppSettings.api_endpoint + 'bundle';
 
-  private headers = new Headers({'Content-Type': 'application/json'});
-
-  constructor (private http: Http) {}
+  constructor (private http: Http, private authService : AuthService) {}
 
   getBundles (): Promise<Bundle[]> {
     return this.http.get('bundles')
@@ -34,7 +34,7 @@ export class BundleService{
 
   updateBundle (bundle: Bundle): Promise<Bundle> {
     return this.http
-      .put(this.url, JSON.stringify(bundle), {headers: this.headers})
+      .put(this.url, JSON.stringify(bundle), this.authService.currentUser.api_token)
       .toPromise()
       .then(() => bundle)
       .catch(this.handleError);
@@ -42,15 +42,14 @@ export class BundleService{
 
   addBundle (bundle: Bundle): Promise<Bundle> {
     return this.http
-      .post(this.url, JSON.stringify(bundle), {headers: this.headers})
+      .post(this.url, JSON.stringify(bundle), this.authService.currentUser.api_token)
       .toPromise()
       .then(() => bundle)
       .catch(this.handleError);
   }
 
   delete(id: number): Promise<void> {
-    const url = `${this.url}${id}`;
-    return this.http.delete(url, {headers: this.headers})
+    return this.http.delete(this.url, this.authService.currentUser.api_token)
       .toPromise()
       .then(() => null)
       .catch(this.handleError);

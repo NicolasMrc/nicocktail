@@ -8,12 +8,13 @@ import {Http, Headers, Jsonp, RequestOptions} from "@angular/http";
 import {Soft} from "../entities/Soft";
 import {Observable} from "rxjs/Observable";
 import {AuthService} from "./auth/auth.service";
+import {AppSettings} from "../app/app-settings";
 
 @Injectable()
 export class SoftService{
 
 
-  url = '/api/soft';
+  private url = AppSettings.api_endpoint + 'soft';
 
   constructor (private http: Http, private authService : AuthService) {}
 
