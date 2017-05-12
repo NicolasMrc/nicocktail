@@ -1,6 +1,5 @@
 .table{
-  margin-top: 70px;
-  margin-bottom: 300px;
+  margin-bottom: 100px;
 }
 
 .title{
@@ -25,3 +24,11 @@
 }
 
 
+md-card{
+  margin-top: 100px;
+  padding: 0;
+}
+
+.ng-dirty{
+  border-color: #f0ad4e;
+}

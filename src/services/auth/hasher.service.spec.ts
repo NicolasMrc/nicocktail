@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { HasherService } from './hasher.service';
+import { Hasher } from './hasher.service';
 
 describe('HasherService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HasherService]
+      providers: [Hasher]
     });
   });
 
-  it('should ...', inject([HasherService], (service: HasherService) => {
+  it('should ...', inject([Hasher], (service: Hasher) => {
     expect(service).toBeTruthy();
   }));
 });

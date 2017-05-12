@@ -1,0 +1,14 @@
+.title{
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+md-card{
+  cursor: pointer;
+  transition: all .15s;
+}
+
+
+md-card:hover{
+  transition: all .15s;
+}

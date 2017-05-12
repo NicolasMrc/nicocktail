@@ -4,54 +4,65 @@
 
 
 import {Injectable} from "@angular/core";
-import {Http, Headers} from "@angular/http";
+import {Http, Headers, RequestOptions} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Bundle} from "../entities/Bundle";
 import {AppSettings} from "../app/app-settings";
 import {AuthService} from "./auth/auth.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class BundleService{
-
 
   private url = AppSettings.api_endpoint + 'bundle';
 
   constructor (private http: Http, private authService : AuthService) {}
 
-  getBundles (): Promise<Bundle[]> {
-    return this.http.get('bundles')
-      .toPromise()
-      .then(response => response.json().bundle as Bundle[])
-      .catch(this.handleError);
-  }
-
-  getBundle (id : string): Promise<Bundle> {
-    return this.http.get(this.url + id)
-      .toPromise()
-      .then(res => res.json().data as Bundle)
-      .catch(this.handleError);
-  }
-
-  updateBundle (bundle: Bundle): Promise<Bundle> {
+  findAll(): Observable<Bundle[]> {
     return this.http
-      .put(this.url, JSON.stringify(bundle), this.authService.currentUser.api_token)
-      .toPromise()
-      .then(() => bundle)
+      .get(this.url)
+      .map(response => {
+        return response.json() as Bundle[]
+      })
       .catch(this.handleError);
   }
 
-  addBundle (bundle: Bundle): Promise<Bundle> {
+  findOne (id : string): Observable<Bundle> {
+    return this.http.get(this.url + '/' + id)
+      .map(res => res.json() as Bundle)
+      .catch(this.handleError);
+  }
+
+  update (bundle: Bundle): Observable<Bundle> {
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
     return this.http
-      .post(this.url, JSON.stringify(bundle), this.authService.currentUser.api_token)
-      .toPromise()
-      .then(() => bundle)
+      .put(this.url, bundle, options)
+      .map(res => res.json() as Bundle)
       .catch(this.handleError);
   }
 
-  delete(id: number): Promise<void> {
-    return this.http.delete(this.url, this.authService.currentUser.api_token)
-      .toPromise()
-      .then(() => null)
+  addBundle (bundle: Bundle): Observable<Bundle> {
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
+    return this.http
+      .post(this.url, bundle, options)
+      .map(res => res.json() as Bundle)
+      .catch(this.handleError);
+  }
+
+  deleteBundle(id: number): Observable<void> {
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
+    return this.http
+      .delete(this.url + '/' + id, options)
+      .map(() => null)
       .catch(this.handleError);
   }
 

@@ -4,7 +4,7 @@
 
 
 import {Injectable} from "@angular/core";
-import {Http, Headers} from "@angular/http";
+import {Http, Headers, RequestOptions} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Extra} from "../entities/Extra";
 import {Observable} from "rxjs/Observable";
@@ -34,22 +34,35 @@ export class ExtraService{
   }
 
   update (extra: Extra): Observable<Extra> {
+
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
     return this.http
-      .put(this.url, extra, this.authService.currentUser.api_token)
+      .put(this.url, extra, options)
       .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
   addExtra (extra: Extra): Observable<Extra> {
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
     return this.http
-      .post(this.url, extra, this.authService.currentUser.api_token)
+      .post(this.url, extra, options)
       .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
   deleteExtra(id: number): Observable<void> {
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
     return this.http
-      .delete(this.url + '/' + id, this.authService.currentUser.api_token)
+      .delete(this.url + '/' + id, options)
       .map(() => null)
       .catch(this.handleError);
   }

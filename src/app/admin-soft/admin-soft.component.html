@@ -6,38 +6,40 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <thead class="thead-default" >
-        <tr>
-          <th>id</th>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let soft of softs">
-          <th scope="row">{{soft.id}}</th>
-          <td><input type="text" class="form-control" [(ngModel)]="soft.name"></td>
-          <td><input type="text" class="form-control" [(ngModel)]="soft.type"></td>
-          <td>
-            <button md-mini-fab (click)="update(soft)" mdTooltip="Save" [mdTooltipPosition]="'below'" class="save btn btn-outline-success my-2 my-sm-0 hidden-xs-down" ><md-icon>save</md-icon></button>
-            <button md-mini-fab (click)="deleteSoft(soft)" mdTooltip="Delete" [mdTooltipPosition]="'below'" class="delete btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>delete</md-icon></button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">##</th>
-          <td><input type="text" class="form-control" [(ngModel)]="newSoft.name"></td>
-          <td><input type="text" class="form-control" [(ngModel)]="newSoft.type"></td>
-          <td>
-            <button md-mini-fab (click)="add()" mdTooltip="Save" [mdTooltipPosition]="'below'" id="add" class="btn btn-outline-info my-2 my-sm-0 hidden-xs-down" ><md-icon>add</md-icon></button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+  <md-card>
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead class="thead-default" >
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let soft of softs">
+            <th scope="row">{{soft.id}}</th>
+            <td><input type="text" class="form-control" [(ngModel)]="soft.name"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="soft.type"></td>
+            <td>
+              <button md-mini-fab (click)="update(soft)" mdTooltip="Save" [mdTooltipPosition]="'below'" class="save btn btn-outline-success my-2 my-sm-0 hidden-xs-down" ><md-icon>save</md-icon></button>
+              <button md-mini-fab (click)="deleteSoft(soft)" mdTooltip="Delete" [mdTooltipPosition]="'below'" class="delete btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>delete</md-icon></button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">##</th>
+            <td><input type="text" class="form-control" [(ngModel)]="newSoft.name"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="newSoft.type"></td>
+            <td>
+              <button md-mini-fab (click)="add()" mdTooltip="Save" [mdTooltipPosition]="'below'" id="add" class="btn btn-outline-info my-2 my-sm-0 hidden-xs-down" ><md-icon>add</md-icon></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
+  </md-card>
 
 </div>

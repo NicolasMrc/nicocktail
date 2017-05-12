@@ -36,22 +36,35 @@ export class AlcoholService{
   }
 
   update (alcohol: Alcohol): Observable<Alcohol> {
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
     return this.http
-      .put(this.url, alcohol, this.authService.currentUser.api_token)
+      .put(this.url, alcohol, options)
       .map(res => res.json() as Alcohol)
       .catch(this.handleError);
   }
 
   addAlcohol (alcohol: Alcohol): Observable<Alcohol> {
+
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
     return this.http
-      .post(this.url, alcohol, this.authService.currentUser.api_token)
+      .post(this.url, alcohol, options)
       .map(res => res.json() as Alcohol)
       .catch(this.handleError);
   }
 
   deleteAlcohol(id: number): Observable<void> {
+    let headers = new Headers();
+    headers.append('api_token', this.authService.currentUser.api_token);
+    let options = new RequestOptions ({ headers: headers});
+
     return this.http
-      .delete(this.url + '/' + id, this.authService.currentUser.api_token)
+      .delete(this.url + '/' + id, options)
       .map(() => null)
       .catch(this.handleError);
   }

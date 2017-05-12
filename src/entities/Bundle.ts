@@ -10,10 +10,11 @@ export class Bundle{
   constructor(
     public id? : number,
     public name? : string,
-    public size? : string,
-    public priceSmall? : number,
-    public priceMedium? : number,
-    public priceLarge? : number,
+    public description? : string,
+    //public size? : string,
+    //public priceSmall? : number,
+    //public priceMedium? : number,
+    //public priceLarge? : number,
 
     public alcohol? : Alcohol[],
     public softs? : Soft[],

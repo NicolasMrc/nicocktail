@@ -1,0 +1,34 @@
+.table{
+  margin-bottom: 100px;
+}
+
+.title{
+  margin-top: 70px;
+}
+
+.delete, .save, #add{
+  background-color: white;
+  margin-left: 20px;
+}
+
+.delete:hover{
+  background-color: #d9534f;
+}
+
+.save:hover{
+  background-color: #5cb85c;
+}
+
+#add:hover{
+  background-color: #5bc0de;
+}
+
+
+md-card{
+  margin-top: 100px;
+  padding: 0;
+}
+
+.ng-dirty{
+  border-color: #f0ad4e;
+}

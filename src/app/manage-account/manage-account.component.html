@@ -1,0 +1,36 @@
+<div class="container">
+  <md-card>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center title">Your profil</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-4 offset-md-2 col-xs-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Firstname" [(ngModel)]="this.authService.currentUser.firstname">
+        </md-input-container>
+      </div>
+      <div class=" col-md-4 col-xs-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Lastname" [(ngModel)]="this.authService.currentUser.lastname">
+        </md-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2  col-xs-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Email" [(ngModel)]="this.authService.currentUser.email">
+        </md-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 col-xs-12 offset-md-8">
+        <button md-raised-button (click)="onSubmit()" class="btn btn-block btn-outline-info form-control"><md-icon>save</md-icon> Save</button>
+      </div>
+    </div>
+  </md-card>
+</div>
