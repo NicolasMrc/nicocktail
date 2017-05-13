@@ -16,7 +16,7 @@ export class Bundle{
     //public priceMedium? : number,
     //public priceLarge? : number,
 
-    public alcohol? : Alcohol[],
+    public alcohols? : Alcohol[],
     public softs? : Soft[],
     public extras? : Extra[],
   ){}

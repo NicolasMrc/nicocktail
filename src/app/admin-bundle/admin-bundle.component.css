@@ -3,10 +3,11 @@
 }
 
 .title{
-  margin-top: 70px;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
-.delete, .save, #add{
+.delete, .save, #add, #new-bundle{
   background-color: white;
   margin-left: 20px;
 }
@@ -19,16 +20,44 @@
   background-color: #5cb85c;
 }
 
-#add:hover{
+#add:hover, #new-bundle:hover{
   background-color: #5bc0de;
 }
 
+.bundle{
+  display: flex;
+  outline: none;
+}
 
-md-card{
-  margin-top: 100px;
+
+.card{
+  margin-bottom: 20px;
   padding: 0;
+  cursor: pointer;
 }
 
 .ng-dirty{
   border-color: #f0ad4e;
+}
+
+button#new-bundle{
+  margin-top: 40px !important;
+}
+
+
+md-chip-list md-chip.mat-chip{
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+md-chip.alcohol{
+  background-color: #f0ad4e;
+}
+
+md-chip.soft{
+  background-color: #5bc0de;
+}
+
+md-chip.extra{
+  background-color: #5cb85c;
 }

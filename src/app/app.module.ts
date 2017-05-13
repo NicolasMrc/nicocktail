@@ -19,7 +19,8 @@ import {ExtraService} from "../services/ExtraService";
 import {BundleService} from "../services/BundleService";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdDialogModule, MdIconModule, MdInputModule, MdRadioButton,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDialogModule, MdIconModule, MdInputModule,
+  MdRadioButton,
   MdRadioModule,
   MdSidenavModule,
   MdSnackBarModule, MdTooltipModule
@@ -41,6 +42,7 @@ import { AdminBundleComponent } from './admin-bundle/admin-bundle.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ManageAccountComponent } from './manage-account/manage-account.component';
+import { AdminBundleEditComponent } from './admin-bundle-edit/admin-bundle-edit.component';
 
 
 const appRoutes: Routes = [
@@ -67,6 +69,7 @@ const appRoutes: Routes = [
           { path: 'soft', component: AdminSoftComponent },
           { path: 'extra', component: AdminExtraComponent },
           { path: 'bundle', component: AdminBundleComponent },
+          { path: 'bundle/:id', component: AdminBundleEditComponent },
           { path: 'user', component: AdminUserComponent },
           { path: '', component: AdminPanelComponent },
         ]
@@ -99,6 +102,7 @@ const appRoutes: Routes = [
     AdminUserComponent,
     AdminPanelComponent,
     ManageAccountComponent,
+    AdminBundleEditComponent,
 
   ],
   imports: [
@@ -118,7 +122,8 @@ const appRoutes: Routes = [
     MdTooltipModule,
     MdSidenavModule,
     RouterModule.forRoot(appRoutes),
-    MdCardModule
+    MdCardModule,
+    MdChipsModule
 
   ],
   providers: [

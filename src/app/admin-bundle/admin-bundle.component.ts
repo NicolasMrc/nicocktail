@@ -25,7 +25,9 @@ export class AdminBundleComponent implements OnInit {
   getBundles(): void {
     this.bundleService
       .findAll()
-      .subscribe(bundles => this.bundles = bundles);
+      .subscribe(bundles => {
+        return this.bundles = bundles
+      });
   }
 
   update(bundle : Bundle){

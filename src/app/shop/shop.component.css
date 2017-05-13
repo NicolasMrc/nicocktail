@@ -9,6 +9,7 @@
 
 .card{
   margin-bottom: 30px;
+  cursor: pointer;
 }
 
 .add-cart, .add-wish{
@@ -21,4 +22,17 @@
 
 md-input-container{
   width: 100%;
+}
+
+md-chip-list md-chip.mat-chip{
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+md-chip.alcohol{
+  background-color: #f0ad4e;
+}
+
+md-chip.soft{
+  background-color: #5bc0de;
 }
