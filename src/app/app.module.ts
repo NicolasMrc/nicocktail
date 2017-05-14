@@ -45,6 +45,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ManageAccountComponent } from './manage-account/manage-account.component';
 import { AdminBundleEditComponent } from './admin-bundle-edit/admin-bundle-edit.component';
 import { DialogAddToBundleComponent } from './dialog/dialog-add-to-bundle/dialog-add-to-bundle.component';
+import { AdminBundleNewComponent } from './admin-bundle-new/admin-bundle-new.component';
 
 
 const appRoutes: Routes = [
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
           { path: 'bundle', component: AdminBundleComponent },
           { path: 'bundle/:id', component: AdminBundleEditComponent },
           { path: 'user', component: AdminUserComponent },
+          { path: 'new-bundle', component: AdminBundleNewComponent },
           { path: '', component: AdminPanelComponent },
         ]
       }
@@ -106,6 +108,7 @@ const appRoutes: Routes = [
     ManageAccountComponent,
     AdminBundleEditComponent,
     DialogAddToBundleComponent,
+    AdminBundleNewComponent,
 
   ],
   imports: [

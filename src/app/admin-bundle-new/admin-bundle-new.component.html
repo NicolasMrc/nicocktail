@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <md-card>
+        <div>
+
+          <div class="row">
+            <div class="col-2">
+              <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/banner-01.png)'"></div>
+            </div>
+            <div class="col-10">
+              <md-input-container class="example-full-width">
+                <input mdInput placeholder="Bundle Name" [(ngModel)]="bundle.name">
+              </md-input-container>
+              <md-input-container class="example-full-width">
+                <textarea mdInput placeholder="Description" [(ngModel)]="bundle.description"></textarea>
+              </md-input-container>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>Alcohols</p>
+              <md-chip-list>
+                <md-chip class="alcohol" (click)="deleteAlcohol(alcohol)" *ngFor="let alcohol of bundle.alcohols">{{alcohol.name}} <i class="fa fa-times"></i> </md-chip>
+                <md-chip class="add" (click)="addAlcohol()"><i class="fa fa-plus"></i> Add a Alcohol</md-chip>
+              </md-chip-list>
+            </div>
+          </div>
+
+          <div class="row">
+            <md-divider class="mx-auto"></md-divider>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>Soft Drinks</p>
+              <md-chip-list>
+                <md-chip class="soft" (click)="deleteSoft(soft)" *ngFor="let soft of bundle.softs">{{soft.name}} <i class="fa fa-times"></i> </md-chip>
+                <md-chip class="add" (click)="addSoft()"><i class="fa fa-plus"></i> Add a Doft Drink</md-chip>
+              </md-chip-list>
+            </div>
+          </div>
+
+          <div class="row">
+            <md-divider class="mx-auto"></md-divider>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>Extras</p>
+              <md-chip-list>
+                <md-chip class="extra" (click)="deleteExtra(extra)" *ngFor="let extra of bundle.extras">{{extra.name}} <i class="fa fa-times"></i> </md-chip>
+                <md-chip class="add" (click)="addExtra()"><i class="fa fa-plus"></i> Add an extra</md-chip>
+              </md-chip-list>
+            </div>
+          </div>
+
+          <div class="row">
+            <md-divider class="mx-auto"></md-divider>
+          </div>
+
+          <button md-raised-button class="btn btn-outline-warning" routerLink="/admin/bundle"><md-icon>arrow_back</md-icon> Cancel</button>
+          <button md-raised-button class="float-right btn btn-outline-success" (click)="save()"><md-icon>save</md-icon> Save</button>
+        </div>
+      </md-card>
+
+    </div>
+  </div>
+
+
+</div>
