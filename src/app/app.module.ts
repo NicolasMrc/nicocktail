@@ -47,6 +47,7 @@ import { DialogAddToBundleComponent } from './dialog/dialog-add-to-bundle/dialog
 import { AdminBundleNewComponent } from './admin-bundle-new/admin-bundle-new.component';
 import {UserGuardService} from "./services/auth/user-guard.service";
 import {Hasher} from "./services/auth/hasher.service";
+import { DialogSigninComponent } from './dialog/dialog-signin/dialog-signin.component';
 
 
 const appRoutes: Routes = [
@@ -110,6 +111,7 @@ const appRoutes: Routes = [
     AdminBundleEditComponent,
     DialogAddToBundleComponent,
     AdminBundleNewComponent,
+    DialogSigninComponent,
 
   ],
   imports: [
@@ -150,7 +152,8 @@ const appRoutes: Routes = [
   entryComponents:[
     DialogEditBundleComponent,
     DialogConfirmationComponent,
-    DialogAddToBundleComponent
+    DialogAddToBundleComponent,
+    DialogSigninComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -7,9 +7,14 @@
   font-family: RondaMedium;
 }
 
-.card{
+md-card{
   margin-bottom: 30px;
-  cursor: pointer;
+  padding-bottom: 40px;
+}
+
+md-card-actions{
+  position: absolute;
+  bottom: 25px;
 }
 
 .add-cart, .add-wish{
@@ -45,4 +50,5 @@ md-chip.soft{
 md-chip.extra{
   background-color: #5cb85c;
 }
+
 

@@ -7,23 +7,33 @@
 
   <div class="row">
 
-    <div class="bundle col-xs-12 col-sm-6 col-md-4" *ngFor="let bundle of bundles" [routerLink]="'/bundle/' + bundle.id">
-      <div class="card d-box mx-auto" style="width: 20rem;" >
-        <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
-        <div class="card-block">
-          <h4 class="card-title">{{bundle.name}}</h4>
-          <p class="card-text">{{bundle.description}}</p>
+    <div class="bundle col-xs-12 col-sm-6 col-md-4" *ngFor="let bundle of bundles">
+
+      <md-card class="example-card">
+        <md-card-header>
+          <md-card-title>
+            <h4>{{bundle.name}}</h4>
+          </md-card-title>
+        </md-card-header>
+        <img md-card-image src="http://placehold.it/318x200">
+        <md-card-content>
+          <p>{{bundle.description}}</p>
           <md-chip-list >
             <md-chip class="alcohol" *ngFor="let alcohol of bundle.alcohols">{{alcohol.name}}</md-chip>
           </md-chip-list>
-          <md-chip-list >
+          <md-chip-list>
             <md-chip class="soft" *ngFor="let soft of bundle.softs">{{soft.name}}</md-chip>
           </md-chip-list>
-          <md-chip-list >
+          <md-chip-list>
             <md-chip class="extra" *ngFor="let extra of bundle.extras">{{extra.name}}</md-chip>
           </md-chip-list>
-        </div>
-      </div>
+        </md-card-content>
+        <md-card-actions>
+          <button md-raised-button (click)="addToWishlist(bundle)" class="btn-outline-danger"><md-icon>favorite_border</md-icon></button>
+          <button md-raised-button (click)="addToCart(bundle)" class="btn-outline-info"><md-icon>add_shopping_cart</md-icon></button>
+        </md-card-actions>
+      </md-card>
+
     </div>
 
     </div>

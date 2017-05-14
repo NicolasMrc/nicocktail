@@ -4,14 +4,32 @@
       <h1 class="title">Cart</h1>
     </div>
   </div>
+
   <md-list>
-    <h3 md-subheader>Bundles</h3>
-    <md-list-item *ngFor="let bundle of user.cart">
-      <md-icon md-list-icon>folder</md-icon>
-      <h4 md-line>{{bundle.name}}</h4>
-      <p md-line> {{bundle.description}} </p>
+    <div class="row" *ngFor="let bundle of bundles">
       <md-divider></md-divider>
-    </md-list-item>
+      <div class="col-2">
+        <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/banner-01.png)'"></div>
+      </div>
+      <div class="col-8" >
+        <md-list-item >
+          <h4 md-line>{{bundle.name}}</h4>
+          <p md-line> {{bundle.description}} </p>
+          <p md-line> 30 $ </p>
+        </md-list-item>
+      </div>
+      <div class="col-2">
+        <button md-raised-button (click)="removeFromCart(bundle)" class="btn-outline-danger"><md-icon>delete</md-icon> Remove</button>
+      </div>
+    </div>
   </md-list>
+
+  <div class="row" *ngIf="bundles.length == 0">
+    <div class="col">
+      <md-divider></md-divider>
+      <p>Your cart is empty</p>
+      <button md-raised-button class="btn-outline-info"><md-icon>shopping_cart</md-icon> Go shopping !</button>
+    </div>
+  </div>
 
 </div>

@@ -8,3 +8,21 @@
 .shopping{
   margin-top: 40px;
 }
+
+md-divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 97%;
+  display: block;
+  border-top : 1px solid rgba(0,0,0,0.1);
+}
+
+.header-image {
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.mat-card-avatar{
+  height: 100px;
+  width: 100px;
+}

@@ -12,6 +12,7 @@ import {DialogConfirmationComponent} from "../dialog/dialog-confirmation/dialog-
 import {Alcohol} from "../../entities/Alcohol";
 import {DialogEditBundleComponent} from "../dialog/dialog-edit-bundle/dialog-edit-bundle.component";
 import {DialogAddToBundleComponent} from "../dialog/dialog-add-to-bundle/dialog-add-to-bundle.component";
+import {DialogSigninComponent} from "../dialog/dialog-signin/dialog-signin.component";
 
 @Injectable()
 export class DialogService {
@@ -57,5 +58,18 @@ export class DialogService {
 
     return dialogRef.afterClosed();
   }
+
+  public signinRequest(viewContainerRef: ViewContainerRef): Observable<any> {
+
+    let dialogRef: MdDialogRef<DialogSigninComponent>;
+    let config = new MdDialogConfig();
+    config.viewContainerRef = viewContainerRef;
+
+    dialogRef = this.dialog.open(DialogSigninComponent, config);
+
+    return dialogRef.afterClosed();
+  }
+
+
 
 }
