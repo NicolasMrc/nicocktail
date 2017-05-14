@@ -3,7 +3,6 @@
 }
 
 .title{
-  margin-top: 30px;
   margin-bottom: 50px;
 }
 
@@ -61,3 +60,5 @@ md-chip.soft{
 md-chip.extra{
   background-color: #5cb85c;
 }
+
+

@@ -1,0 +1,26 @@
+
+
+<div class="row">
+  <div class="col">
+    <p class="title">{{title}}</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <md-select [placeholder]="type" [(ngModel)]="result">
+      <md-option *ngFor="let object of list" [value]="object.id">
+        {{object.name}}
+      </md-option>
+    </md-select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <button type="button" class="btn-outline-danger" md-button (click)="dialogRef.close()" style="width: 100%"><md-icon>arrow_back</md-icon> Back</button>
+  </div>
+  <div class="col-6">
+    <button type="button" class="btn-outline-success" md-raised-button (click)="dialogRef.close(result)" style="width: 100%"><md-icon>add</md-icon> Add</button>
+  </div>
+</div>

@@ -7,57 +7,26 @@
 
   <div class="row">
 
-    <div class="card d-box mx-auto" style="width: 20rem;">
-      <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title">Tequila Sunrise</h4>
-        <p class="card-text">Sweet cocktail !</p>
-        <md-chip-list>
-          <md-chip class="alcohol">Tequila</md-chip>
-        </md-chip-list>
-        <md-chip-list>
-          <md-chip class="soft">Orange Juice</md-chip>
-          <md-chip class="soft">Grenadine</md-chip>
-        </md-chip-list>
+    <div class="bundle col-xs-12 col-sm-6 col-md-4" *ngFor="let bundle of bundles" [routerLink]="'/bundle/' + bundle.id">
+      <div class="card d-box mx-auto" style="width: 20rem;" >
+        <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">{{bundle.name}}</h4>
+          <p class="card-text">{{bundle.description}}</p>
+          <md-chip-list >
+            <md-chip class="alcohol" *ngFor="let alcohol of bundle.alcohols">{{alcohol.name}}</md-chip>
+          </md-chip-list>
+          <md-chip-list >
+            <md-chip class="soft" *ngFor="let soft of bundle.softs">{{soft.name}}</md-chip>
+          </md-chip-list>
+          <md-chip-list >
+            <md-chip class="extra" *ngFor="let extra of bundle.extras">{{extra.name}}</md-chip>
+          </md-chip-list>
+        </div>
       </div>
     </div>
-
-    <div class="card d-box mx-auto" style="width: 20rem;">
-      <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title">Blue Lagoon</h4>
-        <p class="card-text">Acid blue awesomness</p>
-        <md-chip-list>
-          <md-chip class="alcohol">Vodka</md-chip>
-          <md-chip class="alcohol">Curaçao</md-chip>
-          <md-chip class="alcohol">Angustrura</md-chip>
-        </md-chip-list>
-        <md-chip-list>
-          <md-chip class="soft">Lime Juice</md-chip>
-          <md-chip class="soft">Sprite</md-chip>
-        </md-chip-list>
-      </div>
-
-    </div>
-
-    <div class="card d-box mx-auto" style="width: 20rem;">
-      <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title">Long Island Iced Tea</h4>
-        <p class="card-text">Strong cocktail with way to mush alcohol in it</p>
-        <md-chip-list>
-          <md-chip class="alcohol">Vodka</md-chip>
-          <md-chip class="alcohol">Rhum</md-chip>
-          <md-chip class="alcohol">Triple Sec</md-chip>
-          <md-chip class="alcohol">Gin</md-chip>
-        </md-chip-list>
-        <md-chip-list>
-          <md-chip class="soft">Coca-cola</md-chip>
-        </md-chip-list>
-      </div>
 
     </div>
 
   </div>
-</div>
 

@@ -20,10 +20,9 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
 
           if (this.authService.isLoggedIn && this.authService.currentUser.role == 'admin') {
             this.router.navigate([state]);
-            return true;
+            return Observable.of(true);
           }
         }).catch(() => {
-          //this.router.navigate(['/sign-in']);
           return Observable.of(true);
         });
       } else {

@@ -1,9 +1,6 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {AlcoholService} from "../../services/AlcoholService";
-import {Alcohol} from "../../entities/Alcohol";
-import {MdDialog, MdSnackBar} from "@angular/material";
-import {DialogEditBundleComponent} from "../dialog/dialog-edit-bundle/dialog-edit-bundle.component";
-import {DialogService} from "../../services/DialogService";
+import {Component, OnInit} from '@angular/core';
+import {Bundle} from "../../entities/Bundle";
+import {BundleService} from "../../services/BundleService";
 
 @Component({
   selector: 'app-shop',
@@ -12,9 +9,13 @@ import {DialogService} from "../../services/DialogService";
 })
 export class ShopComponent implements OnInit {
 
-  constructor(private alcoholService : AlcoholService, public dialog: MdDialog, public dialogService : DialogService,
-              private viewContainerRef: ViewContainerRef, public snackBar: MdSnackBar) { }
+  public bundles : Bundle[];
+
+  constructor(private bundleService : BundleService) { }
 
   ngOnInit() {
+    this.bundleService.findAll().subscribe(bundles => {
+      this.bundles = bundles;
+    })
   }
 }

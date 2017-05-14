@@ -1,0 +1,58 @@
+md-card{
+  margin-top: 40px;
+}
+
+.header-image {
+  background-size: cover;
+}
+
+.mat-card-avatar{
+  height: 100px;
+  width: 100px;
+}
+
+md-input-container{
+  width: 100%;
+}
+
+
+md-divider {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 97%;
+
+  border-top : 1px solid rgba(0,0,0,0.1);
+}
+
+md-chip.alcohol{
+  background-color: #f0ad4e;
+}
+
+md-chip.soft{
+  background-color: #5bc0de;
+}
+
+md-chip.extra{
+  background-color: #5cb85c;
+}
+
+md-chip.extra, md-chip.soft, md-chip.alcohol{
+  transition: background-color .15s;
+  cursor: pointer;
+}
+
+md-chip.extra:hover, md-chip.soft:hover, md-chip.alcohol:hover{
+  background-color: #d9534f;
+  transition: background-color .15s;
+}
+
+md-chip.add{
+  cursor: pointer;
+}
+
+md-chip-list md-chip.mat-chip{
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+

@@ -36,3 +36,13 @@ md-chip.alcohol{
 md-chip.soft{
   background-color: #5bc0de;
 }
+
+.bundle{
+  display: flex;
+  outline: none;
+}
+
+md-chip.extra{
+  background-color: #5cb85c;
+}
+

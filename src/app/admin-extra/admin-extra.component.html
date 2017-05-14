@@ -14,7 +14,6 @@
         <tr>
           <th>id</th>
           <th>Name</th>
-          <th>Price</th>
           <th>Actions</th>
         </tr>
         </thead>
@@ -22,7 +21,6 @@
         <tr *ngFor="let extra of extras">
           <th scope="row">{{extra.id}}</th>
           <td><input type="text" class="form-control" [(ngModel)]="extra.name"></td>
-          <td><input type="text" class="form-control" [(ngModel)]="extra.price"></td>
           <td>
             <button md-mini-fab (click)="update(extra)" mdTooltip="Save" [mdTooltipPosition]="'below'" class="save btn btn-outline-success my-2 my-sm-0 hidden-xs-down" ><md-icon>save</md-icon></button>
             <button md-mini-fab (click)="deleteExtra(extra)" mdTooltip="Delete" [mdTooltipPosition]="'below'" class="delete btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>delete</md-icon></button>
@@ -31,7 +29,6 @@
         <tr>
           <th scope="row">##</th>
           <td><input type="text" class="form-control" [(ngModel)]="newExtra.name"></td>
-          <td><input type="text" class="form-control" [(ngModel)]="newExtra.price"></td>
           <td>
             <button md-mini-fab (click)="add()" mdTooltip="Save" [mdTooltipPosition]="'below'" id="add" class="btn btn-outline-info my-2 my-sm-0 hidden-xs-down" ><md-icon>add</md-icon></button>
           </td>

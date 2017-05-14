@@ -11,6 +11,7 @@ import { Injectable, ViewContainerRef } from '@angular/core';
 import {DialogEditBundleComponent} from "../app/dialog/dialog-edit-bundle/dialog-edit-bundle.component";
 import {Alcohol} from "../entities/Alcohol";
 import {DialogConfirmationComponent} from "../app/dialog/dialog-confirmation/dialog-confirmation.component";
+import {DialogAddToBundleComponent} from "../app/dialog/dialog-add-to-bundle/dialog-add-to-bundle.component";
 
 @Injectable()
 export class DialogService {
@@ -39,6 +40,20 @@ export class DialogService {
 
     dialogRef = this.dialog.open(DialogEditBundleComponent, config);
     dialogRef.componentInstance.alcohol = alcohol;
+
+    return dialogRef.afterClosed();
+  }
+
+  public addToBundle(type : string, viewContainerRef: ViewContainerRef): Observable<any> {
+
+    let dialogRef: MdDialogRef<DialogAddToBundleComponent>;
+    let config = new MdDialogConfig();
+    config.viewContainerRef = viewContainerRef;
+
+    dialogRef = this.dialog.open(DialogAddToBundleComponent, config);
+    dialogRef.componentInstance.initList(type);
+
+    dialogRef.afterClosed().subscribe(res=>console.log(res));
 
     return dialogRef.afterClosed();
   }

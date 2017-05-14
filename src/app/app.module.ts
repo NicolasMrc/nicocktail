@@ -19,9 +19,10 @@ import {ExtraService} from "../services/ExtraService";
 import {BundleService} from "../services/BundleService";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDialogModule, MdIconModule, MdInputModule,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDialogModule, MdIconModule, MdInputModule, MdOption,
+  MdOptionModule,
   MdRadioButton,
-  MdRadioModule,
+  MdRadioModule, MdSelectModule,
   MdSidenavModule,
   MdSnackBarModule, MdTooltipModule
 } from "@angular/material";
@@ -43,6 +44,7 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ManageAccountComponent } from './manage-account/manage-account.component';
 import { AdminBundleEditComponent } from './admin-bundle-edit/admin-bundle-edit.component';
+import { DialogAddToBundleComponent } from './dialog/dialog-add-to-bundle/dialog-add-to-bundle.component';
 
 
 const appRoutes: Routes = [
@@ -103,6 +105,7 @@ const appRoutes: Routes = [
     AdminPanelComponent,
     ManageAccountComponent,
     AdminBundleEditComponent,
+    DialogAddToBundleComponent,
 
   ],
   imports: [
@@ -123,7 +126,9 @@ const appRoutes: Routes = [
     MdSidenavModule,
     RouterModule.forRoot(appRoutes),
     MdCardModule,
-    MdChipsModule
+    MdChipsModule,
+    MdOptionModule,
+    MdSelectModule
 
   ],
   providers: [
@@ -140,7 +145,7 @@ const appRoutes: Routes = [
   entryComponents:[
     DialogEditBundleComponent,
     DialogConfirmationComponent,
-
+    DialogAddToBundleComponent
   ],
   bootstrap: [AppComponent]
 })
