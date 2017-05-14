@@ -1,12 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1 class="title">Your cart is empty</h1>
+      <h1 class="title">Cart</h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <button md-raised-button class="btn btn-outline-primary shopping button" routerLink="/shop"><md-icon>shopping_cart</md-icon> Go shopping</button>
-    </div>
-  </div>
+  <md-list>
+    <h3 md-subheader>Bundles</h3>
+    <md-list-item *ngFor="let bundle of user.cart">
+      <md-icon md-list-icon>folder</md-icon>
+      <h4 md-line>{{bundle.name}}</h4>
+      <p md-line> {{bundle.description}} </p>
+      <md-divider></md-divider>
+    </md-list-item>
+  </md-list>
+
 </div>

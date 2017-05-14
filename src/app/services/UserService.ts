@@ -4,14 +4,14 @@
 
 
 import {Injectable, Injector} from "@angular/core";
-import {User} from "../entities/User";
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs/Observable";
 import {Hasher} from "./auth/hasher.service";
 import {MdSnackBar} from "@angular/material";
-import {AppSettings} from "../app/app-settings";
 import {AuthService} from "./auth/auth.service";
+import {User} from "../../entities/User";
+import {AppSettings} from "../app-settings";
 
 @Injectable()
 export class UserService{

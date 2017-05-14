@@ -8,10 +8,10 @@
 import { Observable } from 'rxjs/Rx';
 import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
 import { Injectable, ViewContainerRef } from '@angular/core';
-import {DialogEditBundleComponent} from "../app/dialog/dialog-edit-bundle/dialog-edit-bundle.component";
-import {Alcohol} from "../entities/Alcohol";
-import {DialogConfirmationComponent} from "../app/dialog/dialog-confirmation/dialog-confirmation.component";
-import {DialogAddToBundleComponent} from "../app/dialog/dialog-add-to-bundle/dialog-add-to-bundle.component";
+import {DialogConfirmationComponent} from "../dialog/dialog-confirmation/dialog-confirmation.component";
+import {Alcohol} from "../../entities/Alcohol";
+import {DialogEditBundleComponent} from "../dialog/dialog-edit-bundle/dialog-edit-bundle.component";
+import {DialogAddToBundleComponent} from "../dialog/dialog-add-to-bundle/dialog-add-to-bundle.component";
 
 @Injectable()
 export class DialogService {

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Bundle} from "../../entities/Bundle";
-import {BundleService} from "../../services/BundleService";
-import {DialogService} from "../../services/DialogService";
+import {BundleService} from "../services/BundleService";
+import {DialogService} from "../services/DialogService";
 import {MdSnackBar} from "@angular/material";
 
 @Component({

@@ -18,3 +18,8 @@
 h1{
   font-family: RondaMedium;
 }
+
+.loading{
+  width: 500px;
+  margin-top: 150px;
+}

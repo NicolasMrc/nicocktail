@@ -21,3 +21,8 @@ input{
 md-input-container{
   width: 100%;
 }
+
+.loading{
+  width: 300px;
+  margin-top: 150px;
+}

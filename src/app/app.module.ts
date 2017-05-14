@@ -12,11 +12,11 @@ import { BoxComponent } from './box/box.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SigninComponent } from './signin/signin.component';
-import {UserService} from "../services/UserService";
-import {AlcoholService} from "../services/AlcoholService";
-import {SoftService} from "../services/SoftService";
-import {ExtraService} from "../services/ExtraService";
-import {BundleService} from "../services/BundleService";
+import {UserService} from "./services/UserService";
+import {AlcoholService} from "./services/AlcoholService";
+import {SoftService} from "./services/SoftService";
+import {ExtraService} from "./services/ExtraService";
+import {BundleService} from "./services/BundleService";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDialogModule, MdIconModule, MdInputModule, MdOption,
@@ -28,13 +28,12 @@ import {
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DialogEditBundleComponent} from "./dialog/dialog-edit-bundle/dialog-edit-bundle.component";
-import {DialogService} from "../services/DialogService";
+import {DialogService} from "./services/DialogService";
 import { DialogConfirmationComponent } from './dialog/dialog-confirmation/dialog-confirmation.component';
 import { HeaderComponent } from './header/header.component';
 import {RouterModule, Routes} from "@angular/router";
-import {AuthService} from "../services/auth/auth.service";
-import {AuthGuardService} from "../services/auth/auth-guard.service";
-import {Hasher} from "../services/auth/hasher.service";
+import {AuthService} from "./services/auth/auth.service";
+import {AuthGuardService} from "./services/auth/auth-guard.service";
 import { AdminComponent } from './admin/admin.component';
 import { AdminAlcoholComponent } from './admin-alcohol/admin-alcohol.component';
 import { AdminSoftComponent } from './admin-soft/admin-soft.component';
@@ -46,6 +45,8 @@ import { ManageAccountComponent } from './manage-account/manage-account.componen
 import { AdminBundleEditComponent } from './admin-bundle-edit/admin-bundle-edit.component';
 import { DialogAddToBundleComponent } from './dialog/dialog-add-to-bundle/dialog-add-to-bundle.component';
 import { AdminBundleNewComponent } from './admin-bundle-new/admin-bundle-new.component';
+import {UserGuardService} from "./services/auth/user-guard.service";
+import {Hasher} from "./services/auth/hasher.service";
 
 
 const appRoutes: Routes = [
@@ -54,8 +55,8 @@ const appRoutes: Routes = [
   { path: 'builder', component: BuilderComponent },
   { path: 'home', component: HomeComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
-  { path: 'cart', component: CartComponent },
-  { path: 'wishlist', component: WishlistComponent },
+  { path: 'cart', component: CartComponent, canActivate: [UserGuardService]},
+  { path: 'wishlist', component: WishlistComponent, canActivate: [UserGuardService] },
   { path: 'sign-in', component: SigninComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'account', component: ManageAccountComponent },
@@ -143,7 +144,8 @@ const appRoutes: Routes = [
     DialogService,
     AuthService,
     AuthGuardService,
-    Hasher
+    Hasher,
+    UserGuardService
   ],
   entryComponents:[
     DialogEditBundleComponent,

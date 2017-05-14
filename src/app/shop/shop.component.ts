@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Bundle} from "../../entities/Bundle";
-import {BundleService} from "../../services/BundleService";
+import {BundleService} from "../services/BundleService";
 
 @Component({
   selector: 'app-shop',

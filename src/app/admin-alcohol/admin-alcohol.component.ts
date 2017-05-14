@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Alcohol} from "../../entities/Alcohol";
-import {AlcoholService} from "../../services/AlcoholService";
-import {DialogService} from "../../services/DialogService";
 import {MdSnackBar} from "@angular/material";
+import {AlcoholService} from "../services/AlcoholService";
+import {DialogService} from "../services/DialogService";
 
 @Component({
   selector: 'app-admin-alcohol',

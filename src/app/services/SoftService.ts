@@ -4,61 +4,58 @@
 
 
 import {Injectable} from "@angular/core";
-import {Http, Headers, Response, RequestOptions, Jsonp} from "@angular/http";
-import {Alcohol} from "../entities/Alcohol";
+import {Http, Headers, Jsonp, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs/Observable";
-
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import {AppSettings} from "../app/app-settings";
 import {AuthService} from "./auth/auth.service";
+import {Soft} from "../../entities/Soft";
+import {AppSettings} from "../app-settings";
 
 @Injectable()
-export class AlcoholService{
+export class SoftService{
 
-  private url = AppSettings.api_endpoint + 'alcohol';
+
+  private url = AppSettings.api_endpoint + 'soft';
 
   constructor (private http: Http, private authService : AuthService) {}
 
-  findAll(): Observable<Alcohol[]> {
+  findAll(): Observable<Soft[]> {
     return this.http
       .get(this.url)
       .map(response => {
-        return response.json() as Alcohol[]
+        return response.json() as Soft[]
       })
       .catch(this.handleError);
   }
 
-  findOne (id : string): Observable<Alcohol> {
+  findOne (id : string): Observable<Soft> {
     return this.http.get(this.url + '/' + id)
-      .map(res => res.json() as Alcohol)
+      .map(res => res.json() as Soft)
       .catch(this.handleError);
   }
 
-  update (alcohol: Alcohol): Observable<Alcohol> {
+  update (soft: Soft): Observable<Soft> {
     let headers = new Headers();
     headers.append('api_token', this.authService.currentUser.api_token);
     let options = new RequestOptions ({ headers: headers});
 
     return this.http
-      .put(this.url, alcohol, options)
-      .map(res => res.json() as Alcohol)
+      .put(this.url, soft, options)
+      .map(res => res.json() as Soft)
       .catch(this.handleError);
   }
 
-  addAlcohol (alcohol: Alcohol): Observable<Alcohol> {
-
+  addSoft (soft: Soft): Observable<Soft> {
     let headers = new Headers();
     headers.append('api_token', this.authService.currentUser.api_token);
     let options = new RequestOptions ({ headers: headers});
 
     return this.http
-      .post(this.url, alcohol, options)
-      .map(res => res.json() as Alcohol)
+      .post(this.url, soft, options)
+      .map(res => res.json() as Soft)
       .catch(this.handleError);
   }
 
-  deleteAlcohol(id: number): Observable<void> {
+  deleteSoft(id: number): Observable<void> {
     let headers = new Headers();
     headers.append('api_token', this.authService.currentUser.api_token);
     let options = new RequestOptions ({ headers: headers});

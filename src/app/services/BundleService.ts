@@ -6,10 +6,10 @@
 import {Injectable} from "@angular/core";
 import {Http, Headers, RequestOptions} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
-import {Bundle} from "../entities/Bundle";
-import {AppSettings} from "../app/app-settings";
 import {AuthService} from "./auth/auth.service";
 import {Observable} from "rxjs/Observable";
+import {AppSettings} from "../app-settings";
+import {Bundle} from "../../entities/Bundle";
 
 @Injectable()
 export class BundleService{

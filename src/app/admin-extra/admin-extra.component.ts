@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Extra} from "../../entities/Extra";
-import {ExtraService} from "../../services/ExtraService";
-import {DialogService} from "../../services/DialogService";
+import {ExtraService} from "../services/ExtraService";
+import {DialogService} from "../services/DialogService";
 import {MdSnackBar} from "@angular/material";
 
 @Component({

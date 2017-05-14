@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
-import {BundleService} from "../../services/BundleService";
+import {BundleService} from "../services/BundleService";
 import {Bundle} from "../../entities/Bundle";
-import {DialogService} from "../../services/DialogService";
+import {DialogService} from "../services/DialogService";
 import {MdSnackBar} from "@angular/material";
-import {SoftService} from "../../services/SoftService";
-import {AlcoholService} from "../../services/AlcoholService";
-import {ExtraService} from "../../services/ExtraService";
+import {SoftService} from "../services/SoftService";
+import {AlcoholService} from "../services/AlcoholService";
+import {ExtraService} from "../services/ExtraService";
 import {Extra} from "../../entities/Extra";
 import {Soft} from "../../entities/Soft";
 import {Alcohol} from "../../entities/Alcohol";

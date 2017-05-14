@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../entities/User";
-import {UserService} from "../../services/UserService";
-import {Hasher} from "../../services/auth/hasher.service";
+import {UserService} from "../services/UserService";
+import {Hasher} from "../services/auth/hasher.service";
 import {Router} from "@angular/router";
-import {AuthService} from "../../services/auth/auth.service";
+import {AuthService} from "../services/auth/auth.service";
 import {MdSnackBar} from "@angular/material";
 
 @Component({
@@ -16,6 +16,8 @@ export class RegistrationComponent implements OnInit {
   newUser : User = new User();
 
   confirmationPassword : string = "";
+
+  isRegistering = false;
 
   constructor(private userService : UserService, private hasher : Hasher, private router : Router, private authService : AuthService, private snack : MdSnackBar) { }
 
@@ -30,13 +32,13 @@ export class RegistrationComponent implements OnInit {
     let isValid = this.validate();
 
     if(isValid){
+
+      this.isRegistering = true;
+
       this.userService.addUser(this.newUser).subscribe(user=>{
         if(user != null){
-          if(this.authService.isAdmin()){
-            this.router.navigate(['/admin'])
-          } else {
-            this.router.navigate(['/home'])
-          }
+          this.authService.setUser(user);
+          this.router.navigate(['/home']);
           this.snack.open("Welcome " + user.firstname + '!', null, {duration : 2000});
         }
       })

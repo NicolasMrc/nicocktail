@@ -4,58 +4,59 @@
 
 
 import {Injectable} from "@angular/core";
-import {Http, Headers, Jsonp, RequestOptions} from "@angular/http";
-import {Soft} from "../entities/Soft";
+import {Http, Headers, RequestOptions} from "@angular/http";
+import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs/Observable";
 import {AuthService} from "./auth/auth.service";
-import {AppSettings} from "../app/app-settings";
+import {Extra} from "../../entities/Extra";
+import {AppSettings} from "../app-settings";
 
 @Injectable()
-export class SoftService{
+export class ExtraService{
 
-
-  private url = AppSettings.api_endpoint + 'soft';
+  private url = AppSettings.api_endpoint + 'extra';
 
   constructor (private http: Http, private authService : AuthService) {}
 
-  findAll(): Observable<Soft[]> {
+  findAll(): Observable<Extra[]> {
     return this.http
       .get(this.url)
       .map(response => {
-        return response.json() as Soft[]
+        return response.json() as Extra[]
       })
       .catch(this.handleError);
   }
 
-  findOne (id : string): Observable<Soft> {
+  findOne (id : string): Observable<Extra> {
     return this.http.get(this.url + '/' + id)
-      .map(res => res.json() as Soft)
+      .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
-  update (soft: Soft): Observable<Soft> {
+  update (extra: Extra): Observable<Extra> {
+
     let headers = new Headers();
     headers.append('api_token', this.authService.currentUser.api_token);
     let options = new RequestOptions ({ headers: headers});
 
     return this.http
-      .put(this.url, soft, options)
-      .map(res => res.json() as Soft)
+      .put(this.url, extra, options)
+      .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
-  addSoft (soft: Soft): Observable<Soft> {
+  addExtra (extra: Extra): Observable<Extra> {
     let headers = new Headers();
     headers.append('api_token', this.authService.currentUser.api_token);
     let options = new RequestOptions ({ headers: headers});
 
     return this.http
-      .post(this.url, soft, options)
-      .map(res => res.json() as Soft)
+      .post(this.url, extra, options)
+      .map(res => res.json() as Extra)
       .catch(this.handleError);
   }
 
-  deleteSoft(id: number): Observable<void> {
+  deleteExtra(id: number): Observable<void> {
     let headers = new Headers();
     headers.append('api_token', this.authService.currentUser.api_token);
     let options = new RequestOptions ({ headers: headers});
@@ -70,4 +71,5 @@ export class SoftService{
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
+
 }

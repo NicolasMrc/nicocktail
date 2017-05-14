@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!this.isRegistering">
   <div class="row">
     <div class="col">
       <h1 class="title text-center">
@@ -20,37 +20,6 @@
     </div>
   </div>
 
-
-<!--
-  <div class="row">
-    <div class="col-md-6 offset-md-3  col-xs-12">
-      <md-input-container>
-        <input type="text" mdInput placeholder="Address" [(ngModel)]="newUser.address">
-      </md-input-container>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 offset-md-3  col-xs-12">
-      <md-input-container>
-        <input type="text" mdInput placeholder="City" [(ngModel)]="newUser.city">
-      </md-input-container>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-3 col-md-6 offset-md-3 col-xs-12">
-      <md-input-container>
-        <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="newUser.zipCode">
-      </md-input-container>
-    </div>
-    <div class="col-lg-3 col-md-6 offset-lg-0 offset-md-3 col-xs-12" >
-      <md-input-container>
-        <input type="text" mdInput placeholder="Country" [(ngModel)]="newUser.country">
-      </md-input-container>
-    </div>
-  </div>
-
-
-  -->
   <div class="row">
     <div class="col-md-6 offset-md-3 col-xs-12">
       <md-input-container>
@@ -81,3 +50,12 @@
 
 
 </div>
+
+<div class="container" *ngIf="this.isRegistering">
+  <div class="row">
+    <div class="col">
+      <img src="assets/images/loading.gif" alt="loadingGif" class="loading img-fluid d-block mx-auto">
+    </div>
+  </div>
+</div>
+

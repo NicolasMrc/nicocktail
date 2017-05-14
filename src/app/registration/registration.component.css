@@ -22,3 +22,9 @@ md-input-container{
 .radio-container{
   padding-top: 20px;
 }
+
+
+.loading{
+  width: 300px;
+  margin-top: 150px;
+}

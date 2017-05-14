@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {AlcoholService} from "../../../services/AlcoholService";
-import {SoftService} from "../../../services/SoftService";
-import {ExtraService} from "../../../services/ExtraService";
+import {AlcoholService} from "../../services/AlcoholService";
+import {SoftService} from "../../services/SoftService";
+import {ExtraService} from "../../services/ExtraService";
 import {MdDialogRef} from "@angular/material";
 
 @Component({

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Soft} from "../../entities/Soft";
-import {SoftService} from "../../services/SoftService";
-import {DialogService} from "../../services/DialogService";
+import {SoftService} from "../services/SoftService";
+import {DialogService} from "../services/DialogService";
 import {MdSnackBar} from "@angular/material";
 
 @Component({

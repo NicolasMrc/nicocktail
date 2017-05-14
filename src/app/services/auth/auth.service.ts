@@ -4,11 +4,11 @@
 import { Injectable } from '@angular/core';
 
 import {UserService} from "../UserService";
-import {User} from "../../entities/User";
 import {Observable} from 'rxjs/Rx';
 import {Hasher} from "./hasher.service";
 import {MdSnackBar} from "@angular/material";
 import {Router} from "@angular/router";
+import {User} from "../../../entities/User";
 
 @Injectable()
 export class AuthService {
@@ -62,6 +62,11 @@ export class AuthService {
 
   isAdmin(){
     return this.currentUser.role == 'admin';
+  }
+
+  setUser(user : User){
+    this.currentUser = user;
+    this.isLoggedIn = true;
   }
 
 }
