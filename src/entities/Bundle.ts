@@ -11,6 +11,7 @@ export class Bundle{
     public id? : number,
     public name? : string,
     public description? : string,
+    public image : string = "",
     //public size? : string,
     //public priceSmall? : number,
     //public priceMedium? : number,

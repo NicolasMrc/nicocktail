@@ -9,7 +9,7 @@
     <div class="row" *ngFor="let bundle of bundles">
       <md-divider></md-divider>
       <div class="col-2">
-        <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/categories-04.png)'"></div>
+        <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/bundles/'+bundle.image+')'"></div>
       </div>
       <div class="col-8" >
         <md-list-item >
@@ -28,7 +28,7 @@
     <div class="col">
       <md-divider></md-divider>
       <p>Your cart is empty</p>
-      <button md-raised-button class="btn-outline-info"><md-icon>shopping_cart</md-icon> Go shopping !</button>
+      <button routerLink="shop" md-raised-button class="btn-outline-info"><md-icon>shopping_cart</md-icon> Go shopping !</button>
     </div>
   </div>
 

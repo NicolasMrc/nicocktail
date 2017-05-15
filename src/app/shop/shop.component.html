@@ -10,12 +10,12 @@
     <div class="bundle col-xs-12 col-sm-6 col-md-4" *ngFor="let bundle of bundles">
 
       <md-card class="example-card">
-        <md-card-header>
+        <!--<md-card-header>
           <md-card-title>
             <h4>{{bundle.name}}</h4>
           </md-card-title>
-        </md-card-header>
-        <img md-card-image src="http://placehold.it/318x200">
+        </md-card-header>-->
+        <img md-card-image src="assets/images/bundles/{{bundle.image}}">
         <md-card-content>
           <p>{{bundle.description}}</p>
           <md-chip-list >
