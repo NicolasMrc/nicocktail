@@ -27,8 +27,8 @@ export class ShopComponent implements OnInit {
   addToCart(bundle : Bundle){
     if(this.authService.isLoggedIn){
       let user = this.authService.currentUser;
+      user.cart.push(bundle);
       this.userService.updateUser(user).subscribe(user => {
-        user.cart.push(bundle);
         this.authService.currentUser = user;
         this.snack.open(bundle.name + ' added to your cart !', null, {duration : 2000})
       });
@@ -38,6 +38,15 @@ export class ShopComponent implements OnInit {
   }
 
   addToWishlist(bundle : Bundle){
-
+    if(this.authService.isLoggedIn){
+      let user = this.authService.currentUser;
+      user.wishlist.push(bundle);
+      this.userService.updateUser(user).subscribe(user => {
+        this.authService.currentUser = user;
+        this.snack.open(bundle.name + ' added to your wishlist !', null, {duration : 2000})
+      });
+    } else {
+      this.dialogService.signinRequest(this.viewContainerRef).subscribe();
+    }
   }
 }

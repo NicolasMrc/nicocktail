@@ -1,12 +1,32 @@
 
+
 .title{
-  font-size: 30px;
-  color: #d9d9d9;
   margin-top: 50px;
   font-family: RondaMedium;
 }
 
-img{
-  margin-top: 30px;
-  max-height: 500px;
+.shopping{
+  margin-top: 40px;
+}
+
+md-divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 97%;
+  display: block;
+  border-top : 1px solid rgba(0,0,0,0.1);
+}
+
+.header-image {
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.mat-card-avatar{
+  height: 100px;
+  width: 100px;
+}
+
+button{
+  margin-top: 20px;
 }

@@ -1,15 +1,37 @@
-
-
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col">
-      <h1 class="title text-center">Wishlist is comming soon !</h1>
+      <h1 class="title">Wishlist</h1>
     </div>
   </div>
-  <div class="row">
+
+  <md-list>
+    <div class="row" *ngFor="let bundle of bundles">
+      <md-divider></md-divider>
+      <div class="col-2">
+        <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/categories-03.png)'"></div>
+      </div>
+      <div class="col-8" >
+        <md-list-item >
+          <h4 md-line>{{bundle.name}}</h4>
+          <p md-line> {{bundle.description}} </p>
+        </md-list-item>
+      </div>
+      <div class="col-1">
+        <button md-raised-button (click)="removeFromWishlist(bundle)" class="btn-outline-danger"><md-icon>delete</md-icon></button>
+      </div>
+      <div class="col-1">
+        <button md-raised-button (click)="addToCart(bundle)" class="btn-outline-info"><md-icon>add_shopping_cart</md-icon></button>
+      </div>
+    </div>
+  </md-list>
+
+  <div class="row" *ngIf="bundles.length == 0">
     <div class="col">
-      <img class="mx-auto d-block img-fluid" src="assets/images/categories-03.png" alt="wishlist">
+      <md-divider></md-divider>
+      <p>Your wishlist is empty</p>
+      <button md-raised-button class="btn-outline-info"><md-icon>shopping_cart</md-icon> Go shopping !</button>
     </div>
   </div>
+
 </div>
-
