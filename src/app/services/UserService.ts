@@ -12,6 +12,7 @@ import {MdSnackBar} from "@angular/material";
 import {AuthService} from "./auth/auth.service";
 import {User} from "../../entities/User";
 import {AppSettings} from "../app-settings";
+import {Order} from "../../entities/Order";
 
 @Injectable()
 export class UserService{

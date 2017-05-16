@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col">
+    <h4 class="text-center title">Payment</h4>
+  </div>
+</div>
+
+
+<div class="row payment" *ngIf="!isPaying">
+  <div class="col">
+    <div class="row">
+      <div class="col-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Card Number">
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <md-input-container>
+          <input type="text" mdInput placeholder="MM / YY">
+        </md-input-container>
+      </div>
+      <div class="col">
+        <md-input-container>
+          <input type="text" mdInput placeholder="CCV">
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row payment" *ngIf="isPaying">
+  <div class="col">
+    <md-spinner class="mx-auto" color="accent"></md-spinner>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <button class="btn-outline-success float-right" (click)="pay()" md-raised-button><md-icon>done</md-icon> Pay</button>
+  </div>
+</div>

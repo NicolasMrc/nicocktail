@@ -35,3 +35,15 @@ md-divider {
   margin-right: 20px;
 
 }
+
+md-input-container{
+  width: 100%;
+}
+
+.title-address{
+  margin-bottom: 40px;
+}
+
+.first-address-input{
+  margin-top: 40px;
+}

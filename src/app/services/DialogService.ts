@@ -13,6 +13,7 @@ import {Alcohol} from "../../entities/Alcohol";
 import {DialogEditBundleComponent} from "../dialog/dialog-edit-bundle/dialog-edit-bundle.component";
 import {DialogAddToBundleComponent} from "../dialog/dialog-add-to-bundle/dialog-add-to-bundle.component";
 import {DialogSigninComponent} from "../dialog/dialog-signin/dialog-signin.component";
+import {DialogPaymentComponent} from "../dialog/dialog-payment/dialog-payment.component";
 
 @Injectable()
 export class DialogService {
@@ -66,6 +67,16 @@ export class DialogService {
     config.viewContainerRef = viewContainerRef;
 
     dialogRef = this.dialog.open(DialogSigninComponent, config);
+
+    return dialogRef.afterClosed();
+  }
+
+  public payment(viewContainerRef: ViewContainerRef) : Observable<any>{
+    let dialogRef: MdDialogRef<DialogPaymentComponent>;
+    let config = new MdDialogConfig();
+    config.viewContainerRef = viewContainerRef;
+
+    dialogRef = this.dialog.open(DialogPaymentComponent, config);
 
     return dialogRef.afterClosed();
   }

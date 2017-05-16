@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <h1 class="title">Orders</h1>
+    </div>
+  </div>
+
+  <md-list>
+    <div class="row " *ngFor="let order of orders">
+      <md-divider></md-divider>
+      <div class="col-12" >
+        <md-list-item >
+          <h4 md-line>Order n°{{order.id}}</h4>
+          <p md-line *ngFor="let bundle of order.bundles"> {{bundle.name}} </p>
+        </md-list-item>
+      </div>
+    </div>
+  </md-list>
+</div>

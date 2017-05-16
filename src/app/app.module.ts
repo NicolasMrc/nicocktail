@@ -20,7 +20,7 @@ import {BundleService} from "./services/BundleService";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDialogModule, MdIconModule, MdInputModule, MdOption,
-  MdOptionModule,
+  MdOptionModule, MdProgressSpinnerModule,
   MdRadioButton,
   MdRadioModule, MdSelectModule,
   MdSidenavModule,
@@ -48,6 +48,9 @@ import { AdminBundleNewComponent } from './admin-bundle-new/admin-bundle-new.com
 import {UserGuardService} from "./services/auth/user-guard.service";
 import {Hasher} from "./services/auth/hasher.service";
 import { DialogSigninComponent } from './dialog/dialog-signin/dialog-signin.component';
+import { DialogPaymentComponent } from './dialog/dialog-payment/dialog-payment.component';
+import { OrdersComponent } from './orders/orders.component';
+import {OrderService} from "./services/OrderService";
 
 
 const appRoutes: Routes = [
@@ -61,6 +64,7 @@ const appRoutes: Routes = [
   { path: 'sign-in', component: SigninComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'account', component: ManageAccountComponent },
+  { path: 'orders', component: OrdersComponent, canActivate: [UserGuardService] },
   {
     path: 'admin',
     component: AdminComponent,
@@ -112,6 +116,8 @@ const appRoutes: Routes = [
     DialogAddToBundleComponent,
     AdminBundleNewComponent,
     DialogSigninComponent,
+    DialogPaymentComponent,
+    OrdersComponent,
 
   ],
   imports: [
@@ -134,7 +140,8 @@ const appRoutes: Routes = [
     MdCardModule,
     MdChipsModule,
     MdOptionModule,
-    MdSelectModule
+    MdSelectModule,
+    MdProgressSpinnerModule
 
   ],
   providers: [
@@ -147,13 +154,15 @@ const appRoutes: Routes = [
     AuthService,
     AuthGuardService,
     Hasher,
-    UserGuardService
+    UserGuardService,
+    OrderService
   ],
   entryComponents:[
     DialogEditBundleComponent,
     DialogConfirmationComponent,
     DialogAddToBundleComponent,
-    DialogSigninComponent
+    DialogSigninComponent,
+    DialogPaymentComponent
   ],
   bootstrap: [AppComponent]
 })

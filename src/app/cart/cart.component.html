@@ -1,32 +1,130 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h1 class="title">Cart</h1>
-    </div>
-  </div>
 
-    <div class="row">
-      <div class="col-8">
-      <md-list>
-        <div class="row list" *ngFor="let bundle of bundles">
-          <md-divider></md-divider>
-          <div class="col-2">
-            <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/bundles/'+bundle.image+')'"></div>
-          </div>
-          <div class="col-7" >
-            <md-list-item >
-              <h4 md-line>{{bundle.name}}</h4>
-              <p md-line> {{bundle.description}} </p>
-              <p md-line> {{bundle.price}} $ </p>
-            </md-list-item>
-          </div>
-          <div class="col-3">
-            <button md-raised-button (click)="removeFromCart(bundle)" class="float-right btn-remove btn-outline-danger"><md-icon>delete</md-icon> Remove</button>
+
+    <div class="row" >
+      <div class="col-12" *ngIf="!isCheckingOut">
+          <h1 class="title">Cart</h1>
+        </div>
+        <div class="col-12" *ngIf="isCheckingOut">
+          <h1 class="title">Shipping Address</h1>
+        </div>
+
+      <div class="col-8 list" *ngIf="!isCheckingOut">
+        <div class="row" *ngIf="bundles.length == 0">
+          <div class="col">
+            <md-divider></md-divider>
+            <p>Your cart is empty</p>
+            <button routerLink="/shop" md-raised-button class="btn-outline-info"><md-icon>shopping_cart</md-icon> Go shopping !</button>
           </div>
         </div>
-      </md-list>
+        <md-list>
+          <div class="row " *ngFor="let bundle of bundles">
+            <md-divider></md-divider>
+            <div class="col-2">
+              <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/bundles/'+bundle.image+')'"></div>
+            </div>
+            <div class="col-7" >
+              <md-list-item >
+                <h4 md-line>{{bundle.name}}</h4>
+                <p md-line> {{bundle.description}} </p>
+                <p md-line> {{bundle.price}} $ </p>
+              </md-list-item>
+            </div>
+            <div class="col-3">
+              <button md-raised-button (click)="removeFromCart(bundle)" class="float-right btn-remove btn-outline-danger"><md-icon>delete</md-icon> Remove</button>
+            </div>
+          </div>
+        </md-list>
       </div>
-      <div class="col-4">
+
+      <div class="col-8 list" *ngIf="isCheckingOut">
+
+
+
+        <div class="row">
+          <div class="col-12 first-address-input">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Address" [(ngModel)]="shippingAddress.road">
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-6 col-xs-12">
+            <md-input-container>
+              <input type="text" mdInput placeholder="City" [(ngModel)]="shippingAddress.city">
+            </md-input-container>
+          </div>
+          <div class=" col-md-6 col-xs-12">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="shippingAddress.zipcode">
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-6 col-xs-12">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Province" [(ngModel)]="shippingAddress.province">
+            </md-input-container>
+          </div>
+          <div class=" col-md-6 col-xs-12">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Country" [(ngModel)]="shippingAddress.country">
+            </md-input-container>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="col">
+          <h1 class="title title-address">Billing Address</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <md-input-container>
+            <input type="text" mdInput placeholder="Address" [(ngModel)]="billingAddress.road">
+          </md-input-container>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=" col-md-6 col-xs-12">
+          <md-input-container>
+            <input type="text" mdInput placeholder="City" [(ngModel)]="billingAddress.city">
+          </md-input-container>
+        </div>
+        <div class=" col-md-6 col-xs-12">
+          <md-input-container>
+            <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="billingAddress.zipcode">
+          </md-input-container>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=" col-md-6 col-xs-12">
+          <md-input-container>
+            <input type="text" mdInput placeholder="Province" [(ngModel)]="billingAddress.province">
+          </md-input-container>
+        </div>
+        <div class=" col-md-6 col-xs-12">
+          <md-input-container>
+            <input type="text" mdInput placeholder="Country" [(ngModel)]="billingAddress.country">
+          </md-input-container>
+        </div>
+      </div>
+
+        <div class="row">
+          <div class="col">
+            <button md-raised-button (click)="proceedPayment()" class="float-right btn-outline-success"><md-icon>payment</md-icon> Proceed Payment</button>
+          </div>
+        </div>
+
+    </div>
+
+
+      <div class="col-4" *ngIf="bundles.length > 0">
         <h4>Total Price</h4>
         <md-divider></md-divider>
         <div *ngFor="let bundle of bundles">
@@ -39,17 +137,11 @@
         <md-divider></md-divider>
         <p>Total : {{total}}$</p>
         <md-divider></md-divider>
-        <button md-raised-button class="btn-outline-success"><md-icon>payment</md-icon> Check out</button>
+        <button (click)="checkOut()" *ngIf="!isCheckingOut && bundles.length > 0" md-raised-button class="btn-outline-success"><md-icon>payment</md-icon> Check out</button>
       </div>
     </div>
 
 
-  <div class="row" *ngIf="bundles.length == 0">
-    <div class="col">
-      <md-divider></md-divider>
-      <p>Your cart is empty</p>
-      <button routerLink="shop" md-raised-button class="btn-outline-info"><md-icon>shopping_cart</md-icon> Go shopping !</button>
-    </div>
-  </div>
+
 
 </div>

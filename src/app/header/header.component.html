@@ -18,6 +18,8 @@
       <a class="nav-item nav-link hidden-sm-up"   *ngIf="this.authService.isLoggedIn" routerLink="/wishlist" data-target="#navbarNavAltMarkup" data-toggle="collapse"><i class="fa fa-heart"></i> Wishlist</a>
       <a class="nav-item nav-link hidden-xs-down" *ngIf="this.authService.isLoggedIn" routerLink="/cart" ><i class="fa fa-shopping-cart"></i> Cart <span class="chip">{{this.authService.currentUser.cart.length}}</span></a>
       <a class="nav-item nav-link hidden-sm-up"   *ngIf="this.authService.isLoggedIn" routerLink="/cart" data-target="#navbarNavAltMarkup" data-toggle="collapse"> Cart </a>
+      <a class="nav-item nav-link hidden-xs-down" *ngIf="this.authService.isLoggedIn" routerLink="/orders" ><i class="fa fa-list"></i> Orders </a>
+      <a class="nav-item nav-link hidden-sm-up"   *ngIf="this.authService.isLoggedIn" routerLink="/orders" data-target="#navbarNavAltMarkup" data-toggle="collapse"> Orders </a>
 
     </div>
 

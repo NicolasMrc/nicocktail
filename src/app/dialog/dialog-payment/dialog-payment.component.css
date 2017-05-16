@@ -1,0 +1,11 @@
+.payment{
+  height: 130px;
+  width: 300px;
+}
+.title{
+  margin-bottom: 30px;
+}
+
+md-input-container{
+  width: 100%;
+}
