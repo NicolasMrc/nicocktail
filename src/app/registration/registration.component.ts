@@ -5,6 +5,8 @@ import {Hasher} from "../services/auth/hasher.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth/auth.service";
 import {MdSnackBar} from "@angular/material";
+import {Bundle} from "../../entities/Bundle";
+import {Address} from "../../entities/Address";
 
 @Component({
   selector: 'app-registration',
@@ -37,6 +39,9 @@ export class RegistrationComponent implements OnInit {
 
       this.userService.addUser(this.newUser).subscribe(user=>{
         if(user != null){
+          user.cart = [];
+          user.wishlist = [];
+          user.address = new Address();
           this.authService.setUser(user);
           this.router.navigate(['/home']);
           this.snack.open("Welcome " + user.firstname + '!', null, {duration : 2000});

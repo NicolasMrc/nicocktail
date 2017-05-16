@@ -17,7 +17,7 @@ export class User{
     public orders? : Order[],
     public email? : string,
     public password? : string,
-    public cart? : Bundle[],
+    public cart : Bundle[] = [],
     public wishlist? : Bundle[],
     public api_token? : string,
     public role : string = "user",
