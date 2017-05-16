@@ -21,7 +21,6 @@ export class CartComponent implements OnInit{
 
   ngOnInit() {
     if (this.authService.currentUser.email){
-      console.log(this.authService.currentUser);
       this.bundles = this.authService.currentUser.cart;
       for(let bundle of this.bundles){
         this.total += bundle.price;

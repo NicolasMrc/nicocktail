@@ -1,4 +1,6 @@
 import {Bundle} from "./Bundle";
+import {Address} from "./Address";
+import {Order} from "./Order";
 /**
  * Created by Nico on 04/05/2017.
  */
@@ -7,14 +9,11 @@ import {Bundle} from "./Bundle";
 
 export class User{
 
-
   constructor(
     public firstname? : string,
     public lastname? : string,
-    public zipCode? : string,
-    public address? : string,
-    public city? : string,
-    public country? : string,
+    public address : Address = new Address(),
+    public orders? : Order[],
     public email? : string,
     public password? : string,
     public cart? : Bundle[],

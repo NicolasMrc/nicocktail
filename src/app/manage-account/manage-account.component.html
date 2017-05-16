@@ -9,12 +9,12 @@
     <div class="row">
       <div class=" col-md-4 offset-md-2 col-xs-12">
         <md-input-container>
-          <input type="text" mdInput placeholder="Firstname" [(ngModel)]="this.authService.currentUser.firstname">
+          <input type="text" mdInput placeholder="Firstname" [(ngModel)]="user.firstname">
         </md-input-container>
       </div>
       <div class=" col-md-4 col-xs-12">
         <md-input-container>
-          <input type="text" mdInput placeholder="Lastname" [(ngModel)]="this.authService.currentUser.lastname">
+          <input type="text" mdInput placeholder="Lastname" [(ngModel)]="user.lastname">
         </md-input-container>
       </div>
     </div>
@@ -22,10 +22,46 @@
     <div class="row">
       <div class="col-md-8 offset-md-2  col-xs-12">
         <md-input-container>
-          <input type="text" mdInput placeholder="Email" [(ngModel)]="this.authService.currentUser.email">
+          <input type="text" mdInput placeholder="Email" [(ngModel)]="user.email">
         </md-input-container>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2  col-xs-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Address" [(ngModel)]="user.address.road">
+        </md-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-4 offset-md-2 col-xs-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="City" [(ngModel)]="user.address.city">
+        </md-input-container>
+      </div>
+      <div class=" col-md-4 col-xs-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="user.address.zipcode">
+        </md-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-4 offset-md-2 col-xs-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Province" [(ngModel)]="user.address.province">
+        </md-input-container>
+      </div>
+      <div class=" col-md-4 col-xs-12">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Country" [(ngModel)]="user.address.country">
+        </md-input-container>
+      </div>
+    </div>
+
+
 
     <div class="row">
       <div class="col-md-2 col-xs-12 offset-md-8">
