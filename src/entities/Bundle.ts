@@ -13,10 +13,8 @@ export class Bundle{
     public description? : string,
     public image : string = "",
     //public size? : string,
-    //public priceSmall? : number,
-    //public priceMedium? : number,
-    //public priceLarge? : number,
-
+    public price? : number,
+    public discount? : number,
     public alcohols? : Alcohol[],
     public softs? : Soft[],
     public extras? : Extra[],

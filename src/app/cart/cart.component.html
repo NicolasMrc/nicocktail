@@ -5,24 +5,44 @@
     </div>
   </div>
 
-  <md-list>
-    <div class="row" *ngFor="let bundle of bundles">
-      <md-divider></md-divider>
-      <div class="col-2">
-        <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/bundles/'+bundle.image+')'"></div>
+    <div class="row">
+      <div class="col-8">
+      <md-list>
+        <div class="row list" *ngFor="let bundle of bundles">
+          <md-divider></md-divider>
+          <div class="col-2">
+            <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/bundles/'+bundle.image+')'"></div>
+          </div>
+          <div class="col-7" >
+            <md-list-item >
+              <h4 md-line>{{bundle.name}}</h4>
+              <p md-line> {{bundle.description}} </p>
+              <p md-line> {{bundle.price}} $ </p>
+            </md-list-item>
+          </div>
+          <div class="col-3">
+            <button md-raised-button (click)="removeFromCart(bundle)" class="float-right btn-remove btn-outline-danger"><md-icon>delete</md-icon> Remove</button>
+          </div>
+        </div>
+      </md-list>
       </div>
-      <div class="col-8" >
-        <md-list-item >
-          <h4 md-line>{{bundle.name}}</h4>
-          <p md-line> {{bundle.description}} </p>
-          <p md-line> 30 $ </p>
-        </md-list-item>
-      </div>
-      <div class="col-2">
-        <button md-raised-button (click)="removeFromCart(bundle)" class="btn-outline-danger"><md-icon>delete</md-icon> Remove</button>
+      <div class="col-4">
+        <h4>Total Price</h4>
+        <md-divider></md-divider>
+        <div *ngFor="let bundle of bundles">
+          <p>{{bundle.price}} $</p>
+        </div>
+
+        <md-divider></md-divider>
+        <p>Taxes : {{taxes}}$</p>
+        <p>Delivery Fee : 3$</p>
+        <md-divider></md-divider>
+        <p>Total : {{total}}$</p>
+        <md-divider></md-divider>
+        <button md-raised-button class="btn-outline-success"><md-icon>payment</md-icon> Check out</button>
       </div>
     </div>
-  </md-list>
+
 
   <div class="row" *ngIf="bundles.length == 0">
     <div class="col">

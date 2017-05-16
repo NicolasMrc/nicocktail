@@ -44,3 +44,11 @@
 .navbar-admin .navbar-nav button{
   margin-left: 10px;
 }
+
+.chip{
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 50px;
+  padding:5px 10px 5px 10px;
+  margin-left: 5px;
+  font-size: 12px;
+}

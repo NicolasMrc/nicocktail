@@ -14,6 +14,8 @@ export class CartComponent implements OnInit{
 
   bundles : Bundle[] = [];
   user : User = new User();
+  total :  number = 0;
+  taxes : number = 0;
 
   constructor(private authService : AuthService, private userService : UserService, private snack : MdSnackBar) { }
 
@@ -21,6 +23,11 @@ export class CartComponent implements OnInit{
     if (this.authService.currentUser.email){
       console.log(this.authService.currentUser);
       this.bundles = this.authService.currentUser.cart;
+      for(let bundle of this.bundles){
+        this.total += bundle.price;
+      }
+      this.taxes = 0.15 * this.total;
+      this.total += this.taxes + 3;
     } else {
       //this.
     }

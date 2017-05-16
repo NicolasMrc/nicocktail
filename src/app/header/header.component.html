@@ -16,8 +16,9 @@
       <a class="nav-item nav-link hidden-sm-up"   routerLink="/drink-box" data-target="#navbarNavAltMarkup" data-toggle="collapse"><i class="fa fa-gift"></i> DrinkBox</a>
       <a class="nav-item nav-link hidden-xs-down" *ngIf="this.authService.isLoggedIn" routerLink="/wishlist" ><i class="fa fa-heart"></i> Wishlist</a>
       <a class="nav-item nav-link hidden-sm-up"   *ngIf="this.authService.isLoggedIn" routerLink="/wishlist" data-target="#navbarNavAltMarkup" data-toggle="collapse"><i class="fa fa-heart"></i> Wishlist</a>
-      <a class="nav-item nav-link hidden-xs-down" *ngIf="this.authService.isLoggedIn" routerLink="/cart" ><i class="fa fa-shopping-cart"></i> Cart</a>
-      <a class="nav-item nav-link hidden-sm-up"   *ngIf="this.authService.isLoggedIn" routerLink="/cart" data-target="#navbarNavAltMarkup" data-toggle="collapse"> Cart</a>
+      <a class="nav-item nav-link hidden-xs-down" *ngIf="this.authService.isLoggedIn" routerLink="/cart" ><i class="fa fa-shopping-cart"></i> Cart <span class="chip">{{this.authService.currentUser.cart.length}}</span></a>
+      <a class="nav-item nav-link hidden-sm-up"   *ngIf="this.authService.isLoggedIn" routerLink="/cart" data-target="#navbarNavAltMarkup" data-toggle="collapse"> Cart </a>
+
     </div>
 
     <div class="form-inline my-2 my-lg-0" *ngIf="!authService.isLoggedIn">
