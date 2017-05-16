@@ -5,8 +5,8 @@
 
 md-divider{
   display: block;
-  border-bottom: 1px solid rgba(0,0,0,0.3);
-  width: 100%;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  width: 95%;
 }
 
 p{
@@ -14,7 +14,48 @@ p{
   font-size: 13px;
 }
 
-.tab-content{
-  margin-top: 40px;
+.order-title{
+  margin-bottom: 30px;
 }
 
+.order{
+  margin-bottom: 30px;
+}
+
+.bundle-name{
+  margin-top: 25px;
+}
+
+.header-image{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+md-progress-bar{
+  margin-top: 11px;
+}
+
+.purple{
+  color: #5e35b1;
+}
+
+.tracking-text{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.informations{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.calendar{
+  position: relative;
+  top:-4px;
+  left:-5px;
+}

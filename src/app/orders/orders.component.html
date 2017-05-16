@@ -8,43 +8,61 @@
 
   <div class="row">
     <div class="col-12">
-      <md-card class="tab-content" *ngFor="let order of orders">
+      <md-card class="tab-content order" *ngFor="let order of orders">
+        <div class="row">
+          <div class="col-6">
+            <h4 class="order-title">Order n°{{order.id}}</h4>
+          </div>
+          <div class="col-6">
+            <p class="float-right"> {{order.created_at | date : 'yMd'}}</p><md-icon class="float-right calendar">event</md-icon>
+          </div>
+        </div>
         <div class="row">
           <div class="col-12">
             <md-tab-group >
               <md-tab label="Bundles">
-                <div class="row tab-content">
-                  <div class="col-12">
-                    <p *ngFor="let bundle of order.bundles">{{bundle.name}}</p>
+                <div class="row tab-content" *ngFor="let bundle of order.bundles">
+                  <div class="col-2">
+                    <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/bundles/'+bundle.image+')'"></div>
                   </div>
+                  <div class="col-10">
+                    <p class="bundle-name">{{bundle.name}} - {{bundle.price}}$</p>
+                  </div>
+                  <md-divider class="d-block mx-auto"></md-divider>
                 </div>
               </md-tab>
               <md-tab label="Order Tracking">
                 <div class="row tab-content">
-                  <div class="col-12"><p style="margin-bottom: 30px">Order on its way !</p></div>
-                  <div class="col-12">
+                  <div class="col-12"><p class="tracking-text">Your cocktails arrive soon !</p></div>
+                  <div class="col-1"><md-icon class="purple float-right">store</md-icon></div>
+                  <div class="col-10">
                     <md-progress-bar
                       class="example-margin"
-                      [mode]="determinate"
-                      [value]="80">
+                      [mode]="'buffer'"
+                      [value]="70">
                     </md-progress-bar>
                   </div>
+                  <div class="col-1"><md-icon class="purple">home</md-icon></div>
                 </div>
               </md-tab>
               <md-tab label="Shipping Information">
                 <div class="tab-content">
-                  <p md-line>{{order.billing_firstname}} {{order.billing_lastname}}</p>
-                  <p md-line>{{order.billing_road}}</p>
-                  <p md-line>{{order.billing_city}} {{order.billing_zipcode}} </p>
-                  <p md-line>{{order.billing_province}} {{order.billing_country}} </p>
+                  <div class="informations">
+                    <p>{{order.billing_firstname}} {{order.billing_lastname}}</p>
+                    <p>{{order.billing_road}}</p>
+                    <p>{{order.billing_city}} {{order.billing_zipcode}} </p>
+                    <p>{{order.billing_province}} {{order.billing_country}} </p>
+                  </div>
                 </div>
               </md-tab>
               <md-tab label="Billing Information">
                 <div class="tab-content">
-                  <p md-line>{{order.shipping_firstname}} {{order.shipping_lastname}}</p>
-                  <p md-line>{{order.shipping_road}}</p>
-                  <p md-line>{{order.shipping_city}} {{order.shipping_zipcode}}</p>
-                  <p md-line>{{order.shipping_province}} {{order.shipping_country}}</p>
+                  <div class="informations">
+                    <p>{{order.shipping_firstname}} {{order.shipping_lastname}}</p>
+                    <p>{{order.shipping_road}}</p>
+                    <p>{{order.shipping_city}} {{order.shipping_zipcode}}</p>
+                    <p>{{order.shipping_province}} {{order.shipping_country}}</p>
+                  </div>
                 </div>
               </md-tab>
             </md-tab-group>
