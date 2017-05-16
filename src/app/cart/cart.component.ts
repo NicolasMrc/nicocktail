@@ -22,24 +22,34 @@ export class CartComponent implements OnInit{
   total :  number = 0;
   taxes : number = 0;
   isCheckingOut : boolean = false;
-  billingAddress : Address = new Address();
-  shippingAddress : Address = new Address();
+  order = new Order();
 
   constructor(private authService : AuthService, private userService : UserService, private snack : MdSnackBar, private dialogService : DialogService, private viewContainerRef : ViewContainerRef, private router : Router, private orderService : OrderService) { }
 
   ngOnInit() {
     if (this.authService.currentUser.email){
       this.user = this.authService.currentUser;
-      this.billingAddress = this.authService.currentUser.address;
       this.bundles = this.authService.currentUser.cart;
-      for(let bundle of this.bundles){
-        this.total += bundle.price;
-      }
-      this.taxes = 0.15 * this.total;
-      this.total += this.taxes + 3;
+      this.computeTotal();
     } else {
       //this.
     }
+
+    this.order.shipping_firstname = "Nicolas";
+    this.order.shipping_lastname = "Mercier";
+    this.order.shipping_road = "777 Boulevard Robert Bourassa";
+    this.order.shipping_country = "Canada";
+    this.order.shipping_city = "Montreal";
+    this.order.shipping_zipcode = "H3C3Z7";
+    this.order.shipping_province = "Quebec";
+
+    this.order.billing_firstname = "Nicolas";
+    this.order.billing_lastname = "Mercier";
+    this.order.billing_road = "16 rue des noyers";
+    this.order.billing_country = "France";
+    this.order.billing_city = "Paris";
+    this.order.billing_zipcode = "75005";
+    this.order.billing_province = "";
   }
 
   removeFromCart(bundle){
@@ -49,7 +59,17 @@ export class CartComponent implements OnInit{
     this.userService.updateUser(user).subscribe(user => {
       this.authService.currentUser = user;
       this.snack.open(bundle.name + ' removed from your cart !', null, {duration : 2000})
+      this.computeTotal();
     });
+  }
+
+  computeTotal(){
+    this.total = 0;
+    for(let bundle of this.bundles){
+      this.total += bundle.price;
+    }
+    this.taxes = 0.15 * this.total;
+    this.total += this.taxes + 3;
   }
 
   checkOut(){
@@ -58,22 +78,22 @@ export class CartComponent implements OnInit{
 
   proceedPayment(){
     this.dialogService.payment(this.viewContainerRef).subscribe(() => {
-      let order = new Order();
-      order.billing_address = this.billingAddress;
-      order.shipping_address = this.shippingAddress;
-      order.bundles = this.user.cart;
-      order.user_id = this.user.id;
 
       if(this.user.orders == null){
         this.user.orders = [];
       }
-      this.user.orders.push(order);
+
       this.user.cart = [];
-      this.userService.updateUser(this.user).subscribe(user => {
+      this.order.user_id = this.authService.currentUser.id;
+      this.order.bundles = this.bundles;
+
+      this.orderService.create(this.order).subscribe(order => {
+        this.bundles = [];
+        this.user.orders.push(order);
         this.snack.open('Order sent !', null, { duration : 2000 });
-        this.bundles = user.cart;
         this.isCheckingOut = false;
-        //this.router.navigate(['/orders']);
+        this.authService.currentUser.cart = [];
+        this.userService.updateUser(this.authService.currentUser).subscribe();
       })
     });
   }

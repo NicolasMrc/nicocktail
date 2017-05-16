@@ -1,12 +1,12 @@
 <div class="container">
 
 
-    <div class="row" >
+    <div class="row cart" >
       <div class="col-12" *ngIf="!isCheckingOut">
           <h1 class="title">Cart</h1>
         </div>
         <div class="col-12" *ngIf="isCheckingOut">
-          <h1 class="title">Shipping Address</h1>
+          <h1 class="title">Shipping Informations</h1>
         </div>
 
       <div class="col-8 list" *ngIf="!isCheckingOut">
@@ -39,12 +39,23 @@
 
       <div class="col-8 list" *ngIf="isCheckingOut">
 
-
+        <div class="row first-address-input">
+          <div class=" col-md-6 col-xs-12 ">
+            <md-input-container>
+              <input type="text" mdInput placeholder="First Name" [(ngModel)]="order.shipping_firstname">
+            </md-input-container>
+          </div>
+          <div class=" col-md-6 col-xs-12">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Last Name" [(ngModel)]="order.shipping_lastname">
+            </md-input-container>
+          </div>
+        </div>
 
         <div class="row">
-          <div class="col-12 first-address-input">
+          <div class="col-12 ">
             <md-input-container>
-              <input type="text" mdInput placeholder="Address" [(ngModel)]="shippingAddress.road">
+              <input type="text" mdInput placeholder="Address" [(ngModel)]="order.shipping_road">
             </md-input-container>
           </div>
         </div>
@@ -52,12 +63,12 @@
         <div class="row">
           <div class=" col-md-6 col-xs-12">
             <md-input-container>
-              <input type="text" mdInput placeholder="City" [(ngModel)]="shippingAddress.city">
+              <input type="text" mdInput placeholder="City" [(ngModel)]="order.shipping_city">
             </md-input-container>
           </div>
           <div class=" col-md-6 col-xs-12">
             <md-input-container>
-              <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="shippingAddress.zipcode">
+              <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="order.shipping_zipcode">
             </md-input-container>
           </div>
         </div>
@@ -65,26 +76,39 @@
         <div class="row">
           <div class=" col-md-6 col-xs-12">
             <md-input-container>
-              <input type="text" mdInput placeholder="Province" [(ngModel)]="shippingAddress.province">
+              <input type="text" mdInput placeholder="Province" [(ngModel)]="order.shipping_province">
             </md-input-container>
           </div>
           <div class=" col-md-6 col-xs-12">
             <md-input-container>
-              <input type="text" mdInput placeholder="Country" [(ngModel)]="shippingAddress.country">
+              <input type="text" mdInput placeholder="Country" [(ngModel)]="order.shipping_country">
             </md-input-container>
           </div>
         </div>
 
       <div class="row">
         <div class="col">
-          <h1 class="title title-address">Billing Address</h1>
+          <h1 class="title title-address">Billing Informations</h1>
         </div>
       </div>
+
+        <div class="row">
+          <div class=" col-md-6 col-xs-12">
+            <md-input-container>
+              <input type="text" mdInput placeholder="First Name" [(ngModel)]="order.billing_firstname">
+            </md-input-container>
+          </div>
+          <div class=" col-md-6 col-xs-12">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Last Name" [(ngModel)]="order.billing_lastname">
+            </md-input-container>
+          </div>
+        </div>
 
       <div class="row">
         <div class="col-12">
           <md-input-container>
-            <input type="text" mdInput placeholder="Address" [(ngModel)]="billingAddress.road">
+            <input type="text" mdInput placeholder="Address" [(ngModel)]="order.billing_road">
           </md-input-container>
         </div>
       </div>
@@ -92,12 +116,12 @@
       <div class="row">
         <div class=" col-md-6 col-xs-12">
           <md-input-container>
-            <input type="text" mdInput placeholder="City" [(ngModel)]="billingAddress.city">
+            <input type="text" mdInput placeholder="City" [(ngModel)]="order.billing_city">
           </md-input-container>
         </div>
         <div class=" col-md-6 col-xs-12">
           <md-input-container>
-            <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="billingAddress.zipcode">
+            <input type="text" mdInput placeholder="Zip Code" [(ngModel)]="order.billing_zipcode">
           </md-input-container>
         </div>
       </div>
@@ -105,12 +129,12 @@
       <div class="row">
         <div class=" col-md-6 col-xs-12">
           <md-input-container>
-            <input type="text" mdInput placeholder="Province" [(ngModel)]="billingAddress.province">
+            <input type="text" mdInput placeholder="Province" [(ngModel)]="order.billing_province">
           </md-input-container>
         </div>
         <div class=" col-md-6 col-xs-12">
           <md-input-container>
-            <input type="text" mdInput placeholder="Country" [(ngModel)]="billingAddress.country">
+            <input type="text" mdInput placeholder="Country" [(ngModel)]="order.billing_country">
           </md-input-container>
         </div>
       </div>
@@ -128,7 +152,7 @@
         <h4>Total Price</h4>
         <md-divider></md-divider>
         <div *ngFor="let bundle of bundles">
-          <p>{{bundle.price}} $</p>
+          <p>{{bundle.name}} : {{bundle.price}} $</p>
         </div>
 
         <md-divider></md-divider>
