@@ -87,4 +87,10 @@ export class AdminBundleEditComponent implements OnInit {
     this.bundleService.update(this.bundle).subscribe();
   }
 
+  save(){
+    this.bundleService.update(this.bundle).subscribe(()=>{
+      this.snack.open('Modification saved !', null, {duration : 2000});
+    });
+  }
+
 }
