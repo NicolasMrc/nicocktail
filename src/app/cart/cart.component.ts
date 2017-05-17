@@ -35,21 +35,16 @@ export class CartComponent implements OnInit{
       //this.
     }
 
-    this.order.shipping_firstname = "Nicolas";
-    this.order.shipping_lastname = "Mercier";
-    this.order.shipping_road = "777 Boulevard Robert Bourassa";
-    this.order.shipping_country = "Canada";
-    this.order.shipping_city = "Montreal";
-    this.order.shipping_zipcode = "H3C3Z7";
-    this.order.shipping_province = "Quebec";
+    this.order.billing_firstname = this.authService.currentUser.firstname;
+    this.order.billing_lastname = this.authService.currentUser.lastname;
 
-    this.order.billing_firstname = "Nicolas";
-    this.order.billing_lastname = "Mercier";
-    this.order.billing_road = "16 rue des noyers";
-    this.order.billing_country = "France";
-    this.order.billing_city = "Paris";
-    this.order.billing_zipcode = "75005";
-    this.order.billing_province = "";
+    if(this.authService.currentUser.address != null){
+      this.order.billing_road = this.authService.currentUser.address.road;
+      this.order.billing_country = this.authService.currentUser.address.country;
+      this.order.billing_city = this.authService.currentUser.address.city;
+      this.order.billing_zipcode = this.authService.currentUser.address.zipcode;
+      this.order.billing_province = this.authService.currentUser.address.province;
+    }
   }
 
   removeFromCart(bundle){
