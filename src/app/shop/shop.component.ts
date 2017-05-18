@@ -40,11 +40,26 @@ export class ShopComponent implements OnInit {
   addToWishlist(bundle : Bundle){
     if(this.authService.isLoggedIn){
       let user = this.authService.currentUser;
-      user.wishlist.push(bundle);
-      this.userService.updateUser(user).subscribe(user => {
-        this.authService.currentUser = user;
-        this.snack.open(bundle.name + ' added to your wishlist !', null, {duration : 2000})
-      });
+
+      var exist = false;
+
+      for(let wish of user.wishlist){
+        if (bundle.name == wish.name){
+          exist = true;
+        }
+      }
+
+      if(exist){
+        this.snack.open(bundle.name + ' is already in your wishlist !', null, {duration : 2000})
+      } else {
+        user.wishlist.push(bundle);
+        this.userService.updateUser(user).subscribe(user => {
+          this.authService.currentUser = user;
+          this.snack.open(bundle.name + ' added to your wishlist !', null, {duration : 2000})
+        });
+      }
+
+
     } else {
       this.dialogService.signinRequest(this.viewContainerRef).subscribe();
     }

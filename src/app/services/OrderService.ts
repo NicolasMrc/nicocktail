@@ -41,6 +41,7 @@ export class OrderService{
   }
 
   create (order: Order): Observable<Order> {
+    console.log(order);
     return this.http
       .post(this.url, order)
       .map(res => res.json() as Order)

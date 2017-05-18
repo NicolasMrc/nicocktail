@@ -17,6 +17,7 @@ import {OrderService} from "../services/OrderService";
 export class CartComponent implements OnInit{
 
   bundles : Bundle[] = [];
+  bundlesForOrder : Bundle[] = [];
   user : User = new User();
   total :  number = 0;
   taxes : number = 0;
@@ -30,7 +31,7 @@ export class CartComponent implements OnInit{
       this.user = this.authService.currentUser;
 
       this.bundles = this.authService.currentUser.cart;
-
+      this.bundlesForOrder = this.authService.currentUser.cart;
 
       var newArr = [];
 
@@ -99,7 +100,10 @@ export class CartComponent implements OnInit{
 
       this.user.cart = [];
       this.order.user_id = this.authService.currentUser.id;
-      this.order.bundles = this.authService.currentUser.cart;
+
+      this.order.bundles = [];
+
+      this.order.bundles = this.bundlesForOrder;
 
       this.orderService.create(this.order).subscribe(order => {
         this.bundles = [];
@@ -111,4 +115,5 @@ export class CartComponent implements OnInit{
       })
     });
   }
+
 }
