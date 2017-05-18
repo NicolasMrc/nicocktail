@@ -20,14 +20,15 @@
         <md-list>
           <div class="row " *ngFor="let bundle of bundles">
             <md-divider></md-divider>
-            <div class="col-1">
+            <div class="col-2">
               <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/bundles/'+bundle.image+')'"></div>
             </div>
-            <div class="col-8" >
-              <md-list-item >
+            <div class="col-7" >
+              <md-list-item>
                 <h4 md-line>{{bundle.name}}</h4>
                 <p md-line> {{bundle.description}} </p>
-                <p md-line> {{bundle.price}} $ </p>
+                <p md-line> price : {{bundle.price}} $ </p>
+                <p md-line> quantity : {{bundle.quantity}}</p>
               </md-list-item>
             </div>
             <div class="col-3">
@@ -152,7 +153,7 @@
         <h4>Total Price</h4>
         <md-divider></md-divider>
         <div *ngFor="let bundle of bundles">
-          <p>{{bundle.name}} : {{bundle.price}} $</p>
+          <p>{{bundle.name}} : {{bundle.price * bundle.quantity}} $</p>
         </div>
 
         <md-divider></md-divider>

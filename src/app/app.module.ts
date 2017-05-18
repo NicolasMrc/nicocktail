@@ -51,6 +51,7 @@ import { DialogSigninComponent } from './dialog/dialog-signin/dialog-signin.comp
 import { DialogPaymentComponent } from './dialog/dialog-payment/dialog-payment.component';
 import { OrdersComponent } from './orders/orders.component';
 import {OrderService} from "./services/OrderService";
+import {FileUploadModule} from "ng2-file-upload";
 
 
 const appRoutes: Routes = [
@@ -144,6 +145,7 @@ const appRoutes: Routes = [
     MdProgressSpinnerModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
+    FileUploadModule
 
   ],
   providers: [

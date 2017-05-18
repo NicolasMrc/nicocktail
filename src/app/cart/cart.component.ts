@@ -4,7 +4,6 @@ import {MdSnackBar} from "@angular/material";
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {UserService} from "../services/UserService";
 import {AuthService} from "../services/auth/auth.service";
-import {Address} from "../../entities/Address";
 import {DialogService} from "../services/DialogService";
 import {Router} from "@angular/router";
 import {Order} from "../../entities/Order";
@@ -29,7 +28,27 @@ export class CartComponent implements OnInit{
   ngOnInit() {
     if (this.authService.currentUser.email){
       this.user = this.authService.currentUser;
+
       this.bundles = this.authService.currentUser.cart;
+
+
+      var newArr = [];
+
+      for(let bundle of this.bundles) {
+        var exists = false;
+        for(let newItem of newArr) {
+          if(bundle.id == newItem.id) {
+            exists = true;
+            newItem.quantity++;
+          }
+        }
+        if(!exists && bundle.id != null) {
+          bundle.quantity = 1;
+          newArr.push(bundle);
+        }
+      }
+      this.bundles = newArr;
+
       this.computeTotal();
     } else {
       //this.
@@ -61,7 +80,7 @@ export class CartComponent implements OnInit{
   computeTotal(){
     this.total = 0;
     for(let bundle of this.bundles){
-      this.total += bundle.price;
+      this.total += bundle.price*bundle.quantity;
     }
     this.taxes = 0.15 * this.total;
     this.total += this.taxes + 3;
@@ -80,7 +99,7 @@ export class CartComponent implements OnInit{
 
       this.user.cart = [];
       this.order.user_id = this.authService.currentUser.id;
-      this.order.bundles = this.bundles;
+      this.order.bundles = this.authService.currentUser.cart;
 
       this.orderService.create(this.order).subscribe(order => {
         this.bundles = [];
@@ -92,5 +111,4 @@ export class CartComponent implements OnInit{
       })
     });
   }
-
 }

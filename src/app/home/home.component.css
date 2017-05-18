@@ -79,3 +79,15 @@
 .carousel{
   cursor: pointer;
 }
+
+.intro-title{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+md-divider{
+  width: 80%;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  margin-top: 30px;
+}

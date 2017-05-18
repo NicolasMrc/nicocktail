@@ -52,3 +52,8 @@ md-input-container{
 .cart{
   margin-bottom: 100px;
 }
+
+md-list-item p{
+  margin-bottom: 0;
+  font-size: 12px;
+}

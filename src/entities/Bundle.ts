@@ -18,5 +18,6 @@ export class Bundle{
     public alcohols? : Alcohol[],
     public softs? : Soft[],
     public extras? : Extra[],
+    public quantity : number = 1
   ){}
 }

@@ -10,6 +10,8 @@ import {MdSnackBar} from "@angular/material";
 import {Extra} from "../../entities/Extra";
 import {Soft} from "../../entities/Soft";
 import {Alcohol} from "../../entities/Alcohol";
+import {FileUploader} from "ng2-file-upload";
+import {AppSettings} from "../app-settings";
 
 @Component({
   selector: 'app-admin-bundle-new',
@@ -85,5 +87,11 @@ export class AdminBundleNewComponent implements OnInit {
       this.snack.open(this.bundle.name + ' created !', null, {duration : 2000});
       this.router.navigate(['/admin/bundle'])
     });
+  }
+
+  fileEvent(fileInput: any){
+    let file = fileInput.target.files[0];
+    let fileName = file.name;
+    console.log(fileName);
   }
 }
