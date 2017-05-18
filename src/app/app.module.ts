@@ -52,6 +52,7 @@ import { DialogPaymentComponent } from './dialog/dialog-payment/dialog-payment.c
 import { OrdersComponent } from './orders/orders.component';
 import {OrderService} from "./services/OrderService";
 import {FileUploadModule} from "ng2-file-upload";
+import { DialogAddToCartComponent } from './dialog/dialog-add-to-cart/dialog-add-to-cart.component';
 
 
 const appRoutes: Routes = [
@@ -119,6 +120,7 @@ const appRoutes: Routes = [
     DialogEditBundleComponent,
     DialogAddToBundleComponent,
     DialogConfirmationComponent,
+    DialogAddToCartComponent,
 
   ],
   imports: [

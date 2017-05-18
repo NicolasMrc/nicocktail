@@ -21,6 +21,20 @@ export class ShopComponent implements OnInit {
   ngOnInit() {
     this.bundleService.findAll().subscribe(bundles => {
       this.bundles = bundles;
+      if(this.authService.isLoggedIn){
+        for(let bundle of this.bundles){
+          var isWished = false;
+          for(let wish of this.authService.currentUser.wishlist){
+            if (bundle.name == wish.name){
+              isWished = true;
+              break;
+            }
+          }
+          if(isWished){
+            bundle.isWished = true;
+          }
+        }
+      }
     })
   }
 
@@ -50,11 +64,18 @@ export class ShopComponent implements OnInit {
       }
 
       if(exist){
-        this.snack.open(bundle.name + ' is already in your wishlist !', null, {duration : 2000})
+        let index = user.wishlist.indexOf(bundle);
+        user.wishlist.splice(index, 1);
+        this.userService.updateUser(user).subscribe(user => {
+          bundle.isWished = false;
+          this.authService.currentUser = user;
+          this.snack.open(bundle.name + ' removed from your wishlist !', null, {duration : 2000})
+        });
       } else {
         user.wishlist.push(bundle);
         this.userService.updateUser(user).subscribe(user => {
           this.authService.currentUser = user;
+          bundle.isWished = true;
           this.snack.open(bundle.name + ' added to your wishlist !', null, {duration : 2000})
         });
       }
