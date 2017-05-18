@@ -17,7 +17,7 @@ export class DialogPaymentComponent {
   pay(){
     this.isPaying = true;
     setTimeout(() => {
-      this.dialogRef.close();
+      this.dialogRef.close(true);
       this.snack.open('Payment Received !', null, {duration : 2000})
     }, 1500);
   }

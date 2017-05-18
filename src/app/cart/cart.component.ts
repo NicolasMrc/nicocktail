@@ -92,27 +92,31 @@ export class CartComponent implements OnInit{
   }
 
   proceedPayment(){
-    this.dialogService.payment(this.viewContainerRef).subscribe(() => {
+    this.dialogService.payment(this.viewContainerRef).subscribe(res => {
 
-      if(this.user.orders == null){
-        this.user.orders = [];
+      console.log(res);
+
+      if(res){
+        if(this.user.orders == null){
+          this.user.orders = [];
+        }
+
+        this.user.cart = [];
+        this.order.user_id = this.authService.currentUser.id;
+
+        this.order.bundles = [];
+
+        this.order.bundles = this.bundlesForOrder;
+
+        this.orderService.create(this.order).subscribe(order => {
+          this.bundles = [];
+          this.user.orders.push(order);
+          this.snack.open('Order sent !', null, { duration : 2000 });
+          this.isCheckingOut = false;
+          this.authService.currentUser.cart = [];
+          this.userService.updateUser(this.authService.currentUser).subscribe();
+        })
       }
-
-      this.user.cart = [];
-      this.order.user_id = this.authService.currentUser.id;
-
-      this.order.bundles = [];
-
-      this.order.bundles = this.bundlesForOrder;
-
-      this.orderService.create(this.order).subscribe(order => {
-        this.bundles = [];
-        this.user.orders.push(order);
-        this.snack.open('Order sent !', null, { duration : 2000 });
-        this.isCheckingOut = false;
-        this.authService.currentUser.cart = [];
-        this.userService.updateUser(this.authService.currentUser).subscribe();
-      })
     });
   }
 
