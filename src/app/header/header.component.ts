@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AuthService} from "../services/auth/auth.service";
+import {Bundle} from "../../entities/Bundle";
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,35 @@ import {AuthService} from "../services/auth/auth.service";
 })
 export class HeaderComponent implements OnInit {
 
-  nbItemsInCart : number = 0;
-
-  constructor(public authService : AuthService) { }
+  constructor(public authService : AuthService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    if(this.authService.isLoggedIn){
-      this.nbItemsInCart = this.authService.currentUser.cart.length;
+  }
+
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
+  }
+
+  computeLenght(bundles : Bundle[]){
+    if(bundles != null){
+      var bundles = this.authService.currentUser.cart;
+
+      var newArr = [];
+
+      for(let bundle of bundles) {
+        var exists = false;
+        for(let newItem of newArr) {
+          if(bundle.id == newItem.id) {
+            exists = true;
+            newItem.quantity++;
+          }
+        }
+        if(!exists && bundle.id != null) {
+          newArr.push(bundle);
+        }
+      }
+
+      return newArr.length;
     }
   }
 

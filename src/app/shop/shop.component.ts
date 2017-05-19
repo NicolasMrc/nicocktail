@@ -85,4 +85,22 @@ export class ShopComponent implements OnInit {
       this.dialogService.signinRequest(this.viewContainerRef).subscribe();
     }
   }
+
+  dialogToCart(bundle : Bundle){
+    if(this.authService.isLoggedIn){
+      this.dialogService.addToCart(this.viewContainerRef, bundle).subscribe(res => {
+          let user = this.authService.currentUser;
+          for(var i = 0; i < res; i++){
+            user.cart.push(bundle);
+          }
+          this.userService.updateUser(user).subscribe(user => {
+            this.authService.currentUser = user;
+            this.snack.open(bundle.name + ' added to your cart !', null, {duration : 2000})
+          });
+      })
+    } else {
+      this.dialogService.signinRequest(this.viewContainerRef).subscribe();
+    }
+
+  }
 }

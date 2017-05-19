@@ -1,0 +1,64 @@
+h4{
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+md-slider{
+  cursor: grab;
+  width: 100%;
+}
+
+.dialog{
+  padding: 30px;
+  padding-bottom: 0;
+  max-width: 800px;
+}
+
+md-divider{
+  width: 80%;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.content p{
+  margin-bottom: 0;
+}
+
+h6{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.nbClassesLabel{
+  position: relative;
+  top:10px;
+}
+
+md-chip.alcohol{
+  background-color: #f0ad4e;
+}
+
+md-chip.soft{
+  background-color: #5bc0de;
+}
+
+md-chip.extra{
+  background-color: #5cb85c;
+}
+
+md-chip-list md-chip.mat-chip{
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+
+button{
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  md-slider{
+    margin-top:15px;
+  }
+}

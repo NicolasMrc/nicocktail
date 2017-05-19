@@ -1,3 +1,48 @@
-<p>
-  dialog-add-to-cart works!
-</p>
+<div class="dialog">
+  <div class="row">
+    <div class="col">
+      <h4>{{dialogTitle}}</h4>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <p class="nbClassesLabel">choose the number of glasses :</p>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <md-slider
+        class="example-margin"
+        [max]="sliderMax"
+        [min]="sliderMin"
+        [step]="sliderStep"
+        [thumb-label]="sliderThumbLabel"
+        [tick-interval]="sliderTick"
+        [(ngModel)]="sliderValue" (input)="onChange($event)">
+      </md-slider>
+    </div>
+
+    <md-divider class="mx-auto"></md-divider>
+
+    <div class="col-12 content">
+      <h6>Price : {{bundlePrice}}$</h6>
+    </div>
+
+    <div class="col-12 content">
+      <h6>Content :</h6>
+
+      <md-chip-list>
+        <md-chip class="alcohol" *ngFor="let alcohol of bundle.alcohols">{{alcohol.name}} - {{alcoholQuantity}} mL</md-chip>
+        <md-chip class="soft" *ngFor="let soft of bundle.softs">{{soft.name}} - {{softQuantity}} mL</md-chip>
+        <md-chip class="extra" *ngFor="let extra of bundle.extras">{{extra.name}}</md-chip>
+      </md-chip-list>
+    </div>
+
+    <md-divider class="mx-auto"></md-divider>
+
+    <div class="col-12">
+      <button md-raised-button (click)="add()" class="float-right btn-outline-success"><md-icon>add_shopping_cart</md-icon> Add to cart</button>
+    </div>
+  </div>
+</div>
+

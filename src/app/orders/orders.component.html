@@ -26,7 +26,7 @@
                     <div md-card-avatar class="mx-auto header-image" [style.backgroundImage]="'url(assets/images/bundles/'+bundle.image+')'"></div>
                   </div>
                   <div class="col-10">
-                    <p class="bundle-name">{{bundle.name}} - {{bundle.price}}$</p>
+                    <p class="bundle-name">{{bundle.name}} - {{bundle.quantity * 10}} Cup Bundle - {{bundle.price * bundle.quantity}}$</p>
                   </div>
                   <md-divider class="d-block mx-auto"></md-divider>
                 </div>

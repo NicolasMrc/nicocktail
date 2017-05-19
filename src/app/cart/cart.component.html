@@ -26,13 +26,12 @@
             <div class="col-7" >
               <md-list-item>
                 <h4 md-line>{{bundle.name}}</h4>
-                <p md-line> {{bundle.description}} </p>
-                <p md-line> price : {{bundle.price}} $ </p>
-                <p md-line> quantity : {{bundle.quantity}}</p>
+                <p md-line> {{bundle.quantity * 10}} Cup Bundle</p>
+                <p md-line> {{bundle.price * bundle.quantity}} $ </p>
               </md-list-item>
             </div>
             <div class="col-3">
-              <button md-raised-button (click)="removeFromCart(bundle)" class="float-right btn-remove btn-outline-danger"><md-icon>delete</md-icon> Remove</button>
+              <button md-raised-button (click)="removeFromCart(bundle)" class="float-right btn-remove btn-outline-danger"><md-icon>remove_shopping_cart</md-icon></button>
             </div>
           </div>
         </md-list>

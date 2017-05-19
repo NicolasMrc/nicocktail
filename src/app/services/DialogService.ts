@@ -14,6 +14,8 @@ import {DialogEditBundleComponent} from "../dialog/dialog-edit-bundle/dialog-edi
 import {DialogAddToBundleComponent} from "../dialog/dialog-add-to-bundle/dialog-add-to-bundle.component";
 import {DialogSigninComponent} from "../dialog/dialog-signin/dialog-signin.component";
 import {DialogPaymentComponent} from "../dialog/dialog-payment/dialog-payment.component";
+import {DialogAddToCartComponent} from "../dialog/dialog-add-to-cart/dialog-add-to-cart.component";
+import {Bundle} from "../../entities/Bundle";
 
 @Injectable()
 export class DialogService {
@@ -81,6 +83,16 @@ export class DialogService {
     return dialogRef.afterClosed();
   }
 
+  public addToCart(viewContainerRef: ViewContainerRef, bundle : Bundle): Observable<any>{
+    let dialogRef: MdDialogRef<DialogAddToCartComponent>;
+    let config = new MdDialogConfig();
+    config.viewContainerRef = viewContainerRef;
+
+    dialogRef = this.dialog.open(DialogAddToCartComponent, config);
+    dialogRef.componentInstance.bundle = bundle;
+
+    return dialogRef.afterClosed();
+  }
 
 
 }

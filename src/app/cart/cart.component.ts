@@ -69,11 +69,14 @@ export class CartComponent implements OnInit{
 
   removeFromCart(bundle){
     let user = this.authService.currentUser;
-    let index = user.cart.indexOf(bundle);
-    user.cart.splice(index, 1);
+
+    this.user.cart = this.user.cart.filter(item => item.name !== bundle.name);
+
     this.userService.updateUser(user).subscribe(user => {
       this.authService.currentUser = user;
       this.snack.open(bundle.name + ' removed from your cart !', null, {duration : 2000})
+      let index = this.bundles.indexOf(bundle);
+      this.bundles.splice(index, 1);
       this.computeTotal();
     });
   }

@@ -4,6 +4,7 @@
       <h1 class="title">Our Bundles</h1>
     </div>
   </div>
+
   <div class="row">
     <div class="bundle col-xs-12 col-sm-6 col-md-4" *ngFor="let bundle of bundles">
       <md-card class="example-card">
@@ -23,7 +24,7 @@
         <md-card-actions>
           <button *ngIf="bundle.isWished" md-raised-button (click)="addToWishlist(bundle)" class="is-wished btn-outline-danger"><md-icon>favorite_border</md-icon></button>
           <button *ngIf="!bundle.isWished" md-raised-button (click)="addToWishlist(bundle)" class="btn-outline-danger"><md-icon>favorite_border</md-icon></button>
-          <button md-raised-button (click)="addToCart(bundle)" class="btn-outline-info"><md-icon>add_shopping_cart</md-icon></button>
+          <button md-raised-button (click)="dialogToCart(bundle)" class="btn-outline-info"><md-icon>add_shopping_cart</md-icon></button>
         </md-card-actions>
       </md-card>
     </div>

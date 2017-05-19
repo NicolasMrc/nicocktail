@@ -19,11 +19,12 @@ import {ExtraService} from "./services/ExtraService";
 import {BundleService} from "./services/BundleService";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDialogModule, MdIconModule, MdInputModule, MdOption,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDialogModule, MdIconModule, MdInputModule,
+  MdMenuModule, MdOption,
   MdOptionModule, MdProgressBarModule, MdProgressSpinnerModule,
   MdRadioButton,
   MdRadioModule, MdSelectModule,
-  MdSidenavModule,
+  MdSidenavModule, MdSliderModule,
   MdSnackBarModule, MdTabsModule, MdTooltipModule
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -129,6 +130,7 @@ const appRoutes: Routes = [
     JsonpModule,
     MdIconModule,
     MdCardModule,
+    MdMenuModule,
     MdTabsModule,
     MdInputModule,
     BrowserModule,
@@ -138,16 +140,17 @@ const appRoutes: Routes = [
     MdSelectModule,
     MdOptionModule,
     MdDialogModule,
+    MdSliderModule,
     MdTooltipModule,
     MdSidenavModule,
     MdSnackBarModule,
+    FileUploadModule,
     MdCheckboxModule,
     NgbModule.forRoot(),
     MdProgressBarModule,
     MdProgressSpinnerModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    FileUploadModule
 
   ],
   providers: [
@@ -164,11 +167,12 @@ const appRoutes: Routes = [
     AuthGuardService,
   ],
   entryComponents:[
-    DialogEditBundleComponent,
-    DialogConfirmationComponent,
-    DialogAddToBundleComponent,
     DialogSigninComponent,
-    DialogPaymentComponent
+    DialogPaymentComponent,
+    DialogAddToCartComponent,
+    DialogEditBundleComponent,
+    DialogAddToBundleComponent,
+    DialogConfirmationComponent,
   ],
   bootstrap: [AppComponent]
 })
