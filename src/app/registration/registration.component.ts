@@ -21,7 +21,7 @@ export class RegistrationComponent implements OnInit {
 
   isRegistering = false;
 
-  git captcha : boolean = false;
+  captcha : boolean = false;
 
   constructor(private userService : UserService, private router : Router, private authService : AuthService, private snack : MdSnackBar) { }
 
