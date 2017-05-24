@@ -56,3 +56,11 @@ md-chip.extra{
   color: #ffffff;
 }
 
+md-input-container{
+  margin-bottom: 20px;
+}
+
+md-chip.search:hover{
+  cursor: pointer;
+  background-color: #d9534f;
+}

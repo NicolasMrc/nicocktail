@@ -20,6 +20,7 @@ export class User{
     public cart : Bundle[] = [],
     public wishlist? : Bundle[],
     public api_token? : string,
+    public is_verified? : boolean,
     public role : string = "user",
     public isSubscriber : boolean = false
   ){}

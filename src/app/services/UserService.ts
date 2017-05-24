@@ -18,6 +18,7 @@ import {Order} from "../../entities/Order";
 export class UserService{
 
   private url = AppSettings.api_endpoint + 'user';
+  private verifyUrl = AppSettings.api_endpoint + 'verify';
 
   private authService : AuthService;
 
@@ -80,6 +81,12 @@ export class UserService{
 
   delete(id: number): Observable<void> {
     return this.http.delete(this.url + '/' + id, this.authService.currentUser.api_token)
+      .map(() => null)
+      .catch(this.handleError);
+  }
+
+  verify(id : number, token : string){
+    return this.http.get(this.verifyUrl + '/' + id + '/' + token)
       .map(() => null)
       .catch(this.handleError);
   }

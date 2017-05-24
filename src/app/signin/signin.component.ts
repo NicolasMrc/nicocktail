@@ -36,7 +36,9 @@ export class SigninComponent implements OnInit {
           }
           this.snack.open('Welcome ' + this.authService.currentUser.firstname, null , {duration: 2000});
           this.router.navigate([redirect]);
-
+        } else {
+          this.isLoggingIn = false;
+          this.password = "";
         }
       }
       );

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,7 @@ import {ExtraService} from "./services/ExtraService";
 import {BundleService} from "./services/BundleService";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
+  MdAutocompleteModule,
   MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdDialogModule, MdIconModule, MdInputModule,
   MdMenuModule, MdOption,
   MdOptionModule, MdProgressBarModule, MdProgressSpinnerModule,
@@ -54,6 +55,8 @@ import { OrdersComponent } from './orders/orders.component';
 import {OrderService} from "./services/OrderService";
 import {FileUploadModule} from "ng2-file-upload";
 import { DialogAddToCartComponent } from './dialog/dialog-add-to-cart/dialog-add-to-cart.component';
+import { VerifyComponent } from './verify/verify.component';
+import {RecaptchaModule} from "ng-recaptcha";
 
 
 const appRoutes: Routes = [
@@ -67,6 +70,7 @@ const appRoutes: Routes = [
   { path: 'sign-in', component: SigninComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'account', component: ManageAccountComponent },
+  { path: 'verify/:id/:token', component: VerifyComponent },
   { path: 'orders', component: OrdersComponent, canActivate: [UserGuardService] },
   {
     path: 'admin',
@@ -122,6 +126,7 @@ const appRoutes: Routes = [
     DialogAddToBundleComponent,
     DialogConfirmationComponent,
     DialogAddToCartComponent,
+    VerifyComponent,
 
   ],
   imports: [
@@ -147,11 +152,13 @@ const appRoutes: Routes = [
     FileUploadModule,
     MdCheckboxModule,
     NgbModule.forRoot(),
+    ReactiveFormsModule,
     MdProgressBarModule,
+    MdAutocompleteModule,
     MdProgressSpinnerModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-
+    RecaptchaModule.forRoot(),
   ],
   providers: [
     Hasher,

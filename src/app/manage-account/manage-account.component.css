@@ -16,3 +16,15 @@ button{
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+md-icon{
+  cursor: pointer;
+}
+
+.unverified{
+  color: #f0ad4e;
+}
+
+.verified{
+  color: #5cb85c;
+}

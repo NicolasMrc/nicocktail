@@ -21,7 +21,9 @@ export class RegistrationComponent implements OnInit {
 
   isRegistering = false;
 
-  constructor(private userService : UserService, private hasher : Hasher, private router : Router, private authService : AuthService, private snack : MdSnackBar) { }
+  git captcha : boolean = false;
+
+  constructor(private userService : UserService, private router : Router, private authService : AuthService, private snack : MdSnackBar) { }
 
   ngOnInit() {
     this.newUser.password = "";
@@ -45,6 +47,10 @@ export class RegistrationComponent implements OnInit {
           this.authService.setUser(user);
           this.router.navigate(['/home']);
           this.snack.open("Welcome " + user.firstname + '!', null, {duration : 2000});
+        } else {
+          this.isRegistering = false;
+          this.newUser.password = "";
+          this.confirmationPassword = "";
         }
       })
     }
@@ -79,6 +85,14 @@ export class RegistrationComponent implements OnInit {
       this.snack.open("Passwords does not match !", null, {duration: 2000});
       return false;
     }
+    if(this.captcha == false) {
+      this.snack.open("Please let us now if you are human !", null, {duration: 2000});
+      return false;
+    }
     return true;
+  }
+
+  resolved(captchaResponse: string) {
+    this.captcha = true;
   }
 }

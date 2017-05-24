@@ -5,6 +5,11 @@ import {AuthService} from "../services/auth/auth.service";
 import {UserService} from "../services/UserService";
 import {MdSnackBar} from "@angular/material";
 import {DialogService} from "app/services/DialogService";
+import {FormControl} from "@angular/forms";
+import {Observable} from "rxjs/Observable";
+import {Soft} from "entities/Soft";
+import {SoftService} from "app/services/SoftService";
+import {AlcoholService} from "../services/AlcoholService";
 
 @Component({
   selector: 'app-shop',
@@ -16,9 +21,39 @@ export class ShopComponent implements OnInit {
   public bundles : Bundle[];
 
   constructor(private bundleService : BundleService, private authService : AuthService, private userService : UserService, private snack : MdSnackBar,
-  private dialogService : DialogService, private viewContainerRef : ViewContainerRef) { }
+  private dialogService : DialogService, private viewContainerRef : ViewContainerRef, private softService : SoftService, private alcoholService : AlcoholService) { }
+
+
+  myControl = new FormControl();
+  options = [];
+
+  search = [];
+
+  filteredOptions: Observable<any>;
+
+  filter(name: string): any[] {
+    return this.options.filter(option => new RegExp(`^${name}`, 'gi').test(option.name));
+  }
+
+  displayFn(ingredient: any): string {
+    return ingredient ? ingredient.name : ingredient;
+  }
 
   ngOnInit() {
+
+    this.softService.findAll().subscribe(res => {
+      this.options = this.options.concat(res);
+    });
+
+    this.alcoholService.findAll().subscribe(res => {
+      this.options = this.options.concat(res);
+    });
+
+    this.filteredOptions = this.myControl.valueChanges
+      .startWith(null)
+      .map(soft => soft && typeof soft === 'object' ? soft.name : soft)
+      .map(name => name ? this.filter(name) : this.options.slice());
+
     this.bundleService.findAll().subscribe(bundles => {
       this.bundles = bundles;
       if(this.authService.isLoggedIn){
@@ -35,20 +70,9 @@ export class ShopComponent implements OnInit {
           }
         }
       }
-    })
-  }
+    });
 
-  addToCart(bundle : Bundle){
-    if(this.authService.isLoggedIn){
-      let user = this.authService.currentUser;
-      user.cart.push(bundle);
-      this.userService.updateUser(user).subscribe(user => {
-        this.authService.currentUser = user;
-        this.snack.open(bundle.name + ' added to your cart !', null, {duration : 2000})
-      });
-    } else {
-      this.dialogService.signinRequest(this.viewContainerRef).subscribe();
-    }
+
   }
 
   addToWishlist(bundle : Bundle){
@@ -101,6 +125,18 @@ export class ShopComponent implements OnInit {
     } else {
       this.dialogService.signinRequest(this.viewContainerRef).subscribe();
     }
+  }
 
+  addChip(event : any){
+    if(event.keyCode == 13) {
+      if(typeof this.myControl.value === 'object' && this.search.indexOf(this.myControl.value) < 0){
+        this.search.push(this.myControl.value);
+        this.myControl.setValue([]);
+      }
+    }
+  }
+
+  removeChip(ingredient : any){
+    this.search = this.search.filter(item => item.name !== ingredient.name);
   }
 }
