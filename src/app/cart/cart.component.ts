@@ -91,7 +91,11 @@ export class CartComponent implements OnInit{
   }
 
   checkOut(){
-    this.isCheckingOut = true;
+    if(this.authService.currentUser.is_verified){
+      this.isCheckingOut = true;
+    } else {
+      this.snack.open('You need to verify your account in order to proceed payment !', null , {duration : 2000})
+    }
   }
 
   proceedPayment(){
