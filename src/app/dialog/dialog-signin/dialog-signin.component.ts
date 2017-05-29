@@ -8,6 +8,8 @@ import {MdDialogRef} from "@angular/material";
 })
 export class DialogSigninComponent {
 
+  action : string = "";
+
   constructor(public dialogRef: MdDialogRef<DialogSigninComponent>) {
 
   }

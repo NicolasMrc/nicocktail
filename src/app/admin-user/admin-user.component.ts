@@ -13,7 +13,7 @@ import {BundleService} from "../services/BundleService";
 })
 export class AdminUserComponent implements OnInit {
 
-  private datasets = [
+  public datasets = [
     {data: [0,0,0,0,0,0], label: ''},
   ];
 

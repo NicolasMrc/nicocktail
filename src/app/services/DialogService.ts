@@ -62,13 +62,14 @@ export class DialogService {
     return dialogRef.afterClosed();
   }
 
-  public signinRequest(viewContainerRef: ViewContainerRef): Observable<any> {
+  public signinRequest(viewContainerRef: ViewContainerRef, action : string): Observable<any> {
 
     let dialogRef: MdDialogRef<DialogSigninComponent>;
     let config = new MdDialogConfig();
     config.viewContainerRef = viewContainerRef;
 
     dialogRef = this.dialog.open(DialogSigninComponent, config);
+    dialogRef.componentInstance.action = action;
 
     return dialogRef.afterClosed();
   }

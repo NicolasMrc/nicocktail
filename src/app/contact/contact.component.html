@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="title text-center">Contact us</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12 offset-md-3">
+      <md-input-container>
+        <input [(ngModel)]="email" type="email" mdInput placeholder="Email">
+      </md-input-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12 offset-md-3">
+      <md-input-container>
+        <textarea type="text" [(ngModel)]="message" mdInput placeholder="Message"></textarea>
+      </md-input-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12 offset-md-3">
+      <re-captcha (resolved)="resolved($event)" siteKey="6LfrjCIUAAAAAOYZYJgaV1esEN2wlSAFCzSyL8xF"></re-captcha>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12 offset-md-3">
+      <button md-raised-button (click)="sendMessage()" class="btn-outline-success float-right"><md-icon>email</md-icon> Send Message</button>
+    </div>
+  </div>
+</div>

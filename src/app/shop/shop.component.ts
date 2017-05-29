@@ -106,7 +106,7 @@ export class ShopComponent implements OnInit {
 
 
     } else {
-      this.dialogService.signinRequest(this.viewContainerRef).subscribe();
+      this.dialogService.signinRequest(this.viewContainerRef, "add a bundle to your wishlist").subscribe();
     }
   }
 
@@ -123,7 +123,7 @@ export class ShopComponent implements OnInit {
           });
       })
     } else {
-      this.dialogService.signinRequest(this.viewContainerRef).subscribe();
+      this.dialogService.signinRequest(this.viewContainerRef, "add a bundle to your cart").subscribe();
     }
   }
 
