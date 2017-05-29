@@ -1,14 +1,119 @@
 
 
 <div class="container-fluid">
-  <div class="row">
+
+  <div class="row box">
     <div class="col">
-      <h1 class="title text-center">DrinkBox is comming soon !</h1>
+      <div class="row">
+        <div class="col-md-5">
+          <img class="mx-auto d-block img-fluid box" src="assets/images/box.png" alt="grey party cup">
+        </div>
+        <div class="col-md-7 text-box">
+          <h1>Taste a new creation every month !</h1>
+          <p>Receive our new creation every month before anyone else,<br>
+          DrinkBox subscribers will ever be the first to taste our new nicocktails !<br>
+          Simple as a Screwdriver, just choose the size of your DrinkBox & save your money.</p>
+          <a pageScroll [pageScrollDuration]="300" href="#box-selection"><button *ngIf="this.authService.currentUser.is_subscriber == null" class="btn-outline-info" md-raised-button> <md-icon>assignment_turned_in</md-icon> Subscribe</button></a>
+          <a pageScroll [pageScrollDuration]="300" href="#box-selection"><button *ngIf="this.authService.currentUser.is_subscriber != null" class="btn-outline-info" md-raised-button> <md-icon>mode_edit</md-icon> Change Subscription</button></a>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row">
+
+  <md-divider></md-divider>
+
+
+  <div class="work row">
     <div class="col">
-      <img class="mx-auto d-block img-fluid" src="assets/images/categories-02.png" alt="grey party cup">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center">How does it work ?</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="icon"><md-icon>assignment_turned_in</md-icon></div>
+        <div class="text">
+          <p class="text-center">Susbcribe to our nicocktail box</p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="icon"><md-icon>build</md-icon></div>
+        <div class="text">
+          <p class="text-center">Our chemist create a new awesome cocktail every month</p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="icon"><md-icon>local_shipping</md-icon></div>
+        <div class="text">
+          <p class="text-center">Receive your exclusive mystery bundle every month</p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="icon"><md-icon>local_bar</md-icon></div>
+        <div class="text">
+          <p class="text-center">Enjoy our creations with your friends !</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="row choice" id="box-selection">
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <h1 class="text-center">Choose your DrinkBox size</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col card-choice">
+
+          <div class="card d-box mx-auto">
+            <img class="card-img-top" src="assets/images/box10.png" alt="Card image cap">
+            <div class="card-block">
+            <h4 class="card-title">10 Cups Bundle</h4>
+              <p class="card-text">Just to taste our new nicocktail</p>
+              <p>25$ / Month</p>
+              <button *ngIf="this.authService.currentUser.is_subscriber != 10" (click)="onSubscribe(10)" class="btn-outline-info" md-raised-button> <md-icon>assignment_turned_in</md-icon> Subscribe</button>
+              <button *ngIf="this.authService.currentUser.is_subscriber == 10" (click)="onUnsubscribe()" class="btn-outline-info" md-raised-button> <md-icon>assignment_late</md-icon> Unsubscribe</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col card-choice">
+
+          <div class="card d-box mx-auto">
+            <img class="card-img-top" src="assets/images/box30.png" alt="Card image cap">
+            <div class="card-block">
+            <h4 class="card-title">30 Cups Bundle</h4>
+              <p class="card-text">Share our creation with your friends</p>
+              <p>60$ / Month</p>
+              <button *ngIf="this.authService.currentUser.is_subscriber != 30" (click)="onSubscribe(30)" class="btn-outline-info" md-raised-button> <md-icon>assignment_turned_in</md-icon> Subscribe</button>
+              <button *ngIf="this.authService.currentUser.is_subscriber == 30" (click)="onUnsubscribe()" class="btn-outline-info" md-raised-button> <md-icon>assignment_late</md-icon> Unsubscribe</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col card-choice">
+
+          <div class="card d-box mx-auto">
+            <img class="card-img-top" src="assets/images/box50.png" alt="Card image cap">
+            <div class="card-block">
+            <h4 class="card-title">50 Cups Bundle</h4>
+              <p class="card-text">Party every month !</p>
+              <p>80$ / Month</p>
+              <button *ngIf="this.authService.currentUser.is_subscriber != 50" (click)="onSubscribe(50)" class="btn-outline-info" md-raised-button> <md-icon>assignment_turned_in</md-icon> Subscribe</button>
+              <button *ngIf="this.authService.currentUser.is_subscriber == 50" (click)="onUnsubscribe()" class="btn-outline-info" md-raised-button> <md-icon>assignment_late</md-icon> Unsubscribe</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>

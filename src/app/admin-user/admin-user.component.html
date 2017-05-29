@@ -1,3 +1,74 @@
-<p>
-  admin-user works!
-</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center" id="title">Statistics</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+    <md-card class="card">
+      <md-card-title><h4 class="text-center">DrinkBox subscriptions</h4></md-card-title>
+        <canvas baseChart
+                [datasets]="datasets"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"></canvas>
+    </md-card>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <md-card class="card">
+        <md-card-title><h4 class="text-center">Bundles Sold</h4></md-card-title>
+        <canvas class="bar" baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"></canvas>
+      </md-card>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col-3">
+          <md-card class="card">
+            <md-card-title><h4 class="text-center">{{nbUsers}} users</h4></md-card-title>
+          </md-card>
+        </div>
+        <div class="col-3">
+          <md-card class="card">
+            <md-card-title><h4 class="text-center">{{nbOrders}} orders</h4></md-card-title>
+          </md-card>
+        </div>
+        <div class="col-3">
+          <md-card class="card">
+            <md-card-title><h4 class="text-center">{{nbBundles}} bundles</h4></md-card-title>
+          </md-card>
+        </div>
+        <div class="col-3">
+          <md-card class="card">
+            <md-card-title><h4 class="text-center">{{nbAlcohols}} alcohols</h4></md-card-title>
+          </md-card>
+        </div>
+        <div class="col-3">
+          <md-card class="card">
+            <md-card-title><h4 class="text-center">{{nbSofts}} soft drinks</h4></md-card-title>
+          </md-card>
+        </div>
+        <div class="col-3">
+          <md-card class="card">
+            <md-card-title><h4 class="text-center">{{nbExtras}} extras</h4></md-card-title>
+          </md-card>
+        </div>
+        <div class="col-3">
+          <md-card class="card">
+            <md-card-title><h4 class="text-center">{{nbSubscriber}} subscribers</h4></md-card-title>
+          </md-card>
+        </div>
+        <div class="col-3">
+          <md-card class="card">
+            <md-card-title><h4 class="text-center">{{nbBundleSold}} bundles sold</h4></md-card-title>
+          </md-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

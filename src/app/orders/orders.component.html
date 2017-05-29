@@ -71,4 +71,10 @@
       </md-card>
     </div>
   </div>
+
+  <div *ngIf="orders.length == 0" class="row">
+    <div class="col">
+      <h6>You don't have any order yet</h6>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,12 @@
+#title{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.card{
+  margin-bottom: 20px;
+}
+
+canvas.bar{
+  width: 100% !important;
+}

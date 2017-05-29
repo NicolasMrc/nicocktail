@@ -132,11 +132,58 @@ export class ShopComponent implements OnInit {
       if(typeof this.myControl.value === 'object' && this.search.indexOf(this.myControl.value) < 0){
         this.search.push(this.myControl.value);
         this.myControl.setValue([]);
+        this.filterBundles();
       }
     }
+
   }
 
   removeChip(ingredient : any){
     this.search = this.search.filter(item => item.name !== ingredient.name);
+    if(this.search.length == 0){
+      this.bundleService.findAll().subscribe(res => {
+        this.bundles = res;
+      });
+    } else{
+      this.filterBundles();
+    }
+  }
+
+  filterBundles(){
+    var bundles = [];
+
+    this.bundleService.findAll().subscribe(res => {
+      for(let bundle of res){
+        var contain = true;
+        console.log(this.search);
+        if(this.search.length == 0){
+          bundles = res;
+        } else {
+          for(let ingredient of this.search){
+            console.log('searching' + ingredient.name);
+            var containIngredient = false;
+            for(let alcohol of bundle.alcohols){
+              if(alcohol.name == ingredient.name){
+                containIngredient = true;
+                break;
+              }
+            }
+            for(let soft of bundle.softs){
+              if(soft.name == ingredient.name){
+                containIngredient = true;
+                break;
+              }
+            }
+            if(!containIngredient){
+              contain = false;
+            }
+          }
+        }
+        if(contain){
+          bundles.push(bundle);
+        }
+      }
+      this.bundles = bundles;
+    });
   }
 }

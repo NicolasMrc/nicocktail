@@ -22,6 +22,6 @@ export class User{
     public api_token? : string,
     public is_verified? : boolean,
     public role : string = "user",
-    public isSubscriber : boolean = false
+    public is_subscriber : number = 0,
   ){}
 }

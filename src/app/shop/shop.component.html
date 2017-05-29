@@ -12,7 +12,7 @@
       </md-chip-list>
 
       <md-input-container>
-        <input type="text" (keydown)="addChip($event)" mdInput [formControl]="myControl" [mdAutocomplete]="auto">
+        <input type="text" placeholder="Filter ingredients" (keydown)="addChip($event)" mdInput [formControl]="myControl" [mdAutocomplete]="auto">
       </md-input-container>
 
       <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayFn">

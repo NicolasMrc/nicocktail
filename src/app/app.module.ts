@@ -57,7 +57,9 @@ import {FileUploadModule} from "ng2-file-upload";
 import { DialogAddToCartComponent } from './dialog/dialog-add-to-cart/dialog-add-to-cart.component';
 import { VerifyComponent } from './verify/verify.component';
 import {RecaptchaModule} from "ng-recaptcha";
-
+import {Ng2PageScrollModule} from "ng2-page-scroll";
+import {ChartsModule} from "ng2-charts";
+import Chart from 'chart.js';
 
 const appRoutes: Routes = [
   { path: 'shop', component: ShopComponent },
@@ -137,6 +139,7 @@ const appRoutes: Routes = [
     MdCardModule,
     MdMenuModule,
     MdTabsModule,
+    ChartsModule,
     MdInputModule,
     BrowserModule,
     MdChipsModule,
@@ -157,8 +160,9 @@ const appRoutes: Routes = [
     MdAutocompleteModule,
     MdProgressSpinnerModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
     RecaptchaModule.forRoot(),
+    Ng2PageScrollModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     Hasher,

@@ -11,4 +11,17 @@ md-card{
 
 md-card:hover{
   transition: all .15s;
+  background-color: #ffffff;
+}
+
+img{
+  width: 100px;
+}
+
+md-card-title{
+  font-size: 15px;
+}
+
+md-card{
+  background-color: #f2f2f2;
 }

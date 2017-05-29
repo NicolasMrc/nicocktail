@@ -31,7 +31,14 @@ export class UserService{
 
   findAll (): Observable<User[]> {
     return this.http.get(this.url, this.authService.currentUser.api_token)
-      .map(response => response.json().user as User[])
+      .map(response => {
+        let users : User[] = [];
+        for(let json of response.json()){
+          let newUser = new User(json.id, json.firstname, json.lastname, json.address, json.orders, json.email, null, json.cart, json.wishlist, null, json.is_verified, json.role, json.is_subscriber);
+          users.push(newUser);
+        }
+        return users;
+      })
       .catch(this.handleError);
   }
 
