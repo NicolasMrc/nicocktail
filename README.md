@@ -1,6 +1,6 @@
 # Nicocktail
 
-----
+
 ### About
 
 Nicocktail is an web application build with Angular2 & Laravel during the class of web programming at Concordia University.
