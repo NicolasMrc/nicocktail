@@ -156,10 +156,10 @@
         </div>
 
         <md-divider></md-divider>
-        <p>Taxes : {{taxes}}$</p>
+        <p>Taxes : {{taxes | number : '1.2-2'}}$</p>
         <p>Delivery Fee : 3$</p>
         <md-divider></md-divider>
-        <p>Total : {{total}}$</p>
+        <p>Total : {{total | number : '1.2-2'}}$</p>
         <md-divider></md-divider>
         <button (click)="checkOut()" *ngIf="!isCheckingOut && bundles.length > 0" md-raised-button class="btn-outline-success"><md-icon>payment</md-icon> Check out</button>
       </div>
