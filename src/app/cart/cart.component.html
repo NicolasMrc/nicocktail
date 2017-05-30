@@ -39,6 +39,8 @@
 
       <div class="col-8 list" *ngIf="isCheckingOut">
 
+        <button md-raised-button (click)="copyInfo()" class="btn-outline-info float-right"><md-icon>content_copy</md-icon> Use same address</button>
+
         <div class="row first-address-input">
           <div class=" col-md-6 col-xs-12 ">
             <md-input-container>

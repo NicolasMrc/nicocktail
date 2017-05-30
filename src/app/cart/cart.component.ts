@@ -127,4 +127,14 @@ export class CartComponent implements OnInit{
     });
   }
 
+  copyInfo(){
+    this.order.shipping_lastname = this.order.billing_lastname;
+    this.order.shipping_firstname = this.order.billing_firstname;
+    this.order.shipping_city = this.order.billing_city;
+    this.order.shipping_country = this.order.billing_country;
+    this.order.shipping_zipcode = this.order.billing_zipcode;
+    this.order.shipping_road = this.order.billing_road;
+    this.order.shipping_province = this.order.billing_province;
+  }
+
 }
