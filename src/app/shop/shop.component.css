@@ -10,6 +10,7 @@
 md-card{
   margin-bottom: 30px;
   padding-bottom: 40px;
+  width:316px;
 }
 
 md-card-actions{
