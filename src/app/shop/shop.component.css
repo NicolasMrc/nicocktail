@@ -64,3 +64,8 @@ md-chip.search:hover{
   cursor: pointer;
   background-color: #d9534f;
 }
+
+img{
+  width: 314px;
+  height: 197px;
+}

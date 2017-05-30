@@ -1,28 +1,31 @@
 # Nicocktail
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
+----
+### About
 
-## Development server
+Nicocktail is an web application build with Angular2 & Laravel during the class of web programming at Concordia University.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Live Version
 
-## Code scaffolding
+You can found a live version of the website [here](https://nicocktail.nicolasmercier.io)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+### Installation - API
 
-## Build
+You just have to clone the API into the root of your webserver :
+`git clone https://github.com/NicolasMrc/nicocktail-api.git`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+To create and populate the database run the command `php artisan migrate:refresh --seed`
 
-## Running unit tests
+### Installation - Client App
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Clone the client app anywhere :
+`git clone https://github.com/NicolasMrc/nicocktail-app.git`
 
-## Running end-to-end tests
+If your webserver url is not `http://localhost:8888/` go to `nicocktail-app/src/app/app-settings.ts` and change the api_endpoint variable to match your webserver url.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+You will need to install depency `npm install`
 
-## Further help
+To run the application simply run the command `npm start`
+Your nicocktail application will be accessible at localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+

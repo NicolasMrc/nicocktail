@@ -14,7 +14,7 @@
   <div class="row">
     <div class="bundle col-xs-12 col-sm-6 col-md-4" *ngFor="let bundle of bundles" [routerLink]="'/admin/bundle/' + bundle.id">
     <div class="card d-box mx-auto" style="width: 20rem;" >
-      <img class="card-img-top" src="http://placehold.it/318x200" alt="Card image cap">
+      <img class="card-img-top" src="assets/images/bundles/{{bundle.image}}" alt="Card image cap">
       <div class="card-block">
         <h4 class="card-title">{{bundle.name}}</h4>
         <p class="card-text">{{bundle.description}}</p>
