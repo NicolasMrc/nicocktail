@@ -8,16 +8,26 @@
 
   <a class="navbar-brand title" routerLink="/home"> nicocktail</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <a class="nav-item nav-link hidden-xs-down" md-button routerLink="/home" ><md-icon>home</md-icon> <span class="text">Home</span></a>
-      <a class="nav-item nav-link hidden-xs-down" md-button routerLink="/shop" ><md-icon>local_bar</md-icon> <span class="text">Shop</span></a>
-      <a class="nav-item nav-link hidden-xs-down" md-button routerLink="/builder" ><md-icon>build</md-icon> <span class="text">Builder</span></a>
-      <a class="nav-item nav-link hidden-xs-down" md-button routerLink="/drink-box" ><md-icon>card_giftcard</md-icon> <span class="text">DrinkBox</span></a>
-      <a class="nav-item nav-link hidden-xs-down" md-button *ngIf="this.authService.isLoggedIn" routerLink="/wishlist" ><md-icon>assignment</md-icon> <span class="text">Wishlist</span></a>
-      <a class="nav-item nav-link hidden-xs-down" md-button *ngIf="this.authService.isLoggedIn" routerLink="/cart" ><md-icon>shopping_cart</md-icon> <span class="text">Cart</span> </a>
-      <a class="nav-item nav-link hidden-xs-down" md-button *ngIf="this.authService.isLoggedIn" routerLink="/orders" ><md-icon>list</md-icon> <span class="text">Orders</span> </a>
-      <a class="nav-item nav-link hidden-xs-down" md-button routerLink="/contact" ><md-icon>message</md-icon> <span class="text">Contact</span></a>
+    <div class="navbar-nav mr-auto mt-2 mt-lg-0 hidden-xs-down">
+      <a class="nav-item nav-link" md-button routerLink="/home" ><md-icon>home</md-icon> <span class="text">Home</span></a>
+      <a class="nav-item nav-link" md-button routerLink="/shop" ><md-icon>local_bar</md-icon> <span class="text">Shop</span></a>
+      <a class="nav-item nav-link" md-button routerLink="/builder" ><md-icon>build</md-icon> <span class="text">Builder</span></a>
+      <a class="nav-item nav-link" md-button routerLink="/drink-box" ><md-icon>card_giftcard</md-icon> <span class="text">DrinkBox</span></a>
+      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/wishlist" ><md-icon>assignment</md-icon> <span class="text">Wishlist</span></a>
+      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/cart" ><md-icon>shopping_cart</md-icon> <span class="text">Cart</span> </a>
+      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/orders" ><md-icon>list</md-icon> <span class="text">Orders</span> </a>
+      <a class="nav-item nav-link" md-button routerLink="/contact" ><md-icon>message</md-icon> <span class="text">Contact</span></a>
+    </div>
 
+    <div class="navbar-nav menu-xs mt-2 mt-lg-0 hidden-sm-up" >
+      <a class="nav-item nav-link" md-button routerLink="/home" ><md-icon>home</md-icon> <span class="text">Home</span></a>
+      <a class="nav-item nav-link" md-button routerLink="/shop" ><md-icon>local_bar</md-icon> <span class="text">Shop</span></a>
+      <a class="nav-item nav-link" md-button routerLink="/builder" ><md-icon>build</md-icon> <span class="text">Builder</span></a>
+      <a class="nav-item nav-link" md-button routerLink="/drink-box" ><md-icon>card_giftcard</md-icon> <span class="text">DrinkBox</span></a>
+      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/wishlist" ><md-icon>assignment</md-icon> <span class="text">Wishlist</span></a>
+      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/cart" ><md-icon>shopping_cart</md-icon> <span class="text">Cart</span> </a>
+      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/orders" ><md-icon>list</md-icon> <span class="text">Orders</span> </a>
+      <a class="nav-item nav-link" md-button routerLink="/contact" ><md-icon>message</md-icon> <span class="text">Contact</span></a>
     </div>
 
     <div class="form-inline my-2 my-lg-0" *ngIf="!authService.isLoggedIn">

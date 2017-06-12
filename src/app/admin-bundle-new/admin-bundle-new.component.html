@@ -18,7 +18,9 @@
               </md-input-container>
               <div class="row">
                 <div class="col">
-                  <button md-raised-button class="btn-outline-info"><md-icon>photo</md-icon> Choose Picture</button>
+                  <md-input-container class="example-full-width">
+                    <input mdInput placeholder="Picture path" [(ngModel)]="bundle.image">
+                  </md-input-container>
                 </div>
                 <div class="col">
                   <md-input-container class="example-full-width">

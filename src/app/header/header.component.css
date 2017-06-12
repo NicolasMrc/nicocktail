@@ -53,3 +53,7 @@
   margin-left: 5px;
   font-size: 12px;
 }
+
+.menu-xs a{
+  text-align: left;
+}
