@@ -111,6 +111,15 @@ md-chip.extra{
   margin-bottom: 20px;
 }
 
+md-chip:hover{
+  animation: afraid;
+  animation-duration: .3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-color: #b40500;
+  cursor: pointer;
+}
+
 .bulle{
   width: 20px;
   height: 20px;
@@ -141,4 +150,12 @@ md-chip.extra{
   0% {bottom: 10px}
   30% {bottom: 350px;}
   100%{bottom: 350px;}
+}
+
+@keyframes afraid{
+  0% {transform: rotate(0deg);}
+  25% {transform: rotate(7deg);}
+  50% {transform: rotate(0deg);}
+  75% {transform: rotate(-7deg);}
+  100% {transform: rotate(0deg);}
 }

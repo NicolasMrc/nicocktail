@@ -22,6 +22,8 @@ export class BuilderComponent implements OnInit {
   sliderThumbLabel = true;
   sliderTick = false;
 
+  containBulle : boolean = false;
+
   alcohols : Alcohol[] = [];
   softs : Soft[] = [];
   extras : Extra[] = [];
@@ -55,6 +57,10 @@ export class BuilderComponent implements OnInit {
           this.softs.push(soft);
           this.color = '#b40500';
           this.snack.open(soft.name + " added !", null, {duration: 2000});
+
+          if(soft.type == 'Soda'){
+            this.containBulle = true;
+          }
         })
       }
     })
@@ -73,6 +79,24 @@ export class BuilderComponent implements OnInit {
 
   randomDuration(){
     return (Math.random() * 3)
+  }
+
+  removeAlcohol(alcohol : Alcohol){
+    var index = this.alcohols.indexOf(alcohol);
+    this.snack.open(alcohol.name + " removed !", null, {duration: 2000});
+    this.alcohols.splice(index, 1);
+  }
+
+  removeSoft(soft : Soft){
+    var index = this.softs.indexOf(soft);
+    this.snack.open(soft.name + " removed !", null, {duration: 2000});
+    this.softs.splice(index, 1);
+  }
+
+  removeExtra(extra : Extra){
+    var index = this.extras.indexOf(extra);
+    this.snack.open(extra.name + " removed !", null, {duration: 2000});
+    this.extras.splice(index, 1);
   }
 
 }
