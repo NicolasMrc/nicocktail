@@ -2,14 +2,107 @@
 
 <div class="container-fluid builder">
   <div class="row">
-    <div class="col">
-      <h1 class="title text-center">Builder is comming soon !</h1>
+    <div class="col-4">
+      <div class="side">
+        <div class="size">
+          <div class="row">
+            <div class="col">
+              <h6 class="text-center">Choose your nicocktail size</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 offset-2">
+              <md-slider
+                class="example-margin"
+                [max]="sliderMax"
+                [min]="sliderMin"
+                [step]="sliderStep"
+                [thumb-label]="sliderThumbLabel"
+                [tick-interval]="sliderTick"
+                [(ngModel)]="sliderValue">
+              </md-slider>
+            </div>
+          </div>
+        </div>
+        <div class="add">
+          <div class="row">
+            <div class="col">
+              <h6 class="text-center">Add something to your nicocktail</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button md-raised-button (click)="addAlcohol()">Alcohol</button>
+            </div>
+            <div class="col">
+              <button md-raised-button (click)="addSoft()">Soft Drink</button>
+            </div>
+            <div class="col">
+              <button md-raised-button (click)="addExtra()">Extra</button>
+            </div>
+          </div>
+        </div>
+        <div class="ingredients">
+          <div class="row">
+            <div class="col">
+              <h6 class="text-center">Ingredients</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>Alcohol</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <md-chip-list>
+                <md-chip class="alcohol" *ngFor="let alcohol of alcohols">{{alcohol.name}}</md-chip>
+              </md-chip-list>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>Soft Drinks</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <md-chip-list>
+                <md-chip class="soft" *ngFor="let soft of softs">{{soft.name}}</md-chip>
+              </md-chip-list>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>Extras</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <md-chip-list>
+                <md-chip class="extra" *ngFor="let extra of extras">{{extra.name}}</md-chip>
+              </md-chip-list>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <img class="mx-auto d-block img-fluid" src="assets/images/categories-01.png" alt="grey party cup">
+    <div class="col-4">
+      <h1 class="title text-center">Your nicocktail</h1>
+      <div class="cocktail">
+        <div class="liquid" [style.height]="10 + sliderValue*3 + 'px'" [style.background-color]="color"></div>
+        <div class="bulle bulle1" [style.height]="'10px'" [style.width]="'10px'" ></div>
+        <div class="bulle bulle2" [style.height]="'20px'" [style.width]="'20px'" ></div>
+        <div class="bulle bulle3" [style.height]="'15px'" [style.width]="'15px'" ></div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="finish-buttons">
+        <button md-raised-button>Add to wish list</button>
+        <button md-raised-button>Add to cart</button>
+      </div>
     </div>
   </div>
 </div>
-

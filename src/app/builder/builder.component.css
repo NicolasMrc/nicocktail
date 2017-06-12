@@ -2,7 +2,6 @@
 
 .title{
   font-size: 30px;
-  color: #d9d9d9;
   margin-top: 50px;
   font-family: RondaMedium;
 }
@@ -16,4 +15,130 @@
 img{
   margin-top: 30px;
   max-height: 500px;
+}
+
+.finish-buttons{
+  height: 100px;
+  margin-top: 60vh;
+  background-color: #f2f2f2;
+  padding: 15px;
+  position: relative;
+  right:-15px;
+}
+
+.finish-buttons button{
+  margin-top: 15px;
+  position: relative;
+  left: -40px;
+  margin-right: 20px;
+}
+
+.cocktail{
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+  border-bottom: 10px solid black;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  height: 400px;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  position: relative;
+  z-index: 3;
+}
+
+.add button{
+  width: 100%;
+}
+
+
+.side{
+  background-color: #f2f2f2;
+  position: relative;
+  left:-15px;
+  padding-top: 70px;
+  height: calc(100vh - 50px);
+  width: 50%;
+}
+
+.size, .add, .ingredients{
+  margin-bottom: 15px;
+  position: relative;
+  left:50px;
+  background-color: white;
+  min-height: 100px;
+  width: 200%;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  padding: 15px;
+}
+
+.size h6, .add h6, .ingredients h6{
+  margin-bottom: 20px;
+}
+
+.liquid{
+  background-color: #f2f2f2;
+  height: 300px;
+  width: 80px;
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  transition: all .3s;
+  z-index: 1;
+}
+
+md-slider{
+  width: 100%;
+}
+
+md-chip.alcohol{
+  background-color: #f0ad4e;
+  color: white;
+  margin-bottom: 20px;
+}
+
+md-chip.soft{
+  background-color: #5bc0de;
+  color: white;
+  margin-bottom: 20px;
+}
+
+md-chip.extra{
+  background-color: #5cb85c;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.bulle{
+  width: 20px;
+  height: 20px;
+  border:2px solid white;
+  position: absolute;
+  bottom: 0;
+  border-radius: 50px;
+  z-index: 2;
+  animation: bulle1;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  transition: all .3s;
+}
+
+.bulle1{
+  left:10px;
+  animation-delay: .15s;
+}
+.bulle2{
+  left:30px;
+  animation-delay: .8s;
+}
+.bulle3{
+  left:40px;
+}
+
+@keyframes bulle1 {
+  0% {bottom: 10px}
+  30% {bottom: 350px;}
+  100%{bottom: 350px;}
 }

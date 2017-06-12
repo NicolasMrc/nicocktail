@@ -65,7 +65,7 @@ import { ContactComponent } from './contact/contact.component';
 const appRoutes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'drink-box', component: BoxComponent },
-  { path: 'builder', component: BuilderComponent },
+  { path: 'builder', component: BuilderComponent, canActivate: [UserGuardService] },
   { path: 'home', component: HomeComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: 'cart', component: CartComponent, canActivate: [UserGuardService]},
