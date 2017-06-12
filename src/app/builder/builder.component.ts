@@ -91,6 +91,18 @@ export class BuilderComponent implements OnInit {
     var index = this.softs.indexOf(soft);
     this.snack.open(soft.name + " removed !", null, {duration: 2000});
     this.softs.splice(index, 1);
+
+    var bulles = false;
+    for(let soft of this.softs){
+      if (soft.type == "Soda"){
+        bulles = true;
+      }
+    }
+    if(bulles){
+      this.containBulle = true;
+    } else {
+      this.containBulle = false;
+    }
   }
 
   removeExtra(extra : Extra){
