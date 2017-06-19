@@ -32,6 +32,8 @@ export class BuilderComponent implements OnInit {
   color : string = "";
   bulleSize : number;
 
+  cocktailName : string = "";
+
   constructor(private alcoholService : AlcoholService, private softService : SoftService,
               private extraService : ExtraService, private viewContainerRef : ViewContainerRef, private snack : MdSnackBar,
               private dialogService : DialogService, public sanitizer : DomSanitizer) { }
@@ -115,7 +117,7 @@ export class BuilderComponent implements OnInit {
   }
 
   getLinearGradient(alcohol : Alcohol){
-    return this.sanitizer.bypassSecurityTrustStyle('linear-gradient(to bottom, rgba(255,255,255,0) 0%,'+ alcohol.color +' 100%)');
+      return this.sanitizer.bypassSecurityTrustStyle('linear-gradient(to bottom, rgba(255,255,255,0) 0%,'+ alcohol.color +' 100%)');
   }
 
 }

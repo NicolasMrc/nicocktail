@@ -4,6 +4,7 @@
   <div class="row">
     <div class="col-4">
       <div class="side">
+
         <div class="size">
           <div class="row">
             <div class="col">
@@ -103,10 +104,29 @@
       </div>
     </div>
     <div class="col-4">
+
+      <md-card class="name-card">
+        <div class="row">
+          <div class="col">
+            <h6 class="text-center">Choose your nicocktail name</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <md-input-container>
+              <input type="text" mdInput placeholder="cocktail name" [(ngModel)]="cocktailName">
+            </md-input-container>
+          </div>
+        </div>
+      </md-card>
+
       <div class="finish-buttons">
         <button md-raised-button>Add to wish list</button>
         <button md-raised-button>Add to cart</button>
       </div>
+
+
+
     </div>
   </div>
 </div>
@@ -123,7 +143,7 @@
         <div class="row">
           <div class="col">
             <md-input-container>
-              <input type="text" mdInput placeholder="cocktail name">
+              <input type="text" mdInput placeholder="cocktail name" [(ngModel)]="cocktailName">
             </md-input-container>
           </div>
         </div>
@@ -135,7 +155,7 @@
       <md-card>
         <div class="row">
           <div class="col">
-            <h6 class="text-center">Choose your nicocktail size</h6>
+            <h6 class="text-center">Choose your nicocktail name</h6>
           </div>
         </div>
         <div class="row">
