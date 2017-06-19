@@ -115,7 +115,12 @@ md-chip.extra{
   margin-bottom: 20px;
 }
 
-md-chip:hover{
+md-chip.empty{
+  color: white;
+  margin-bottom: 20px;
+}
+
+md-chip.extra:hover, md-chip.soft:hover, md-chip.alcohol:hover{
   animation: afraid;
   animation-duration: .3s;
   animation-iteration-count: infinite;

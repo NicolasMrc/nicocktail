@@ -57,6 +57,7 @@
             <div class="col">
               <md-chip-list>
                 <md-chip class="alcohol" (click)="removeAlcohol(alcohol)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let alcohol of alcohols">{{alcohol.name}}</md-chip>
+                <md-chip *ngIf="alcohols.length == 0" class="empty" (click)="addAlcohol()">no alcohol</md-chip>
               </md-chip-list>
             </div>
           </div>
@@ -69,6 +70,7 @@
           <div class="row">
             <div class="col">
               <md-chip-list>
+                <md-chip *ngIf="softs.length == 0" class="empty" (click)="addSoft()">no soft</md-chip>
                 <md-chip class="soft" (click)="removeSoft(soft)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let soft of softs">{{soft.name}}</md-chip>
               </md-chip-list>
             </div>
@@ -83,6 +85,7 @@
             <div class="col">
               <md-chip-list>
                 <md-chip class="extra" (click)="removeExtra(extra)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let extra of extras">{{extra.name}}</md-chip>
+                <md-chip *ngIf="extras.length == 0" class="empty" (click)="addExtra()">no extra</md-chip>
               </md-chip-list>
             </div>
           </div>
@@ -182,9 +185,12 @@
         <div class="row">
           <div class="col">
             <md-chip-list>
-              <md-chip class="soft" (click)="removeSoft(soft)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let soft of softs">{{soft.name}}</md-chip>
-              <md-chip class="alcohol" (click)="removeAlcohol(alcohol)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let alcohol of alcohols">{{alcohol.name}}</md-chip>
-              <md-chip class="extra" (click)="removeExtra(extra)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let extra of extras">{{extra.name}}</md-chip>
+              <md-chip *ngIf="softs.length == 0" class="empty" (click)="addSoft()">no soft</md-chip>
+              <md-chip *ngIf="alcohols.length == 0" class="empty" (click)="addAlcohol()">no alcohol</md-chip>
+              <md-chip *ngIf="extras.length == 0" class="empty" (click)="addExtra()">no extra</md-chip>
+              <md-chip class="soft" (click)="removeSoft(soft)" *ngFor="let soft of softs">{{soft.name}}</md-chip>
+              <md-chip class="alcohol" (click)="removeAlcohol(alcohol)" *ngFor="let alcohol of alcohols">{{alcohol.name}}</md-chip>
+              <md-chip class="extra" (click)="removeExtra(extra)" *ngFor="let extra of extras">{{extra.name}}</md-chip>
             </md-chip-list>
           </div>
         </div>
