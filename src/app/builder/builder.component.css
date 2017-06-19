@@ -62,7 +62,7 @@ img{
   width: 50%;
 }
 
-.size, .add, .ingredients{
+.laptop .size, .laptop .add, .laptop .ingredients{
   margin-bottom: 15px;
   position: relative;
   left:50px;
@@ -87,6 +87,10 @@ img{
   border-bottom-right-radius: 40px;
   transition: all .3s;
   z-index: 1;
+  opacity: 0.6;
+}
+
+.liquid:first-child{
 }
 
 md-slider{
@@ -129,7 +133,7 @@ md-chip:hover{
   border-radius: 50px;
   z-index: 2;
   animation: bulle1;
-  animation-duration: 8s;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
   transition: all .3s;
 }
@@ -148,7 +152,7 @@ md-chip:hover{
 
 @keyframes bulle1 {
   0% {bottom: 10px}
-  30% {bottom: 350px;}
+  50% {bottom: 350px;}
   100%{bottom: 350px;}
 }
 
@@ -158,4 +162,18 @@ md-chip:hover{
   50% {transform: rotate(0deg);}
   75% {transform: rotate(-7deg);}
   100% {transform: rotate(0deg);}
+}
+
+md-input-container{
+  width: 100%;
+}
+
+.mobile md-card{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mobile button{
+  width: 100%;
+  margin-bottom: 10px;
 }

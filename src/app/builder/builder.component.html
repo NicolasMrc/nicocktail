@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid builder">
+<div class="container-fluid builder hidden-md-down laptop">
   <div class="row">
     <div class="col-4">
       <div class="side">
@@ -92,7 +92,8 @@
     <div class="col-4">
       <h1 class="title text-center">Your nicocktail</h1>
       <div class="cocktail">
-        <div class="liquid" [style.height]="10 + sliderValue*3 + 'px'" [style.background-color]="color"></div>
+        <div class="liquid" *ngFor="let soft of softs" [style.height]="10 + sliderValue*3 + 'px'" [style.background-color]="soft.color"></div>
+        <div class="liquid" *ngFor="let alcohol of alcohols" [style.height]="10 + sliderValue*3 + 'px'" [style.background]="getLinearGradient(alcohol)"></div>
         <div class="bulle bulle1" *ngIf="this.containBulle" [style.height]="'10px'" [style.width]="'10px'" ></div>
         <div class="bulle bulle2" *ngIf="this.containBulle" [style.height]="'20px'" [style.width]="'20px'" ></div>
         <div class="bulle bulle3" *ngIf="this.containBulle" [style.height]="'15px'" [style.width]="'15px'" ></div>
@@ -105,4 +106,96 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="hidden-lg-up container mobile">
+  <div class="row">
+    <div class="col">
+      <md-card>
+        <div class="row">
+          <div class="col">
+            <h6 class="text-center">Choose your nicocktail size</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <md-input-container>
+              <input type="text" mdInput placeholder="cocktail name">
+            </md-input-container>
+          </div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <md-card>
+        <div class="row">
+          <div class="col">
+            <h6 class="text-center">Choose your nicocktail size</h6>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <md-slider
+                class="example-margin"
+                [max]="sliderMax"
+                [min]="sliderMin"
+                [step]="sliderStep"
+                [thumb-label]="sliderThumbLabel"
+                [tick-interval]="sliderTick"
+                [(ngModel)]="sliderValue">
+              </md-slider>
+            </div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <md-card>
+        <div class="col">
+          <h6 class="text-center">Add ingredients</h6>
+        </div>
+          <div class="col">
+            <button md-raised-button (click)="addAlcohol()">Alcohol</button>
+          </div>
+          <div class="col">
+            <button md-raised-button (click)="addSoft()">Soft Drink</button>
+          </div>
+          <div class="col">
+            <button md-raised-button (click)="addExtra()">Extra</button>
+        </div>
+      </md-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <md-card>
+        <div class="row">
+          <div class="col">
+            <h6 class="text-center">Your cocktail - cocktailName</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <md-chip-list>
+              <md-chip class="soft" (click)="removeSoft(soft)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let soft of softs">{{soft.name}}</md-chip>
+              <md-chip class="alcohol" (click)="removeAlcohol(alcohol)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let alcohol of alcohols">{{alcohol.name}}</md-chip>
+              <md-chip class="extra" (click)="removeExtra(extra)" mdTooltip="remove" [mdTooltipPosition]="'above'" *ngFor="let extra of extras">{{extra.name}}</md-chip>
+            </md-chip-list>
+          </div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button md-raised-button (click)="addToCart()">Add to your cart</button>
+    </div>
+  </div>
+
 </div>

@@ -57,7 +57,7 @@ export class DialogService {
     dialogRef = this.dialog.open(DialogAddToBundleComponent, config);
     dialogRef.componentInstance.initList(type);
 
-    dialogRef.afterClosed().subscribe(res=>console.log(res));
+    dialogRef.afterClosed().subscribe(res=>{});
 
     return dialogRef.afterClosed();
   }

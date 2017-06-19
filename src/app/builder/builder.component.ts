@@ -7,6 +7,7 @@ import {SoftService} from "../services/SoftService";
 import {ExtraService} from "../services/ExtraService";
 import {MdSnackBar} from "@angular/material";
 import {DialogService} from "../services/DialogService";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-builder',
@@ -33,10 +34,11 @@ export class BuilderComponent implements OnInit {
 
   constructor(private alcoholService : AlcoholService, private softService : SoftService,
               private extraService : ExtraService, private viewContainerRef : ViewContainerRef, private snack : MdSnackBar,
-              private dialogService : DialogService) { }
+              private dialogService : DialogService, public sanitizer : DomSanitizer) { }
 
   ngOnInit() {
     this.bulleSize = Math.random() * 20;
+
   }
 
   addAlcohol(){
@@ -54,8 +56,9 @@ export class BuilderComponent implements OnInit {
     this.dialogService.addToBundle('soft', this.viewContainerRef).subscribe(res => {
       if(res != null) {
         this.softService.findOne(res).subscribe(soft => {
+          console.log(soft);
           this.softs.push(soft);
-          this.color = '#b40500';
+          this.color = soft.color;
           this.snack.open(soft.name + " added !", null, {duration: 2000});
 
           if(soft.type == 'Soda'){
@@ -109,6 +112,10 @@ export class BuilderComponent implements OnInit {
     var index = this.extras.indexOf(extra);
     this.snack.open(extra.name + " removed !", null, {duration: 2000});
     this.extras.splice(index, 1);
+  }
+
+  getLinearGradient(alcohol : Alcohol){
+    return this.sanitizer.bypassSecurityTrustStyle('linear-gradient(to bottom, rgba(255,255,255,0) 0%,'+ alcohol.color +' 100%)');
   }
 
 }
