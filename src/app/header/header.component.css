@@ -57,3 +57,13 @@
 .menu-xs a{
   text-align: left;
 }
+
+.mobile button{
+  text-align: left;
+  color: #585a5a;
+}
+
+.mobile md-icon{
+  position: relative;
+  top:6px;
+}

@@ -19,28 +19,27 @@
       <a class="nav-item nav-link" md-button routerLink="/contact" ><md-icon>message</md-icon> <span class="text">Contact</span></a>
     </div>
 
-    <div class="navbar-nav menu-xs mt-2 mt-lg-0 hidden-sm-up" >
-      <a class="nav-item nav-link" md-button routerLink="/home" ><md-icon>home</md-icon> <span class="text">Home</span></a>
-      <a class="nav-item nav-link" md-button routerLink="/shop" ><md-icon>local_bar</md-icon> <span class="text">Shop</span></a>
-      <a class="nav-item nav-link" md-button routerLink="/drink-box" ><md-icon>card_giftcard</md-icon> <span class="text">DrinkBox</span></a>
-      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/builder" ><md-icon>build</md-icon> <span class="text">Builder</span></a>
-      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/wishlist" ><md-icon>assignment</md-icon> <span class="text">Wishlist</span></a>
-      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/cart" ><md-icon>shopping_cart</md-icon> <span class="text">Cart</span> </a>
-      <a class="nav-item nav-link" md-button *ngIf="this.authService.isLoggedIn" routerLink="/orders" ><md-icon>list</md-icon> <span class="text">Orders</span> </a>
-      <a class="nav-item nav-link" md-button routerLink="/contact" ><md-icon>message</md-icon> <span class="text">Contact</span></a>
+    <div class="navbar-nav menu-xs mt-2 mt-lg-0 hidden-sm-up mobile" >
+      <button routerLink="/home"      data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>home</md-icon> <span class="text">Home</span></button>
+      <button routerLink="/shop"      data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>local_bar</md-icon> <span class="text">Shop</span></button>
+      <button routerLink="/drink-box" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>card_giftcard</md-icon> <span class="text">DrinkBox</span></button>
+      <button routerLink="/builder"   data-target="#navbarNavAltMarkup" data-toggle="collapse" *ngIf="this.authService.isLoggedIn"  ><md-icon>build</md-icon> <span class="text">Builder</span></button>
+      <button routerLink="/wishlist"  data-target="#navbarNavAltMarkup" data-toggle="collapse" *ngIf="this.authService.isLoggedIn"  ><md-icon>assignment</md-icon> <span class="text">Wishlist</span></button>
+      <button routerLink="/cart"      data-target="#navbarNavAltMarkup" data-toggle="collapse" *ngIf="this.authService.isLoggedIn"  ><md-icon>shopping_cart</md-icon> <span class="text">Cart</span> </button>
+      <button routerLink="/orders"    data-target="#navbarNavAltMarkup" data-toggle="collapse" *ngIf="this.authService.isLoggedIn"  ><md-icon>list</md-icon> <span class="text">Orders</span> </button>
+      <button routerLink="/contact"   data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>message</md-icon> <span class="text">Contact</span></button>
+      <button routerLink="/register"  data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>assignment</md-icon> Sign up</button>
+      <button routerLink="/sign-in"   data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>account_circle</md-icon> Sign in</button>
     </div>
 
-    <div class="form-inline my-2 my-lg-0" *ngIf="!authService.isLoggedIn">
-      <button md-raised-button routerLink="/register" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>assignment</md-icon> Sign up</button>
-      <button md-raised-button routerLink="/register" class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" ><md-icon>assignment</md-icon> Sign up</button>
-      <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>account_circle</md-icon> Sign in</button>
-      <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in hidden-xs-down" ><md-icon>account_circle</md-icon> Sign in</button>
+    <div class="form-inline my-2 my-lg-0 hidden-xs-down" *ngIf="!authService.isLoggedIn">
+      <button md-raised-button routerLink="/register" class="btn btn-outline-warning my-2 my-sm-0" ><md-icon>assignment</md-icon> Sign up</button>
+      <button md-raised-button routerLink="/sign-in" class="btn btn-outline-info my-2 my-sm-0 sign-in" ><md-icon>account_circle</md-icon> Sign in</button>
     </div>
 
-    <div class="form-inline my-2 my-lg-0" *ngIf="authService.isLoggedIn">
+    <div class="form-inline my-2 my-lg-0 hidden-xs-down" *ngIf="authService.isLoggedIn">
       <button md-raised-button routerLink="/account" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>account_circle</md-icon> {{authService.currentUser.firstname}}</button>
       <button md-raised-button mdTooltip="Manage" [mdTooltipPosition]="'below'" routerLink="/account" class="btn btn-outline-warning my-2 my-sm-0 hidden-xs-down" ><md-icon>account_circle</md-icon> {{authService.currentUser.firstname}}</button>
-
       <button md-mini-fab  (click)="authService.logout()" class="my-2 my-sm-0 hidden-sm-up" data-target="#navbarNavAltMarkup" data-toggle="collapse" ><md-icon>exit_to_app</md-icon></button>
       <button md-mini-fab mdTooltip="Logout" [mdTooltipPosition]="'below'" id="logout" (click)="authService.logout()" class="btn btn-outline-danger my-2 my-sm-0 hidden-xs-down" ><md-icon>exit_to_app</md-icon></button>
     </div>
