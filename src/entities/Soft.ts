@@ -8,5 +8,6 @@ export class Soft{
     public name? : string,
     public type? : string,
     public color? : string,
+    public enabled? : boolean
   ){}
 }

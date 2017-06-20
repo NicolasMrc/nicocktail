@@ -11,9 +11,11 @@ import {DialogService} from "../services/DialogService";
 })
 export class AdminAlcoholComponent implements OnInit {
 
-  alcohols : Alcohol[];
+  alcohols : Alcohol[] = [];
 
   newAlcohol : Alcohol = new Alcohol();
+
+  seeDisabled : boolean = false;
 
   constructor(private alcoholService : AlcoholService, private dialogService : DialogService, private snack : MdSnackBar,
               private viewContainerRef: ViewContainerRef) { }
@@ -25,7 +27,13 @@ export class AdminAlcoholComponent implements OnInit {
   getDrinks(): void {
     this.alcoholService
       .findAll()
-      .subscribe(alcohols => this.alcohols = alcohols);
+      .subscribe(alcohols => {
+        for(let alcohol of alcohols){
+          if(alcohol.enabled){
+            this.alcohols.push(alcohol);
+          }
+        }
+      });
   }
 
   update(alcohol : Alcohol){
@@ -47,15 +55,48 @@ export class AdminAlcoholComponent implements OnInit {
   }
 
   deleteAlcohol(alcohol : Alcohol){
-    this.dialogService.confirm("Delete ?", "Are you sure to delete this alcohol ?", this.viewContainerRef).subscribe(
+    var modalTitle : string;
+    var modalText : string;
+    var snackText : string;
+
+    if(alcohol.enabled){
+      modalTitle = "Disable " + alcohol.name;
+      modalText = "Are you sure to disable this alcohol ?";
+      snackText = alcohol.name + " disabled !";
+    }else{
+      modalTitle ="Enable " + alcohol.name;
+      modalText ="Are you sure to enable this alcohol ?";
+      snackText = alcohol.name + " enabled !";
+    }
+
+    this.dialogService.confirm(modalTitle, modalText, this.viewContainerRef).subscribe(
       res => {
         if(res){
           this.alcoholService.deleteAlcohol(alcohol.id).subscribe(res => {
-            var index = this.alcohols.indexOf(alcohol);
-            this.snack.open(alcohol.name + " deleted !", null, {duration: 2000});
-            this.alcohols.splice(index, 1);
+            this.snack.open(snackText, null, {duration: 2000});
+            alcohol.enabled = !alcohol.enabled;
           });
         }
       });
   }
+
+  switchEnabledMode(){
+    this.alcohols = [];
+    this.alcoholService.findAll().subscribe(alcohols => {
+      this.seeDisabled = !this.seeDisabled;
+
+      if(this.seeDisabled){
+        this.alcohols = alcohols;
+      } else {
+        for(let alcohol of alcohols){
+          if(alcohol.enabled){
+            this.alcohols.push(alcohol);
+          }
+        }
+      }
+
+    })
+
+  }
+
 }
