@@ -29,6 +29,21 @@ export class AlcoholService{
       .catch(this.handleError);
   }
 
+  findAllEnabled(): Observable<Alcohol[]> {
+    return this.http
+      .get(this.url)
+      .map(response => {
+        var alcoholsEnabled = [];
+        for (let alcohol of response.json() as Alcohol[]){
+          if(alcohol.enabled){
+            alcoholsEnabled.push(alcohol);
+          }
+        }
+        return alcoholsEnabled;
+      })
+      .catch(this.handleError);
+  }
+
   findOne (id : string): Observable<Alcohol> {
     return this.http.get(this.url + '/' + id)
       .map(res => res.json() as Alcohol)

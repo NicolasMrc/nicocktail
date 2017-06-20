@@ -21,19 +21,9 @@ export class AdminAlcoholComponent implements OnInit {
               private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
-    this.getDrinks()
-  }
-
-  getDrinks(): void {
-    this.alcoholService
-      .findAll()
-      .subscribe(alcohols => {
-        for(let alcohol of alcohols){
-          if(alcohol.enabled){
-            this.alcohols.push(alcohol);
-          }
-        }
-      });
+    this.alcoholService.findAllEnabled().subscribe(alcohols => {
+      this.alcohols = alcohols;
+    });
   }
 
   update(alcohol : Alcohol){
@@ -55,15 +45,15 @@ export class AdminAlcoholComponent implements OnInit {
   }
 
   deleteAlcohol(alcohol : Alcohol){
-    var modalTitle : string;
-    var modalText : string;
-    var snackText : string;
+    let modalTitle : string;
+    let modalText : string;
+    let snackText : string;
 
-    if(alcohol.enabled){
+    if (alcohol.enabled){
       modalTitle = "Disable " + alcohol.name;
       modalText = "Are you sure to disable this alcohol ?";
       snackText = alcohol.name + " disabled !";
-    }else{
+    } else {
       modalTitle ="Enable " + alcohol.name;
       modalText ="Are you sure to enable this alcohol ?";
       snackText = alcohol.name + " enabled !";
@@ -82,21 +72,16 @@ export class AdminAlcoholComponent implements OnInit {
 
   switchEnabledMode(){
     this.alcohols = [];
-    this.alcoholService.findAll().subscribe(alcohols => {
-      this.seeDisabled = !this.seeDisabled;
+    this.seeDisabled = !this.seeDisabled;
 
-      if(this.seeDisabled){
+    if(this.seeDisabled) {
+      this.alcoholService.findAll().subscribe(alcohols => {
         this.alcohols = alcohols;
-      } else {
-        for(let alcohol of alcohols){
-          if(alcohol.enabled){
-            this.alcohols.push(alcohol);
-          }
-        }
-      }
-
-    })
-
+      });
+    } else {
+      this.alcoholService.findAllEnabled().subscribe(alcohols => {
+        this.alcohols = alcohols;
+      });
+    }
   }
-
 }

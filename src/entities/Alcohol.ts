@@ -9,6 +9,6 @@ export class Alcohol{
     public name? : string,
     public color? : string,
     public degree? : number,
-    public enabled? : boolean
+    public enabled : boolean = true
   ){}
 }

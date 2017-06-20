@@ -61,6 +61,7 @@ import {Ng2PageScrollModule} from "ng2-page-scroll";
 import {ChartsModule} from "ng2-charts";
 import Chart from 'chart.js';
 import { ContactComponent } from './contact/contact.component';
+import {ColorPickerModule} from "angular2-color-picker";
 
 const appRoutes: Routes = [
   { path: 'shop', component: ShopComponent },
@@ -110,9 +111,11 @@ const appRoutes: Routes = [
     HomeComponent,
     AdminComponent,
     HeaderComponent,
+    VerifyComponent,
     OrdersComponent,
     SigninComponent,
     BuilderComponent,
+    ContactComponent,
     WishlistComponent,
     AdminSoftComponent,
     AdminUserComponent,
@@ -125,13 +128,11 @@ const appRoutes: Routes = [
     ManageAccountComponent,
     DialogPaymentComponent,
     AdminBundleNewComponent,
+    DialogAddToCartComponent,
     AdminBundleEditComponent,
     DialogEditBundleComponent,
     DialogAddToBundleComponent,
     DialogConfirmationComponent,
-    DialogAddToCartComponent,
-    VerifyComponent,
-    ContactComponent,
 
   ],
   imports: [
@@ -157,6 +158,7 @@ const appRoutes: Routes = [
     MdSnackBarModule,
     FileUploadModule,
     MdCheckboxModule,
+    ColorPickerModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
     MdProgressBarModule,
