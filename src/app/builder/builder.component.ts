@@ -8,6 +8,10 @@ import {ExtraService} from "../services/ExtraService";
 import {MdSnackBar} from "@angular/material";
 import {DialogService} from "../services/DialogService";
 import {DomSanitizer} from "@angular/platform-browser";
+import {Bundle} from "../../entities/Bundle";
+import {AuthService} from "../services/auth/auth.service";
+import {BundleService} from "../services/BundleService";
+import {UserService} from "../services/UserService";
 
 @Component({
   selector: 'app-builder',
@@ -36,7 +40,8 @@ export class BuilderComponent implements OnInit {
 
   constructor(private alcoholService : AlcoholService, private softService : SoftService,
               private extraService : ExtraService, private viewContainerRef : ViewContainerRef, private snack : MdSnackBar,
-              private dialogService : DialogService, public sanitizer : DomSanitizer) { }
+              private dialogService : DialogService, public sanitizer : DomSanitizer, public authService : AuthService,
+              private bundleService : BundleService, private userService : UserService) { }
 
   ngOnInit() {
     this.bulleSize = Math.random() * 20;
@@ -118,6 +123,29 @@ export class BuilderComponent implements OnInit {
 
   getLinearGradient(alcohol : Alcohol){
       return this.sanitizer.bypassSecurityTrustStyle('linear-gradient(to bottom, rgba(255,255,255,0) 0%,'+ alcohol.color +' 100%)');
+  }
+
+  addToCart(){
+    let customBundle = new Bundle();
+    customBundle.softs = this.softs;
+    customBundle.alcohols = this.alcohols;
+    customBundle.extras = this.extras;
+    customBundle.name = this.cocktailName;
+    customBundle.description = "Custom cocktail created by " + this.authService.currentUser.firstname;
+    customBundle.is_custom = true;
+    customBundle.price = 50;
+    customBundle.image = "custom.png";
+
+    this.bundleService.addBundle(customBundle).subscribe(res => {
+      customBundle.id = res.id;
+      for(var i = 0; i < this.sliderValue/10 ; i ++){
+        this.authService.currentUser.cart.push(customBundle);
+      }
+      this.userService.updateUser(this.authService.currentUser).subscribe(user => {
+        this.authService.currentUser = user;
+        this.snack.open(customBundle.name + ' added to your cart !', null, {duration : 2000})
+      });
+    });
   }
 
 }

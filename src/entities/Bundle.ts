@@ -19,6 +19,7 @@ export class Bundle{
     public softs? : Soft[],
     public extras? : Extra[],
     public quantity : number = 1,
-    public isWished : boolean = false
+    public isWished : boolean = false,
+    public is_custom : boolean = false
   ){}
 }

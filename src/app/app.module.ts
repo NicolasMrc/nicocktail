@@ -59,9 +59,7 @@ import { VerifyComponent } from './verify/verify.component';
 import {RecaptchaModule} from "ng-recaptcha";
 import {Ng2PageScrollModule} from "ng2-page-scroll";
 import {ChartsModule} from "ng2-charts";
-import Chart from 'chart.js';
 import { ContactComponent } from './contact/contact.component';
-import {ColorPickerModule} from "angular2-color-picker";
 
 const appRoutes: Routes = [
   { path: 'shop', component: ShopComponent },
@@ -158,7 +156,6 @@ const appRoutes: Routes = [
     MdSnackBarModule,
     FileUploadModule,
     MdCheckboxModule,
-    ColorPickerModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
     MdProgressBarModule,
@@ -167,7 +164,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RecaptchaModule.forRoot(),
     Ng2PageScrollModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     Hasher,

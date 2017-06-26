@@ -27,6 +27,21 @@ export class SoftService{
       .catch(this.handleError);
   }
 
+  findAllEnabled(): Observable<Soft[]> {
+    return this.http
+      .get(this.url)
+      .map(response => {
+        let softsEnabled = [];
+        for(let soft of response.json() as Soft[]){
+          if(soft.enabled){
+            softsEnabled.push(soft);
+          }
+        }
+        return softsEnabled;
+      })
+      .catch(this.handleError);
+  }
+
   findOne (id : string): Observable<Soft> {
     return this.http.get(this.url + '/' + id)
       .map(res => res.json() as Soft)

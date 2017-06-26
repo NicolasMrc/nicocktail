@@ -11,52 +11,80 @@ import {MdSnackBar} from "@angular/material";
 })
 export class AdminSoftComponent implements OnInit {
 
-  softs : Soft[];
+  softs : Soft[] = [];
 
   newSoft : Soft = new Soft();
+
+  seeDisabled : boolean = false;
 
   constructor(private softService : SoftService, private dialogService : DialogService, private snack : MdSnackBar,
               private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
-    this.getSofts()
-  }
-
-  getSofts(): void {
-    this.softService
-      .findAll()
-      .subscribe(softs => this.softs = softs);
+    this.softService.findAllEnabled().subscribe(softs => {
+      this.softs = softs;
+    });
   }
 
   update(soft : Soft){
-    this.softService.update(soft).subscribe(updatedAlcohol => {
-      soft = updatedAlcohol;
+    this.softService.update(soft).subscribe(updatedSoft => {
+      soft = updatedSoft;
       this.snack.open(soft.name + " updated !", null, {duration: 2000});
     });
   }
 
   add(){
-    if(this.newSoft.name != "" && this.newSoft.type != null){
+    if(this.newSoft.name != ""){
       this.softService.addSoft(this.newSoft)
-        .subscribe(alcohol => {
-          this.softs.push(alcohol);
+        .subscribe(soft => {
+          this.softs.push(soft);
           this.newSoft = new Soft();
-          this.snack.open(alcohol.name + " added to catalog !", null, {duration: 2000})
+          this.snack.open(soft.name + " added to catalog !", null, {duration: 2000})
         });
     }
   }
 
   deleteSoft(soft : Soft){
-    this.dialogService.confirm("Delete ?", "Are you sure to delete this soft drink ?", this.viewContainerRef).subscribe(
+    let modalTitle : string;
+    let modalText : string;
+    let snackText : string;
+
+    if (soft.enabled){
+      modalTitle = "Disable " + soft.name;
+      modalText = "Are you sure to disable this soft ?";
+      snackText = soft.name + " disabled !";
+    } else {
+      modalTitle ="Enable " + soft.name;
+      modalText ="Are you sure to enable this soft ?";
+      snackText = soft.name + " enabled !";
+    }
+
+    this.dialogService.confirm(modalTitle, modalText, this.viewContainerRef).subscribe(
       res => {
         if(res){
           this.softService.deleteSoft(soft.id).subscribe(res => {
-            var index = this.softs.indexOf(soft);
-            this.snack.open(soft.name + " deleted !", null, {duration: 2000});
-            this.softs.splice(index, 1);
+            this.snack.open(snackText, null, {duration: 2000});
+            soft.enabled = !soft.enabled;
           });
         }
       });
   }
+
+  switchEnabledMode(){
+    this.softs = [];
+    this.seeDisabled = !this.seeDisabled;
+
+    if(this.seeDisabled) {
+      this.softService.findAll().subscribe(softs => {
+        this.softs = softs;
+      });
+    } else {
+      this.softService.findAllEnabled().subscribe(softs => {
+        this.softs = softs;
+      });
+    }
+  }
+
+
 
 }
